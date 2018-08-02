@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="01" author="alkruglov">
+    <changeSet id="001" author="alkruglov">
         <createTable tableName="items" remarks="A table to contain all fund items">
             <column name="id" type="varchar(16)">
                 <constraints nullable="false" unique="true" primaryKey="true"/>

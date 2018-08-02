@@ -1,0 +1,67 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="02" author="alkruglov">
+        <insert tableName="funds">
+            <column name="id">GROCERY_FUND</column>
+            <column name="name">Grocery</column>
+        </insert>
+        <insert tableName="funds">
+            <column name="id">RENTAL_FUND</column>
+            <column name="name">Rental</column>
+        </insert>
+        <insert tableName="funds">
+            <column name="id">DRESS_FUND</column>
+            <column name="name">Dress</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="003" author="alkruglov">
+        <insert tableName="items">
+            <column name="id">ITEM_0000001</column>
+            <column name="type">INCOME</column>
+            <column name="amount">100000</column>
+            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="fund_id">GROCERY_FUND</column>
+        </insert>
+        <insert tableName="items">
+            <column name="id">ITEM_0000002</column>
+            <column name="type">EXPENSE</column>
+            <column name="amount">50000</column>
+            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="fund_id">GROCERY_FUND</column>
+        </insert>
+        <insert tableName="items">
+            <column name="id">ITEM_0000003</column>
+            <column name="type">INCOME</column>
+            <column name="amount">100000</column>
+            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="fund_id">DRESS_FUND</column>
+        </insert>
+        <insert tableName="items">
+            <column name="id">ITEM_0000004</column>
+            <column name="type">EXPENSE</column>
+            <column name="amount">200000</column>
+            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="fund_id">DRESS_FUND</column>
+        </insert>
+        <insert tableName="items">
+            <column name="id">ITEM_0000005</column>
+            <column name="type">INCOME</column>
+            <column name="amount">100000</column>
+            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="fund_id">DRESS_FUND</column>
+        </insert>
+        <insert tableName="items">
+            <column name="id">ITEM_0000006</column>
+            <column name="type">EXPENSE</column>
+            <column name="amount">80000</column>
+            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="fund_id">RENTAL_FUND</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
