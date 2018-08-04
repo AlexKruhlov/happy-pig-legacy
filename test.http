@@ -1,12 +1,3 @@
-GET http://localhost:8080/greeting?name=Aleksandr
-
-###
-
-POST http://localhost:8080/greeting
-Content-Type: application/json
-
-{
- "name":"It's AWESOME"
-}
+GET http://localhost:8080/fund/GROCERY_FUND
 
 ###
