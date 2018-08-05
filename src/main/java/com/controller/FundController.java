@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/fund")
 public class FundController {
@@ -22,5 +24,10 @@ public class FundController {
     @GetMapping("/{id}")
     public Fund findById(@PathVariable String id) {
         return fundService.findById(id);
+    }
+
+    @GetMapping("/all")
+    public List<Fund> findAll() {
+        return fundService.findAll();
     }
 }
