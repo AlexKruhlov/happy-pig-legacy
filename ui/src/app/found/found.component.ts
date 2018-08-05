@@ -11,5 +11,4 @@ export class FoundComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
