@@ -1,3 +1,7 @@
 GET http://localhost:8080/fund/GROCERY_FUND
 
 ###
+
+GET http://localhost:8080/fund/all
+
+###
