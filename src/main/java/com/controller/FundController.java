@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/fund")
-@CrossOrigin(origins = "http://localhost:4200")
 public class FundController {
 
     private FundService fundService;
