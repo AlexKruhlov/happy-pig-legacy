@@ -1,7 +1,7 @@
-GET http://localhost:8080/fund/GROCERY_FUND
+GET http://localhost:8080/api/fund/GROCERY_FUND
 
 ###
 
-GET http://localhost:8080/fund/all
+GET http://localhost:8080/api/fund/all
 
 ###
