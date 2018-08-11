@@ -1,20 +1,19 @@
-package com.model;
+package com.feature.item.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "funds")
+@Table(name = "items")
 @Setter
 @Getter
-public class Fund implements Serializable {
+public class Item implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -22,9 +21,14 @@ public class Fund implements Serializable {
     private String id;
 
     @Column
-    private String name;
+    private String type;
 
-    @Fetch(FetchMode.JOIN)
-    @OneToMany(mappedBy = "fundId")
-    private List<Item> items;
+    @Column
+    private BigInteger amount;
+
+    @Column
+    private LocalDateTime date;
+
+    @Column
+    private String fundId;
 }
