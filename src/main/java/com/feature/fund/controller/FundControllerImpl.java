@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/fund")
 public class FundControllerImpl implements FundController {
-    private FundService fundService;
+    private final FundService fundService;
 
     @Autowired
     public FundControllerImpl(FundService fundService) {
