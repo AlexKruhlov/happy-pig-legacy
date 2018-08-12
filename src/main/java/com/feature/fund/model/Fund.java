@@ -1,8 +1,7 @@
 package com.feature.fund.model;
 
 import com.feature.item.model.Item;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
@@ -13,8 +12,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "funds")
-@Setter
+@Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Fund implements Serializable {
 
     @Id
@@ -26,6 +27,7 @@ public class Fund implements Serializable {
     private String name;
 
     @Fetch(FetchMode.JOIN)
-    @OneToMany(mappedBy = "fundId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId")
+    @Singular
     private List<Item> items;
 }

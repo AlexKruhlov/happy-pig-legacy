@@ -26,4 +26,9 @@ public class FundRepositoryImpl implements FundRepository {
     public Fund findById(String id) {
         return fundDefaultRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Fund save(Fund fund) {
+        return fundDefaultRepository.save(fund);
+    }
 }
