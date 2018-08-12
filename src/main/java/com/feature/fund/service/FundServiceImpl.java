@@ -2,7 +2,7 @@ package com.feature.fund.service;
 
 import com.api.fund.service.FundService;
 import com.feature.fund.model.Fund;
-import com.api.fund.repository.FundRepository;
+import com.feature.fund.repository.FundDefaultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import java.util.List;
 
 @Service
 public class FundServiceImpl implements FundService {
-    private FundRepository fundRepository;
+    private final FundDefaultRepository fundRepository;
 
     @Autowired
-    public FundServiceImpl(FundRepository fundRepository) {
+    public FundServiceImpl(FundDefaultRepository fundRepository) {
         this.fundRepository = fundRepository;
     }
 
