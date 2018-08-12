@@ -9,4 +9,6 @@ public interface FundRepository {
     List<Fund> findAll();
 
     Fund findById(String id);
+
+    Fund save(Fund fund);
 }
