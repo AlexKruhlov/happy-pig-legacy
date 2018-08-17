@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "items")
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item implements Serializable {
@@ -30,6 +31,6 @@ public class Item implements Serializable {
     @Column
     private LocalDateTime date;
 
-    @Column
+    @Column(name = "fund_id")
     private String fundId;
 }

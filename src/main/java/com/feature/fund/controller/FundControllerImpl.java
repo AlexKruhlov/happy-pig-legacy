@@ -2,12 +2,9 @@ package com.feature.fund.controller;
 
 import com.api.fund.controller.FundController;
 import com.api.fund.service.FundService;
-import com.feature.fund.model.Fund;
+import com.feature.fund.dto.FundDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,13 +20,19 @@ public class FundControllerImpl implements FundController {
 
     @Override
     @GetMapping("/{id}")
-    public Fund findById(@PathVariable String id) {
+    public FundDto findById(@PathVariable String id) {
         return fundService.findById(id);
     }
 
     @Override
     @GetMapping("/all")
-    public List<Fund> findAll() {
+    public List<FundDto> findAll() {
         return fundService.findAll();
+    }
+
+    @Override
+    @PostMapping("/save")
+    public FundDto saveOrUpdate(@RequestBody FundDto fundDto) {
+        return fundService.saveOrUpdate(fundDto);
     }
 }

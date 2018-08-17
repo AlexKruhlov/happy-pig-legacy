@@ -1,12 +1,14 @@
 package com.api.fund.service;
 
-import com.feature.fund.model.Fund;
+import com.feature.fund.dto.FundDto;
 
 import java.util.List;
 
 public interface FundService {
 
-    Fund findById(String id);
+    FundDto findById(String id);
 
-    List<Fund> findAll();
+    List<FundDto> findAll();
+
+    FundDto saveOrUpdate(FundDto fundDto);
 }

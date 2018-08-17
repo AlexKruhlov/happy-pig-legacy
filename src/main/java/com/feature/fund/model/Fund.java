@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "funds")
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Fund implements Serializable {
