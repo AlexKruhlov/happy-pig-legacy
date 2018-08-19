@@ -1,8 +1,9 @@
-<mat-grid-list cols="3" rowHeight="3:1">
-  <mat-grid-tile>
-    <found class="w-100 p-1"></found>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <found class="w-100 p-1"></found>
+<mat-grid-list
+  cols="3"
+  rowHeight="3:1">
+  <mat-grid-tile *ngFor="let fund of funds">
+    <found
+      [fund]="fund"
+      class="w-100 p-1 fund"></found>
   </mat-grid-tile>
 </mat-grid-list>

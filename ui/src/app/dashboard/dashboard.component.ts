@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FundService } from '../service/fund.service';
+import { FundService } from '../api/service/fund.service';
 
 @Component({
   selector: 'dashboard',
@@ -7,9 +7,18 @@ import { FundService } from '../service/fund.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  funds: any;
+
   constructor( private fundService: FundService ) {
   }
 
   ngOnInit() {
+    this.getAllFunds();
+  }
+
+  getAllFunds() {
+    this.fundService.getAllFunds().subscribe(res => {
+      this.funds = res;
+    });
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { URL } from '../requestPath';
 
 import { Observable } from 'rxjs';
 
@@ -8,12 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class FundService {
 
-  private url = 'http://localhost:8080';
-
   constructor( private http: HttpClient ) {
   }
 
   getAllFunds(): Observable<any> {
-    return this.http.get(`${this.url}/fund/all`)
+    return this.http.get(`${URL}/fund/all`);
   }
 }
