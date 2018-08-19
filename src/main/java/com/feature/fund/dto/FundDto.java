@@ -14,4 +14,5 @@ public class FundDto {
     private String id;
     private String name;
     private List<ItemDto> itemDtos;
+    private String amount;
 }

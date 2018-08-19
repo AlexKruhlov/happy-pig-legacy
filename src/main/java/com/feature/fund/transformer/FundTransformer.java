@@ -12,7 +12,8 @@ public interface FundTransformer {
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "name", target = "name"),
-            @Mapping(source = "items", target = "itemDtos")
+            @Mapping(source = "items", target = "itemDtos"),
+            @Mapping(source = "amount", target = "amount")
     })
     FundDto toDto(Fund fund);
 

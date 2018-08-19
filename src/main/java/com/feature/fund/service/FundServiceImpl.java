@@ -5,9 +5,12 @@ import com.api.fund.service.FundService;
 import com.feature.fund.dto.FundDto;
 import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
+import com.feature.item.model.Item;
+import com.feature.item.model.ItemTypeConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +27,9 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public FundDto findById(String id) {
-        return fundTransformer.toDto(fundRepository.findById(id));
+        Fund fund = fundRepository.findById(id);
+        fund.setAmount(calculateAmount(fund.getItems()));
+        return fundTransformer.toDto(fund);
     }
 
     @Override
@@ -38,5 +43,19 @@ public class FundServiceImpl implements FundService {
     public FundDto saveOrUpdate(FundDto fundDto) {
         Fund fund = fundTransformer.fromDto(fundDto);
         return fundTransformer.toDto(fundRepository.save(fund));
+    }
+
+    private BigInteger calculateAmount(List<Item> items) {
+        return items.stream()
+                .map(this::mapToPositiveOrNegative)
+                .reduce(BigInteger::add).orElse(null);
+    }
+
+    private BigInteger mapToPositiveOrNegative(Item item) {
+        return isExpense(item) ? item.getAmount().negate() : item.getAmount();
+    }
+
+    private boolean isExpense(Item item) {
+        return item.getType().equals(ItemTypeConst.EXPENSE);
     }
 }

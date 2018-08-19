@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
 @Entity
@@ -31,4 +32,7 @@ public class Fund implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId")
     @Singular
     private List<Item> items;
+
+    @Transient
+    private BigInteger amount;
 }
