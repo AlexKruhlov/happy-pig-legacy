@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { AppComponent } from './main/app.component';
 import { FundComponent } from './fund/fund.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [FundService],
   bootstrap: [AppComponent]
