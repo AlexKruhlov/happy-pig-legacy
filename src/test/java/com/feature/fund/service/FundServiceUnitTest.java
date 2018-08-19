@@ -6,7 +6,6 @@ import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.fund.transformer.FundTransformerImpl;
 import com.feature.item.model.Item;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
@@ -18,6 +17,7 @@ import java.util.List;
 
 import static com.feature.item.model.ItemTypeConst.EXPENSE;
 import static com.feature.item.model.ItemTypeConst.INCOME;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -42,26 +42,45 @@ public class FundServiceUnitTest {
         items.add(createItem("Id3", INCOME, 27));
         items.add(createItem("Id3", EXPENSE, 32));
         String expectedResult = "95";
-        Fund fund = Fund.builder()
-                .id(FUND_ID)
-                .name(FUND_NAME)
-                .amount(BigInteger.ZERO)
-                .items(items).build();
+        Fund fund = createFund("fund1", items);
         when(fundRepository.findById(FUND_ID)).thenReturn(fund);
         FundDto foundFund = fundService.findById(FUND_ID);
-        Assert.assertEquals(expectedResult, foundFund.getAmount());
+        assertEquals(expectedResult, foundFund.getAmount());
+    }
+
+    @Test
+    public void shouldCalculateAmountOfAllFunds() {
+        List<Item> items1 = new ArrayList<>();
+        items1.add(createItem("Id1", INCOME, 150));
+        items1.add(createItem("Id2", EXPENSE, 50));
+        String expectedResult1 = "100";
+
+        List<Item> items2 = new ArrayList<>();
+        items2.add(createItem("Id3", INCOME, 27));
+        items2.add(createItem("Id3", EXPENSE, 32));
+        String expectedResult2 = "-5";
+
+        List<Fund> funds = new ArrayList<>();
+        funds.add(createFund("fund1", items1));
+        funds.add(createFund("fund2", items2));
+
+        when(fundRepository.findAll()).thenReturn(funds);
+
+        List<FundDto> resultedFunds = fundService.findAll();
+
+        assertEquals(expectedResult1, resultedFunds.get(0).getAmount());
+        assertEquals(expectedResult2, resultedFunds.get(1).getAmount());
     }
 
     @Test
     public void saveOrUpdate() {
     }
 
-    private Fund createFund() {
+    private Fund createFund(String id, List<Item> items) {
         return Fund.builder()
-                .id(FUND_ID)
-                .name(FUND_NAME)
-                .amount(BigInteger.ZERO)
-                .items(null).build();
+                .id(id)
+                .items(items)
+                .build();
     }
 
     private Item createItem(String id, String type, long amount) {
