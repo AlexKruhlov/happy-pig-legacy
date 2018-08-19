@@ -27,14 +27,14 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public FundDto findById(String id) {
-        Fund fund = fundRepository.findById(id);
-        fund.setAmount(calculateAmount(fund.getItems()));
+        Fund fund = addAmount(fundRepository.findById(id));
         return fundTransformer.toDto(fund);
     }
 
     @Override
     public List<FundDto> findAll() {
         return fundRepository.findAll().stream()
+                .map(this::addAmount)
                 .map(fundTransformer::toDto)
                 .collect(Collectors.toList());
     }
@@ -43,6 +43,11 @@ public class FundServiceImpl implements FundService {
     public FundDto saveOrUpdate(FundDto fundDto) {
         Fund fund = fundTransformer.fromDto(fundDto);
         return fundTransformer.toDto(fundRepository.save(fund));
+    }
+
+    private Fund addAmount(Fund fund) {
+        fund.setAmount(calculateAmount(fund.getItems()));
+        return fund;
     }
 
     private BigInteger calculateAmount(List<Item> items) {
