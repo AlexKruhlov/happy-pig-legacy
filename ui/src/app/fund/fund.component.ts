@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'found',
+  selector: 'fund',
   templateUrl: './fund.component.html',
   styleUrls: ['./fund.component.scss']
 })

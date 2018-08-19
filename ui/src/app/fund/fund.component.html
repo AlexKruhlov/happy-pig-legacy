@@ -1,1 +1,10 @@
-<mat-card class="text-center">{{fund.name}}</mat-card>
+<mat-card class="content">
+  <mat-card-title>
+    <p class="text-center mt-3">{{fund.name}}</p>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <p class="text-center amount mb-3">
+      {{fund.amount/100 | currency:'UAH':'symbol-narrow'}}
+    </p>
+  </mat-card-subtitle>
+</mat-card>

@@ -1,9 +1,12 @@
-<mat-grid-list
-  cols="3"
-  rowHeight="3:1">
-  <mat-grid-tile *ngFor="let fund of funds">
-    <found
-      [fund]="fund"
-      class="w-100 p-1 fund"></found>
-  </mat-grid-tile>
-</mat-grid-list>
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="space-between center">
+  <fund
+    *ngFor="let fund of funds"
+    [fund]="fund"
+    class="p-1 mb-3 fund w-100"
+    fxFlex="33%"></fund>
+</div>
+
+
