@@ -6,6 +6,7 @@ import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.fund.transformer.FundTransformerImpl;
 import com.feature.item.model.Item;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
@@ -32,7 +33,7 @@ public class FundServiceUnitTest {
     private FundTransformer fundTransformer = new FundTransformerImpl();
 
     @InjectMocks
-    public FundServiceImpl fundService;
+    private FundServiceImpl fundService;
 
     @Test
     public void souldCalculateAmountWhenFindById() {
@@ -40,7 +41,7 @@ public class FundServiceUnitTest {
         items.add(createItem("Id1", INCOME, 150));
         items.add(createItem("Id2", EXPENSE, 50));
         items.add(createItem("Id3", INCOME, 27));
-        items.add(createItem("Id3", EXPENSE, 32));
+        items.add(createItem("Id4", EXPENSE, 32));
         String expectedResult = "95";
         Fund fund = createFund("fund1", items);
         when(fundRepository.findById(FUND_ID)).thenReturn(fund);
@@ -57,7 +58,7 @@ public class FundServiceUnitTest {
 
         List<Item> items2 = new ArrayList<>();
         items2.add(createItem("Id3", INCOME, 27));
-        items2.add(createItem("Id3", EXPENSE, 32));
+        items2.add(createItem("Id4", EXPENSE, 32));
         String expectedResult2 = "-5";
 
         List<Fund> funds = new ArrayList<>();
@@ -73,7 +74,31 @@ public class FundServiceUnitTest {
     }
 
     @Test
-    public void saveOrUpdate() {
+    public void shouldSaveWhenItemsIsNull() {
+        Fund fund = new Fund();
+        fund.setId(FUND_ID);
+        FundDto fundDto = new FundDto();
+        fundDto.setId(FUND_ID);
+
+        when(fundRepository.save(fund)).thenReturn(fund);
+        when(fundTransformer.fromDto(fundDto)).thenReturn(fund);
+
+        FundDto actualFundDto = fundService.saveOrUpdate(fundDto);
+        Assert.assertEquals(fundDto.getId(), actualFundDto.getId());
+    }
+
+    @Test
+    public void shouldSaveWithItems() {
+        List<Item> items1 = new ArrayList<>();
+        items1.add(createItem("Id1", INCOME, 157));
+        items1.add(createItem("Id2", EXPENSE, 50));
+        String expectedResult = "107";
+
+        Fund fund = createFund("fund1", items1);
+        when(fundRepository.save(null)).thenReturn(fund);
+
+        FundDto actualFundDto = fundService.saveOrUpdate(null);
+        Assert.assertEquals(actualFundDto.getAmount(), expectedResult);
     }
 
     private Fund createFund(String id, List<Item> items) {
