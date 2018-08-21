@@ -14,6 +14,8 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
+
 @Service
 public class FundServiceImpl implements FundService {
     private final FundRepository fundRepository;
@@ -42,7 +44,8 @@ public class FundServiceImpl implements FundService {
     @Override
     public FundDto saveOrUpdate(FundDto fundDto) {
         Fund fund = fundTransformer.fromDto(fundDto);
-        return fundTransformer.toDto(fundRepository.save(fund));
+        Fund savedFund = addAmount(fundRepository.save(fund));
+        return fundTransformer.toDto(savedFund);
     }
 
     private Fund addAmount(Fund fund) {
@@ -51,6 +54,9 @@ public class FundServiceImpl implements FundService {
     }
 
     private BigInteger calculateAmount(List<Item> items) {
+        if (isNull(items)) {
+            return null;
+        }
         return items.stream()
                 .map(this::mapToPositiveOrNegative)
                 .reduce(BigInteger::add).orElse(null);
