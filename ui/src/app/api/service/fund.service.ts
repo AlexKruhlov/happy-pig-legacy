@@ -15,4 +15,8 @@ export class FundService {
   getAllFunds(): Observable<any> {
     return this.http.get(`${URL}/fund/all`);
   }
+
+  getFundById(id): Observable<any> {
+    return this.http.get(`${URL}/fund/${id}`);
+  }
 }
