@@ -2,8 +2,6 @@ package com.feature.fund.model;
 
 import com.feature.item.model.Item;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -28,7 +26,6 @@ public class Fund implements Serializable {
     @Column
     private String name;
 
-    @Fetch(FetchMode.JOIN)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId")
     @Singular
     private List<Item> items;

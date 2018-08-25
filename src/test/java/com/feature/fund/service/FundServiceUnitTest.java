@@ -2,6 +2,7 @@ package com.feature.fund.service;
 
 import com.api.fund.repository.FundRepository;
 import com.feature.fund.dto.FundDto;
+import com.feature.fund.dto.FundDtoWithItems;
 import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.fund.transformer.FundTransformerImpl;
@@ -19,6 +20,7 @@ import java.util.List;
 import static com.feature.item.model.ItemTypeConst.EXPENSE;
 import static com.feature.item.model.ItemTypeConst.INCOME;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -34,6 +36,18 @@ public class FundServiceUnitTest {
 
     @InjectMocks
     private FundServiceImpl fundService;
+
+    @Test
+    public void shouldTransformToFundDtoWithItems() {
+        List<Item> items = new ArrayList<>();
+        items.add(createItem("Id1", INCOME, 150));
+        String expectedAmount = "150";
+        Fund fund = createFund("fund1", items);
+        when(fundRepository.findById(FUND_ID)).thenReturn(fund);
+        FundDtoWithItems foundFund = fundService.findById(FUND_ID);
+        assertEquals(expectedAmount, foundFund.getAmount());
+        assertNotNull(foundFund.getItems());
+    }
 
     @Test
     public void souldCalculateAmountWhenFindById() {
