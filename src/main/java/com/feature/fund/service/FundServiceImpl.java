@@ -3,6 +3,7 @@ package com.feature.fund.service;
 import com.api.fund.repository.FundRepository;
 import com.api.fund.service.FundService;
 import com.feature.fund.dto.FundDto;
+import com.feature.fund.dto.FundDtoWithItems;
 import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.item.model.Item;
@@ -28,9 +29,9 @@ public class FundServiceImpl implements FundService {
     }
 
     @Override
-    public FundDto findById(String id) {
+    public FundDtoWithItems findById(String id) {
         Fund fund = addAmount(fundRepository.findById(id));
-        return fundTransformer.toDto(fund);
+        return fundTransformer.toDtoWithItems(fund);
     }
 
     @Override
