@@ -7,16 +7,21 @@ import { FundService } from './api/service/fund.service';
 import { AppRouting } from './app.routing';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule} from '@angular/material/table';
+
 import { AppComponent } from './main/app.component';
 import { FundComponent } from './fund/fund.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FundItemsComponent } from './fund-items/fund-items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FundComponent,
-    DashboardComponent
+    DashboardComponent,
+    FundItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatCardModule,
     MatGridListModule,
+    MatButtonModule,
+    MatTableModule,
     HttpClientModule,
     FlexLayoutModule
   ],

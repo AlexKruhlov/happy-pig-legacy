@@ -66,6 +66,14 @@
   padding: .5rem auto;
 }
 
+.px-2 {
+  padding: auto .5rem;
+}
+
+.px-3 {
+  padding: auto 1rem;
+}
+
 .m-1 {
   margin: .25rem;
 }
@@ -88,4 +96,16 @@
 
 .mb-4 {
   margin-bottom: 2rem;
+}
+
+.ml-2 {
+  margin-left: .5rem;
+}
+
+.ml-3 {
+  margin-left: 1rem;
+}
+
+.mx-2 {
+  margin: auto .5rem;
 }
