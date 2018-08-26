@@ -25,6 +25,7 @@ export class FundItemsComponent implements OnInit, OnDestroy {
   getFund(id) {
     this.fundService.getFundById(id).subscribe(res => {
       this.fund = res;
+      console.log(res);
     });
   }
   ngOnDestroy() {
