@@ -1,7 +1,7 @@
 package com.api.fund.controller;
 
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.model.Fund;
+import com.feature.fund.dto.FundDtoWithItems;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -12,5 +12,5 @@ public interface FundController {
 
     List<FundDto> findAll();
 
-    FundDto saveOrUpdate(FundDto fundDto);
+    FundDtoWithItems saveOrUpdate(FundDtoWithItems fundDtoWithItems);
 }

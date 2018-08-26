@@ -91,14 +91,14 @@ public class FundServiceUnitTest {
     public void shouldSaveWhenItemsIsNull() {
         Fund fund = new Fund();
         fund.setId(FUND_ID);
-        FundDto fundDto = new FundDto();
-        fundDto.setId(FUND_ID);
+        FundDtoWithItems fundDtoWithItems = new FundDtoWithItems();
+        fundDtoWithItems.setId(FUND_ID);
 
         when(fundRepository.save(fund)).thenReturn(fund);
-        when(fundTransformer.fromDto(fundDto)).thenReturn(fund);
+        when(fundTransformer.fromDtoWithItems(fundDtoWithItems)).thenReturn(fund);
 
-        FundDto actualFundDto = fundService.saveOrUpdate(fundDto);
-        Assert.assertEquals(fundDto.getId(), actualFundDto.getId());
+        FundDto actualFundDtoWithItems = fundService.saveOrUpdate(fundDtoWithItems);
+        Assert.assertEquals(fundDtoWithItems.getId(), actualFundDtoWithItems.getId());
     }
 
     @Test
@@ -111,8 +111,8 @@ public class FundServiceUnitTest {
         Fund fund = createFund("fund1", items1);
         when(fundRepository.save(null)).thenReturn(fund);
 
-        FundDto actualFundDto = fundService.saveOrUpdate(null);
-        Assert.assertEquals(actualFundDto.getAmount(), expectedResult);
+        FundDtoWithItems actualFundDtoWithItems = fundService.saveOrUpdate(null);
+        Assert.assertEquals(actualFundDtoWithItems.getAmount(), expectedResult);
     }
 
     private Fund createFund(String id, List<Item> items) {

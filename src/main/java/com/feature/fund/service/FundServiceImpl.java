@@ -19,6 +19,13 @@ import static java.util.Objects.isNull;
 
 @Service
 public class FundServiceImpl implements FundService {
+
+    private final class FundAmount {
+        public BigInteger currentAmount = BigInteger.ZERO;
+        public BigInteger income = BigInteger.ZERO;
+        public BigInteger expense = BigInteger.ZERO;
+    }
+
     private final FundRepository fundRepository;
     private final FundTransformer fundTransformer;
 
@@ -43,28 +50,39 @@ public class FundServiceImpl implements FundService {
     }
 
     @Override
-    public FundDto saveOrUpdate(FundDto fundDto) {
-        Fund fund = fundTransformer.fromDto(fundDto);
-        Fund savedFund = addAmount(fundRepository.save(fund));
-        return fundTransformer.toDto(savedFund);
+    public FundDtoWithItems saveOrUpdate(FundDtoWithItems fundDtoWithItems) {
+        Fund savedFund = fundRepository.save(fundTransformer.fromDtoWithItems(fundDtoWithItems));
+        if (isNull(savedFund.getItems())) {
+            return fundTransformer.toDtoWithItems(savedFund);
+        }
+        Fund savedFundWithAmounts = addAmount(savedFund);
+        return fundTransformer.toDtoWithItems(savedFundWithAmounts);
     }
 
     private Fund addAmount(Fund fund) {
-        fund.setAmount(calculateAmount(fund.getItems()));
+        FundAmount fundAmount = calculateAmount(fund.getItems());
+        fund.setAmount(fundAmount.currentAmount);
+        fund.setExpense(fundAmount.expense);
+        fund.setIncome(fundAmount.income);
         return fund;
     }
 
-    private BigInteger calculateAmount(List<Item> items) {
+    private FundAmount calculateAmount(List<Item> items) {
         if (isNull(items)) {
-            return null;
+            return new FundAmount();
         }
-        return items.stream()
-                .map(this::mapToPositiveOrNegative)
-                .reduce(BigInteger::add).orElse(null);
+        final FundAmount fundAmount = new FundAmount();
+        items.forEach(item -> distributeBetweenExpenseAndIncome(item, fundAmount));
+        fundAmount.currentAmount = fundAmount.income.subtract(fundAmount.expense);
+        return fundAmount;
     }
 
-    private BigInteger mapToPositiveOrNegative(Item item) {
-        return isExpense(item) ? item.getAmount().negate() : item.getAmount();
+    private void distributeBetweenExpenseAndIncome(Item item, FundAmount fundAmount) {
+        if (isExpense(item)) {
+            fundAmount.expense = fundAmount.expense.add(item.getAmount());
+        } else {
+            fundAmount.income = fundAmount.income.add(item.getAmount());
+        }
     }
 
     private boolean isExpense(Item item) {
