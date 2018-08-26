@@ -1,5 +1,4 @@
-.amount {
-  font-size: 1.3rem;
+.title {
   color: #888888;
 }
 
@@ -20,4 +19,10 @@
 }
 .mat-column-date {
   width: 20%;
+}
+
+.mat-header-cell {
+  &:last-child {
+    padding-left: 24px;
+  }
 }
