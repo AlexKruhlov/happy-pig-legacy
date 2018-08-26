@@ -32,4 +32,10 @@ public class Fund implements Serializable {
 
     @Transient
     private BigInteger amount;
+
+    @Transient
+    private BigInteger income;
+
+    @Transient
+    private BigInteger expense;
 }

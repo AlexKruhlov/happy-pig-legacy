@@ -16,7 +16,7 @@ Content-Type: application/json
 {
   "id": "null",
   "name": "New Name",
-  "itemDtos": null
+  "items": null
 }
 
 ### Update fund with by adding new item
@@ -27,7 +27,7 @@ Content-Type: application/json
 {
   "id": "GROCERY_FUND",
   "name": "New Name",
-  "itemDtos": [
+  "items": [
     {
       "id": null,
       "type": "INCOME",
