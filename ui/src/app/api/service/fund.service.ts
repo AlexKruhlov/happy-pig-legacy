@@ -16,7 +16,11 @@ export class FundService {
     return this.http.get(`${URL}/fund/all`);
   }
 
-  getFundById(id): Observable<any> {
+  getFundById( id ): Observable<any> {
     return this.http.get(`${URL}/fund/${id}`);
+  }
+
+  saveFund(fund: any): Observable<any> {
+    return this.http.post(`${URL}/fund/save`, fund);
   }
 }
