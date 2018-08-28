@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FundItemsComponent } from './fund-items.component';
+import { ItemFundModalComponent } from './item-fund-modal.component';
 
-describe('FundItemsComponent', () => {
-  let component: FundItemsComponent;
-  let fixture: ComponentFixture<FundItemsComponent>;
+describe('ItemFundModalComponent', () => {
+  let component: ItemFundModalComponent;
+  let fixture: ComponentFixture<ItemFundModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FundItemsComponent ]
+      declarations: [ ItemFundModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FundItemsComponent);
+    fixture = TestBed.createComponent(ItemFundModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
