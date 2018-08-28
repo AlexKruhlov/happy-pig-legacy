@@ -6,11 +6,11 @@ import { ItemFundModalComponent } from '../modals/item-fund-modal/item-fund-moda
 import { Item } from '../models/item';
 
 @Component({
-  selector: 'fund-items',
-  templateUrl: './fund-items.component.html',
-  styleUrls: ['./fund-items.component.scss']
+  selector: 'items',
+  templateUrl: './items.component.html',
+  styleUrls: ['./items.component.scss']
 })
-export class FundItemsComponent implements OnInit, OnDestroy {
+export class ItemsComponent implements OnInit, OnDestroy {
   fund: any;
   sub: any;
   displayedColumns: string[] = ['position', 'type', 'amount', 'date', 'action'];
@@ -29,7 +29,7 @@ export class FundItemsComponent implements OnInit, OnDestroy {
   }
 
   getFund( id: string ): void {
-    this.fundService.getFundById(id).subscribe(res => {
+    this.fundService.getById(id).subscribe(res => {
       this.fund = res;
       this.emptyItem = new Item(res.id);
     });
@@ -49,7 +49,7 @@ export class FundItemsComponent implements OnInit, OnDestroy {
   }
 
   updateFund( newFund: any ): void {
-    this.fundService.saveFund(newFund).subscribe(res => {
+    this.fundService.save(newFund).subscribe(res => {
       this.fund = {...res};
     });
   }

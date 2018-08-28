@@ -22,7 +22,7 @@ import { AppComponent } from './main/app.component';
 import { FundComponent } from './fund/fund.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FundItemsComponent } from './fund-items/fund-items.component';
+import { ItemsComponent } from './items/items.component';
 import { ItemFundModalComponent } from './modals/item-fund-modal/item-fund-modal.component';
 import { ConvertToHigherNominalPipe } from './pipes/convertToHigherNominal.pipe';
 
@@ -31,7 +31,7 @@ import { ConvertToHigherNominalPipe } from './pipes/convertToHigherNominal.pipe'
     AppComponent,
     FundComponent,
     DashboardComponent,
-    FundItemsComponent,
+    ItemsComponent,
     ItemFundModalComponent,
     ConvertToHigherNominalPipe
   ],

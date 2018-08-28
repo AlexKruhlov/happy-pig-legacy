@@ -12,15 +12,15 @@ export class FundService {
   constructor( private http: HttpClient ) {
   }
 
-  getAllFunds(): Observable<any> {
+  getAll(): Observable<any> {
     return this.http.get(`${URL}/fund/all`);
   }
 
-  getFundById( id ): Observable<any> {
+  getById( id ): Observable<any> {
     return this.http.get(`${URL}/fund/${id}`);
   }
 
-  saveFund(fund: any): Observable<any> {
+  save(fund: any): Observable<any> {
     return this.http.post(`${URL}/fund/save`, fund);
   }
 }

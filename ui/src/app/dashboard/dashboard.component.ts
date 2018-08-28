@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllFunds() {
-    this.fundService.getAllFunds().subscribe(res => {
+    this.fundService.getAll().subscribe(res => {
       this.funds = res;
     });
   }
