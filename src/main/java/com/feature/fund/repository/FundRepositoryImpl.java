@@ -20,19 +20,16 @@ public class FundRepositoryImpl implements FundRepository {
     }
 
     @Override
-    @ReadOnlyProperty
     public List<Fund> findAll() {
         return (List<Fund>) fundDefaultRepository.findAll();
     }
 
     @Override
-    @ReadOnlyProperty
     public Fund findById(String id) {
         return fundDefaultRepository.findById(id).orElse(null);
     }
 
     @Override
-    @Transactional
     public Fund save(Fund fund) {
         return fundDefaultRepository.save(fund);
     }

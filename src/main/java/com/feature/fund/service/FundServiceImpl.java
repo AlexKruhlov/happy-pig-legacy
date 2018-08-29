@@ -10,6 +10,7 @@ import com.feature.item.model.Item;
 import com.feature.item.model.ItemTypeConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -36,12 +37,14 @@ public class FundServiceImpl implements FundService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public FundDtoWithItems findById(String id) {
         Fund fund = addAmount(fundRepository.findById(id));
         return fundTransformer.toDtoWithItems(fund);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<FundDto> findAll() {
         return fundRepository.findAll().stream()
                 .map(this::addAmount)
@@ -50,6 +53,7 @@ public class FundServiceImpl implements FundService {
     }
 
     @Override
+    @Transactional
     public FundDtoWithItems saveOrUpdate(FundDtoWithItems fundDtoWithItems) {
         Fund savedFund = fundRepository.save(fundTransformer.fromDtoWithItems(fundDtoWithItems));
         if (isNull(savedFund.getItems())) {

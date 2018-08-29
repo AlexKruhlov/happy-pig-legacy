@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface FundService {
 
-    FundDto findById(String id);
+    FundDtoWithItems findById(String id);
 
     List<FundDto> findAll();
 
