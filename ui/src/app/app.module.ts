@@ -25,6 +25,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemsComponent } from './items/items.component';
 import { ItemFundModalComponent } from './modals/item-fund-modal/item-fund-modal.component';
 import { ConvertToHigherNominalPipe } from './pipes/convertToHigherNominal.pipe';
+import { HeaderComponent } from './header/header.component';
+import { NewFundComponent } from './modals/new-fund/new-fund.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ConvertToHigherNominalPipe } from './pipes/convertToHigherNominal.pipe'
     DashboardComponent,
     ItemsComponent,
     ItemFundModalComponent,
-    ConvertToHigherNominalPipe
+    ConvertToHigherNominalPipe,
+    HeaderComponent,
+    NewFundComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,8 @@ import { ConvertToHigherNominalPipe } from './pipes/convertToHigherNominal.pipe'
     ReactiveFormsModule
   ],
   entryComponents: [
-    ItemFundModalComponent
+    ItemFundModalComponent,
+    NewFundComponent
   ],
   providers: [FundService],
   bootstrap: [AppComponent]

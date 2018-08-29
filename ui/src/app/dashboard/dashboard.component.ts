@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FundService } from '../api/service/fund.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   funds: any;
+  subscription: Subscription;
 
   constructor( private fundService: FundService ) {
+    this.subscription = this.fundService.getNew().subscribe(res => {
+      this.funds.push(res.fund);
+    });
   }
 
   ngOnInit() {
@@ -20,5 +25,9 @@ export class DashboardComponent implements OnInit {
     this.fundService.getAll().subscribe(res => {
       this.funds = res;
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
