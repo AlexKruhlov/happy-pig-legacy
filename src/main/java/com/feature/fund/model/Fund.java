@@ -26,7 +26,7 @@ public class Fund implements Serializable {
     @Column
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId", orphanRemoval = true)
     @Singular
     private List<Item> items;
 
