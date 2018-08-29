@@ -5,7 +5,7 @@ export class Item {
   date: string;
   fundId: string;
 
-  constructor( fundId: string,
+  constructor( fundId: string = null,
                amount: string = null,
                type: string = null,
                date: string = '2018-08-27T11:08:36.742931',

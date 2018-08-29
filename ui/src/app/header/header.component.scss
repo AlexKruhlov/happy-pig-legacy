@@ -1,0 +1,28 @@
+.header {
+  position: fixed;
+  top: 0;
+  height: 64px;
+  width: 100%;
+  margin-bottom: 94px;
+  z-index: 20;
+  color: white;
+  background-color: #C0C0C0;
+
+  .logo {
+    cursor: pointer;
+    font-size: 1.8rem;
+    &:focus {
+      outline:0;
+    }
+  }
+
+  .btn-add {
+    color: 	#808080;
+    background-color: white;
+  }
+
+  .btn-statistic {
+    @extend .btn-add;
+    margin-right: .5rem;
+  }
+}

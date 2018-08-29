@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FundService } from '../../api/service/fund.service';
 import { Item } from '../../models/item';
 
 @Component({
@@ -17,8 +16,7 @@ export class ItemFundModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ItemFundModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private fundService: FundService ) {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   onNoClick(): void {

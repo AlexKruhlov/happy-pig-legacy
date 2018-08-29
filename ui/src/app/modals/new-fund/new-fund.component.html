@@ -1,0 +1,23 @@
+<div>
+  <h2 mat-dialog-title>New Fund</h2>
+
+  <mat-dialog-content>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <mat-form-field class="w-100">
+        <input matInput
+               type="text"
+               [(ngModel)] = "data.fund.name"
+               placeholder="Name of component">
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">CANCEL</button>
+    <button mat-button
+            [mat-dialog-close]="data.fund"
+            [disabled] = "data.fund.name === null">SAVE</button>
+  </div>
+</div>
+

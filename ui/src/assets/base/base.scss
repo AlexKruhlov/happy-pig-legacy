@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .w-100 {
   width: 100%;
 }
@@ -102,6 +105,10 @@
   margin-bottom: 2rem;
 }
 
+.ml-1 {
+  margin-left: .25rem;
+}
+
 .ml-2 {
   margin-left: .5rem;
 }
@@ -110,6 +117,18 @@
   margin-left: 1rem;
 }
 
+.mr-1 {
+  margin-right: .25rem;
+}
+
+.mx-1 {
+  margin: auto .25rem;
+}
+
 .mx-2 {
   margin: auto .5rem;
+}
+
+.mx-3 {
+  margin: auto 1rem;
 }
