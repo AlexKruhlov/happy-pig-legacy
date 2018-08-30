@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Fund} from '../models/fund';
 
 @Component({
   selector: 'fund',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./fund.component.scss']
 })
 export class FundComponent implements OnInit {
-  @Input() fund: any;
+  @Input() fund: Fund;
 
   constructor() {
   }

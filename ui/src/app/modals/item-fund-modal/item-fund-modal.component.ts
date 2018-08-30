@@ -55,7 +55,9 @@ export class ItemFundModalComponent {
   }
 
   onConvertToPennies( value: any ): void {
-    this.isEdit = false;
-    this.data.item.amount = value * 100;
+    if (value) {
+      this.isEdit = false;
+      this.data.item.amount = value * 100;
+    }
   }
 }

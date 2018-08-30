@@ -1,0 +1,18 @@
+<div>
+  <div class="confirm-icon">
+    <i class="material-icons">
+      error_outline
+    </i>
+  </div>
+
+  <h2 mat-dialog-title class="text-center my-2">
+    Are you sure that you want to permanently delete the {{data.title}}?
+  </h2>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button
+            color="warn"
+            [mat-dialog-close]="true">YES</button>
+    <button mat-raised-button (click)="onNoClick()">NO</button>
+  </div>
+</div>

@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { FundService } from '../api/service/fund.service';
 import { ItemFundModalComponent } from '../modals/item-fund-modal/item-fund-modal.component';
+import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 import { Item } from '../models/item';
+import { Fund } from '../models/fund';
 
 @Component({
   selector: 'items',
@@ -11,7 +13,7 @@ import { Item } from '../models/item';
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent implements OnInit, OnDestroy {
-  fund: any;
+  fund: Fund;
   sub: any;
   displayedColumns: string[] = ['position', 'type', 'amount', 'date', 'action'];
   emptyItem: Item;
@@ -19,7 +21,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private fundService: FundService,
-    public dialog: MatDialog ) {
+    public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -50,6 +52,29 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
   updateFund( newFund: any ): void {
     this.fundService.save(newFund).subscribe(res => {
+      this.fund = {...res};
+    });
+  }
+
+  onDeleteItem( fund ) {
+    this.openConfirmationDialog(fund);
+  }
+
+  openConfirmationDialog( fund ) {
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      width: '450px',
+      data: {title: 'Item'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.removeItem(fund);
+      }
+    });
+  }
+
+  removeItem( fund ) {
+    this.fundService.deleteItem(fund.id, fund.fundId).subscribe(res => {
       this.fund = {...res};
     });
   }

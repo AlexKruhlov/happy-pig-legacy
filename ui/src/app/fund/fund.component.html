@@ -4,7 +4,7 @@
   </mat-card-title>
   <mat-card-subtitle>
     <p class="text-center amount mb-3">
-      {{fund.amount/100 | currency:'UAH':'symbol-narrow'}}
+      {{fund.amount | convertToHigherNominal | currency:'UAH':'symbol-narrow'}}
     </p>
   </mat-card-subtitle>
 </mat-card>
