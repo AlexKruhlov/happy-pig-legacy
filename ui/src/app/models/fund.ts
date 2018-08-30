@@ -3,6 +3,9 @@ import { Item } from './item';
 export class Fund {
   id: string;
   name: string;
+  amount?: string;
+  income?: string;
+  expense?: string;
   items: Array<Item>;
 
   constructor( name: string = null,

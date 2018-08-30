@@ -27,6 +27,7 @@ import { ItemFundModalComponent } from './modals/item-fund-modal/item-fund-modal
 import { ConvertToHigherNominalPipe } from './pipes/convertToHigherNominal.pipe';
 import { HeaderComponent } from './header/header.component';
 import { NewFundComponent } from './modals/new-fund/new-fund.component';
+import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NewFundComponent } from './modals/new-fund/new-fund.component';
     ItemFundModalComponent,
     ConvertToHigherNominalPipe,
     HeaderComponent,
-    NewFundComponent
+    NewFundComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { NewFundComponent } from './modals/new-fund/new-fund.component';
   ],
   entryComponents: [
     ItemFundModalComponent,
-    NewFundComponent
+    NewFundComponent,
+    ConfirmModalComponent
   ],
   providers: [FundService],
   bootstrap: [AppComponent]

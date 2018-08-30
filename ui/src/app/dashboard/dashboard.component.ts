@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FundService } from '../api/service/fund.service';
+import { Fund } from '../models/fund';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  funds: any;
+  funds: Array<Fund>;
   subscription: Subscription;
 
   constructor( private fundService: FundService ) {
