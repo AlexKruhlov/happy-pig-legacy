@@ -14,8 +14,9 @@ POST http://localhost:8080/api/fund/save
 Content-Type: application/json
 
 {
-  "id": "null",
+  "id": null,
   "name": "New Name",
+  "startDate": null,
   "items": null
 }
 

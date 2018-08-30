@@ -1,10 +1,10 @@
-insert into funds
+insert into funds (id, name)
 values ('GROCERY_FUND', 'Grocery Fund');
 
-insert into funds
+insert into funds (id, name)
 values ('CAR_FUND', 'Car Fund');
 
-insert into funds
+insert into funds (id, name)
 values ('HEALTH_FUND', 'Health Fund');
 
 

@@ -2,6 +2,8 @@ package com.feature.fund.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Getter
 @Setter
@@ -10,6 +12,7 @@ import lombok.*;
 public class FundDto {
     private String id;
     private String name;
+    private LocalDateTime startDate;
     private String amount;
     private String income;
     private String expense;
