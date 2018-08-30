@@ -29,6 +29,7 @@
             <column name="name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
+            <column name="start_date" type="TIMESTAMP WITH TIME ZONE" defaultValueComputed="CURRENT_TIMESTAMP"/>
         </createTable>
         <addForeignKeyConstraint baseTableName="items" baseColumnNames="fund_id" constraintName="items_funds_id_fund_id"
                                  referencedTableName="funds"

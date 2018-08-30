@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,9 @@ public class Fund implements Serializable {
 
     @Column
     private String name;
+
+    @Column(name = "start_date", insertable = false)
+    private LocalDateTime startDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId", orphanRemoval = true)
     @Singular
