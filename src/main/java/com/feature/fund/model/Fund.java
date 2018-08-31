@@ -2,6 +2,8 @@ package com.feature.fund.model;
 
 import com.feature.item.model.Item;
 import lombok.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -28,6 +30,7 @@ public class Fund implements Serializable {
     private String name;
 
     @Column(name = "start_date", insertable = false)
+    @Generated(value = GenerationTime.INSERT)
     private LocalDateTime startDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId", orphanRemoval = true)

@@ -32,8 +32,15 @@ public class FundControllerImpl implements FundController {
     }
 
     @Override
-    @PostMapping("/save")
-    public FundDtoWithItems saveOrUpdate(@RequestBody FundDtoWithItems fundDtoWithItems) {
-        return fundService.saveOrUpdate(fundDtoWithItems);
+    @PostMapping("/update")
+    public FundDtoWithItems update(@RequestBody FundDtoWithItems fundDtoWithItems) {
+        return fundService.update(fundDtoWithItems);
+    }
+
+    @Override
+    @PostMapping("/create")
+    public List<FundDto> create(@RequestBody FundDto fundDto) {
+        fundService.save(fundDto);
+        return fundService.findAll();
     }
 }

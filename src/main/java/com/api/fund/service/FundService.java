@@ -11,5 +11,7 @@ public interface FundService {
 
     List<FundDto> findAll();
 
-    FundDtoWithItems saveOrUpdate(FundDtoWithItems fundDtoWithItems);
+    FundDtoWithItems update(FundDtoWithItems fundDtoWithItems);
+
+    FundDto save(FundDto fundDto);
 }
