@@ -54,13 +54,17 @@ public class FundServiceImpl implements FundService {
 
     @Override
     @Transactional
-    public FundDtoWithItems saveOrUpdate(FundDtoWithItems fundDtoWithItems) {
+    public FundDtoWithItems update(FundDtoWithItems fundDtoWithItems) {
         Fund savedFund = fundRepository.save(fundTransformer.fromDtoWithItems(fundDtoWithItems));
-        if (isNull(savedFund.getItems())) {
-            return fundTransformer.toDtoWithItems(savedFund);
-        }
         Fund savedFundWithAmounts = addAmount(savedFund);
         return fundTransformer.toDtoWithItems(savedFundWithAmounts);
+    }
+
+    @Override
+    @Transactional
+    public FundDto save(FundDto fundDto) {
+        Fund savedFund = fundRepository.save(fundTransformer.fromDto(fundDto));
+        return fundTransformer.toDto(savedFund);
     }
 
     private Fund addAmount(Fund fund) {

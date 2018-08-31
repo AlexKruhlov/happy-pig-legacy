@@ -7,7 +7,6 @@ import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.fund.transformer.FundTransformerImpl;
 import com.feature.item.model.Item;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
@@ -26,7 +25,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class FundServiceUnitTest {
     public static final String FUND_ID = "FUND_ID";
-    public static final String FUND_NAME = "FUND_NAME";
 
     @Mock
     private FundRepository fundRepository;
@@ -88,17 +86,17 @@ public class FundServiceUnitTest {
     }
 
     @Test
-    public void shouldSaveWhenItemsIsNull() {
+    public void shouldSaveFund() {
         Fund fund = new Fund();
         fund.setId(FUND_ID);
-        FundDtoWithItems fundDtoWithItems = new FundDtoWithItems();
-        fundDtoWithItems.setId(FUND_ID);
+        FundDto fundDto = new FundDto();
+        fundDto.setId(FUND_ID);
 
         when(fundRepository.save(fund)).thenReturn(fund);
-        when(fundTransformer.fromDtoWithItems(fundDtoWithItems)).thenReturn(fund);
+        when(fundTransformer.fromDto(fundDto)).thenReturn(fund);
 
-        FundDto actualFundDtoWithItems = fundService.saveOrUpdate(fundDtoWithItems);
-        Assert.assertEquals(fundDtoWithItems.getId(), actualFundDtoWithItems.getId());
+        FundDto actualFundDto = fundService.save(fundDto);
+        assertEquals(fundDto.getId(), actualFundDto.getId());
     }
 
     @Test
@@ -111,8 +109,8 @@ public class FundServiceUnitTest {
         Fund fund = createFund("fund1", items1);
         when(fundRepository.save(null)).thenReturn(fund);
 
-        FundDtoWithItems actualFundDtoWithItems = fundService.saveOrUpdate(null);
-        Assert.assertEquals(actualFundDtoWithItems.getAmount(), expectedResult);
+        FundDtoWithItems actualFundDtoWithItems = fundService.update(null);
+        assertEquals(actualFundDtoWithItems.getAmount(), expectedResult);
     }
 
     private Fund createFund(String id, List<Item> items) {

@@ -10,24 +10,25 @@ GET http://localhost:8080/api/fund/all
 
 ### Create new fund
 
-POST http://localhost:8080/api/fund/save
+POST http://localhost:8080/api/fund/create
 Content-Type: application/json
 
 {
   "id": null,
-  "name": "New Name",
-  "startDate": null,
-  "items": null
+  "name": "New Name1",
+  "startDate": null
 }
+
 
 ### Update fund with by adding new item
 
-POST http://localhost:8080/api/fund/save
+POST http://localhost:8080/api/fund/update
 Content-Type: application/json
 
 {
   "id": "GROCERY_FUND",
   "name": "New Name",
+  "startDate": "2018-09-01T01:19:22.494384",
   "items": [
     {
       "id": null,
