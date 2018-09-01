@@ -40,7 +40,6 @@ Content-Type: application/json
   ]
 }
 
-
 ### Delete item
 
 POST http://localhost:8080/api/item/delete
@@ -50,5 +49,11 @@ Content-Type: application/json
   "itemId": "ITEM_0000001",
   "fundId": "GROCERY_FUND"
 }
+
+
+### Delete fund
+
+GET http://localhost:8080/api/fund/delete/GROCERY_FUND
+Content-Type: application/json
 
 ###

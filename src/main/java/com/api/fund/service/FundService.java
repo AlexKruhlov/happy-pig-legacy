@@ -14,4 +14,6 @@ public interface FundService {
     FundDtoWithItems update(FundDtoWithItems fundDtoWithItems);
 
     FundDto save(FundDto fundDto);
+
+    void deleteById(String id);
 }

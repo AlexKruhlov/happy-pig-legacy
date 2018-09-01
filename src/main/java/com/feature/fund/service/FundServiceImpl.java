@@ -67,6 +67,12 @@ public class FundServiceImpl implements FundService {
         return fundTransformer.toDto(savedFund);
     }
 
+    @Override
+    @Transactional
+    public void deleteById(String id) {
+        fundRepository.deleteById(id);
+    }
+
     private Fund addAmount(Fund fund) {
         FundAmount fundAmount = calculateAmount(fund.getItems());
         fund.setAmount(fundAmount.currentAmount);

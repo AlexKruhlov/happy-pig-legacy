@@ -43,4 +43,11 @@ public class FundControllerImpl implements FundController {
         fundService.save(fundDto);
         return fundService.findAll();
     }
+
+    @Override
+    @GetMapping("/delete/{id}")
+    public List<FundDto> deleteById(@PathVariable String id) {
+        fundService.deleteById(id);
+        return fundService.findAll();
+    }
 }

@@ -11,4 +11,6 @@ public interface FundRepository {
     Fund findById(String id);
 
     Fund save(Fund fund);
+
+    void deleteById(String id);
 }
