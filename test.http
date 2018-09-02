@@ -56,4 +56,33 @@ Content-Type: application/json
 GET http://localhost:8080/api/fund/delete/GROCERY_FUND
 Content-Type: application/json
 
-###
+
+### Find all products
+
+GET http://localhost:8080/api/product/all
+
+
+### Save product
+
+POST http://localhost:8080/api/product/create
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "Bicycle"
+}
+
+
+### Update product
+POST http://localhost:8080/api/product/create
+Content-Type: application/json
+
+{
+  "id": "BALL",
+  "name": "Bicycle"
+}
+
+
+### Delete product
+
+GET http://localhost:8080/api/product/delete/4028b881659c058701659c06b86e0000
