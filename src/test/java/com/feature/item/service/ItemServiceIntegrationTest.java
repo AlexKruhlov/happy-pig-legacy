@@ -6,6 +6,7 @@ import com.api.item.service.ItemService;
 import com.feature.item.model.Item;
 import com.feature.item.model.ItemTypeConst;
 import com.feature.item.repository.ItemDefaultRepository;
+import com.feature.product.model.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,7 @@ public class ItemServiceIntegrationTest {
                 .amount(BigInteger.TEN)
                 .fundId(FUND_ID)
                 .type(ItemTypeConst.INCOME)
+                .product(new Product("POTATO", "Potato"))
                 .date(LocalDateTime.now()).build();
         String newItemId = itemDefaultRepository.save(item).getId();
         assertEquals(itemListSizeBeforeDeleting, fundService.findById(FUND_ID).getItems().size());

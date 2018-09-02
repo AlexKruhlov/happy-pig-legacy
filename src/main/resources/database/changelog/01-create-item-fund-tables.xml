@@ -21,6 +21,9 @@
             <column name="fund_id" type="varchar(32)">
                 <constraints nullable="false"/>
             </column>
+            <column name="product_id" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <createTable tableName="funds" remarks="A table to contain all funds">
             <column name="id" type="varchar(32)">
@@ -35,6 +38,17 @@
         </createTable>
         <addForeignKeyConstraint baseTableName="items" baseColumnNames="fund_id" constraintName="items_funds_id_fund_id"
                                  referencedTableName="funds"
+                                 referencedColumnNames="id"/>
+        <createTable tableName="products" remarks="A table to contain all products">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="items" baseColumnNames="product_id" constraintName="items_product_id_products_id"
+                                 referencedTableName="products"
                                  referencedColumnNames="id"/>
     </changeSet>
 

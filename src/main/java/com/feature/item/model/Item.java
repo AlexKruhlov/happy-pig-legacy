@@ -1,5 +1,6 @@
 package com.feature.item.model;
 
+import com.feature.product.model.Product;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -33,4 +34,8 @@ public class Item implements Serializable {
 
     @Column(name = "fund_id")
     private String fundId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Product product;
 }
