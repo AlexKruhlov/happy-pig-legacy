@@ -35,7 +35,11 @@ Content-Type: application/json
       "type": "INCOME",
       "amount": "836555",
       "date": "2018-08-13T07:57:32.685",
-      "fundId": "GROCERY_FUND"
+      "fundId": "GROCERY_FUND",
+      "product":{
+        "id":"POTATO",
+        "name":"Potato"
+      }
     }
   ]
 }
@@ -81,8 +85,3 @@ Content-Type: application/json
   "id": "BALL",
   "name": "Bicycle"
 }
-
-
-### Delete product
-
-GET http://localhost:8080/api/product/delete/4028b881659c058701659c06b86e0000
