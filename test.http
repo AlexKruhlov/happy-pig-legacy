@@ -36,9 +36,9 @@ Content-Type: application/json
       "amount": "836555",
       "date": "2018-08-13T07:57:32.685",
       "fundId": "GROCERY_FUND",
-      "product":{
-        "id":"POTATO",
-        "name":"Potato"
+      "product": {
+        "id": "POTATO",
+        "name": "Potato"
       }
     }
   ]
@@ -85,3 +85,10 @@ Content-Type: application/json
   "id": "BALL",
   "name": "Bicycle"
 }
+
+
+### Craate statistic
+
+GET http://localhost:8080/api/statistic/create
+
+###
