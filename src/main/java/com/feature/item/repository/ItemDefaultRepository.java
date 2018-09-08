@@ -1,7 +1,7 @@
 package com.feature.item.repository;
 
 import com.feature.item.model.Item;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ItemDefaultRepository extends CrudRepository<Item, String> {
+public interface ItemDefaultRepository extends JpaRepository<Item, String> {
 }
