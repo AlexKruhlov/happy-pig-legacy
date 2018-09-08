@@ -51,5 +51,4 @@
                                  referencedTableName="products"
                                  referencedColumnNames="id"/>
     </changeSet>
-
 </databaseChangeLog>
