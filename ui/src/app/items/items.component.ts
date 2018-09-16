@@ -51,7 +51,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   updateFund( newFund: any ): void {
-    this.fundService.save(newFund).subscribe(res => {
+    this.fundService.update(newFund).subscribe(res => {
       this.fund = {...res};
     });
   }

@@ -8,7 +8,7 @@ export class Item {
   constructor( fundId: string = null,
                amount: string = null,
                type: string = null,
-               date: string = '2018-08-27T11:08:36.742931',
+               date: string = null,
                id: string = null ) {
     this.id = id;
     this.type = type;

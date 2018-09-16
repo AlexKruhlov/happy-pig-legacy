@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor( private fundService: FundService ) {
     this.subscription = this.fundService.getNew().subscribe(res => {
-      this.funds.push(res.fund);
+      this.funds = res.fund;
     });
   }
 
