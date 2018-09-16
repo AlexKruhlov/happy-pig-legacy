@@ -19,7 +19,7 @@ public class FundRepositoryImpl implements FundRepository {
 
     @Override
     public List<Fund> findAll() {
-        return (List<Fund>) fundDefaultRepository.findAll();
+        return fundDefaultRepository.findAll();
     }
 
     @Override
