@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { URL } from '../requestPath';
 import { Fund } from '../../models/fund';
+import {Product} from "../../models/product";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class FundService {
 
   getById( id: string ): Observable<Fund> {
     return this.http.get<Fund>(`${URL}/fund/${id}`);
+  }
+
+  findAllProducts(): Observable<Product[]>{
+    return this.http.get<Product[]>(`${URL}/product/all`);
   }
 
   update(fund: Fund): Observable<Fund> {
