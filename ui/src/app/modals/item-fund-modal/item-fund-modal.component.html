@@ -24,13 +24,24 @@
         </mat-select>
       </mat-form-field>
     </div>
+
+    <mat-form-field class="w-50">
+      <mat-select [(ngModel)]="data.item.product"
+                  (selectionChange)="isEdit=false"
+                  placeholder="Product">
+        <mat-option *ngFor="let product of products"
+                    [value]="product">
+          {{product.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-dialog-content>
 
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">CANCEL</button>
     <button mat-button
             [mat-dialog-close]="data.fund"
-            [disabled] = "data.item.amount <= 0 || data.item.type === null || isEdit"
+            [disabled] = "data.item.amount <= 0 || data.item.type === null || data.item.product === null || isEdit"
             (click)="changeFund()">SAVE</button>
   </div>
 </div>

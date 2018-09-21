@@ -40,6 +40,17 @@ Content-Type: application/json
         "id": "POTATO",
         "name": "Potato"
       }
+    },
+    {
+      "id": null,
+      "type": "INCOME",
+      "amount": "836555",
+      "date": "2018-08-13T07:57:32.685",
+      "fundId": "GROCERY_FUND",
+      "product": {
+        "id": "POTATO",
+        "name": "Potato"
+      }
     }
   ]
 }

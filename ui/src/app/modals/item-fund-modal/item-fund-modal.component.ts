@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Item } from '../../models/item';
+import { FundService } from '../../api/service/fund.service';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'item-fund-modal',
@@ -13,10 +15,15 @@ export class ItemFundModalComponent {
     {value: 'EXPENSE', viewValue: 'EXPENSE'}
   ];
   isEdit: boolean = true;
+  products: Product[];
 
   constructor(
     public dialogRef: MatDialogRef<ItemFundModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private fundService: FundService) {
+    this.fundService.findAllProducts().subscribe(allProducts => {
+      this.products = allProducts;
+    });
   }
 
   onNoClick(): void {
