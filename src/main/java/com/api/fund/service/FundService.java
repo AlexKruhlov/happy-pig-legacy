@@ -15,5 +15,7 @@ public interface FundService {
 
     FundDto save(FundDto fundDto);
 
-    void deleteById(String id);
+    List<FundDto> saveAndFindAll(FundDto fundDto);
+
+    List<FundDto> deleteByIdAndFindAll(String id);
 }

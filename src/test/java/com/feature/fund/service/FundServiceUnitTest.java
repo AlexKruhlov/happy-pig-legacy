@@ -15,6 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.feature.item.model.ItemTypeConst.EXPENSE;
 import static com.feature.item.model.ItemTypeConst.INCOME;
@@ -24,7 +25,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FundServiceUnitTest {
-    public static final String FUND_ID = "FUND_ID";
+    public static final String FUND_ID = "GROCERY_FUND_ID";
 
     @Mock
     private FundRepository fundRepository;
@@ -41,7 +42,7 @@ public class FundServiceUnitTest {
         items.add(createItem("Id1", INCOME, 150));
         String expectedAmount = "150";
         Fund fund = createFund("fund1", items);
-        when(fundRepository.findById(FUND_ID)).thenReturn(fund);
+        when(fundRepository.findById(FUND_ID)).thenReturn(Optional.of(fund));
         FundDtoWithItems foundFund = fundService.findById(FUND_ID);
         assertEquals(expectedAmount, foundFund.getAmount());
         assertNotNull(foundFund.getItems());
@@ -56,7 +57,7 @@ public class FundServiceUnitTest {
         items.add(createItem("Id4", EXPENSE, 32));
         String expectedResult = "95";
         Fund fund = createFund("fund1", items);
-        when(fundRepository.findById(FUND_ID)).thenReturn(fund);
+        when(fundRepository.findById(FUND_ID)).thenReturn(Optional.of(fund));
         FundDto foundFund = fundService.findById(FUND_ID);
         assertEquals(expectedResult, foundFund.getAmount());
     }

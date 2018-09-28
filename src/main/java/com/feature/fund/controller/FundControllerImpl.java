@@ -39,15 +39,13 @@ public class FundControllerImpl implements FundController {
 
     @Override
     @PostMapping("/create")
-    public List<FundDto> create(@RequestBody FundDto fundDto) {
-        fundService.save(fundDto);
-        return fundService.findAll();
+    public List<FundDto> saveAndFindAll(@RequestBody FundDto fundDto) {
+        return fundService.saveAndFindAll(fundDto);
     }
 
     @Override
     @GetMapping("/delete/{id}")
-    public List<FundDto> deleteById(@PathVariable String id) {
-        fundService.deleteById(id);
-        return fundService.findAll();
+    public List<FundDto> deleteByIdAndFindAll(@PathVariable String id) {
+        return fundService.deleteByIdAndFindAll(id);
     }
 }

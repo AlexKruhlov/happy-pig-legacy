@@ -39,7 +39,7 @@ public class FundServiceImpl implements FundService {
     @Override
     @Transactional(readOnly = true)
     public FundDtoWithItems findById(String id) {
-        Fund fund = addAmount(fundRepository.findById(id));
+        Fund fund = addAmount(fundRepository.findById(id).orElse(null));
         return fundTransformer.toDtoWithItems(fund);
     }
 
@@ -69,11 +69,22 @@ public class FundServiceImpl implements FundService {
 
     @Override
     @Transactional
-    public void deleteById(String id) {
+    public List<FundDto> saveAndFindAll(FundDto fundDto) {
+        fundRepository.save(fundTransformer.fromDto(fundDto));
+        return findAll();
+    }
+
+    @Override
+    @Transactional
+    public List<FundDto> deleteByIdAndFindAll(String id){
         fundRepository.deleteById(id);
+        return findAll();
     }
 
     private Fund addAmount(Fund fund) {
+        if (isNull(fund)) {
+            return null;
+        }
         FundAmount fundAmount = calculateAmount(fund.getItems());
         fund.setAmount(fundAmount.currentAmount);
         fund.setExpense(fundAmount.expense);
