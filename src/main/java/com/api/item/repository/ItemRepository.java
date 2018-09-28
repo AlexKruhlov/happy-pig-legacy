@@ -1,6 +1,7 @@
 package com.api.item.repository;
 
-public interface ItemRepository {
+import com.feature.item.model.Item;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    void deleteById(String id);
+public interface ItemRepository extends JpaRepository<Item, String> {
 }

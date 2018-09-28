@@ -1,3 +1,7 @@
+###========================================================================
+###===============================   FUND   ===============================
+###========================================================================
+
 ### Find fund by fund id
 
 GET http://localhost:8080/api/fund/GROCERY_FUND
@@ -44,9 +48,38 @@ Content-Type: application/json
   ]
 }
 
-### Delete item
 
-POST http://localhost:8080/api/item/delete
+### Delete fund
+
+GET http://localhost:8080/api/fund/delete/GROCERY_FUND
+
+
+###========================================================================
+###===============================   ITEM   ===============================
+###========================================================================
+
+
+### Save item and find current fund
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "amount": "836555",
+  "date": "2018-08-13T07:57:32.685",
+  "fundId": "GROCERY_FUND",
+  "product": {
+    "id": "POTATO",
+    "name": "Potato"
+  }
+}
+
+
+### Delete item by id and find current fund
+
+POST http://localhost:8080/api/item/deleteAndFindFund
 Content-Type: application/json
 
 {
@@ -55,10 +88,10 @@ Content-Type: application/json
 }
 
 
-### Delete fund
 
-GET http://localhost:8080/api/fund/delete/GROCERY_FUND
-Content-Type: application/json
+###========================================================================
+###==============================   PRODUCT   =============================
+###========================================================================
 
 
 ### Find all products
@@ -85,6 +118,12 @@ Content-Type: application/json
   "id": "BALL",
   "name": "Bicycle"
 }
+
+
+
+###========================================================================
+###============================   STATISTIC   =============================
+###========================================================================
 
 
 ### Craate statistic

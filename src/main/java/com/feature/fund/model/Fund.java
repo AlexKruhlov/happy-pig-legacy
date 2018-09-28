@@ -12,14 +12,19 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.feature.fund.model.Fund.FIND_ALL;
+
 @Entity
 @Table(name = "funds")
+@NamedQueries({
+        @NamedQuery(name = FIND_ALL, query = "select f from Fund f")})
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Fund implements Serializable {
+    public static final String FIND_ALL = "findAll";
 
     @Id
     @GeneratedValue(generator = "uuid")

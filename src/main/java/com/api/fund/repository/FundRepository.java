@@ -1,16 +1,7 @@
 package com.api.fund.repository;
 
 import com.feature.fund.model.Fund;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface FundRepository {
-
-    List<Fund> findAll();
-
-    Fund findById(String id);
-
-    Fund save(Fund fund);
-
-    void deleteById(String id);
+public interface FundRepository extends JpaRepository<Fund, String> {
 }

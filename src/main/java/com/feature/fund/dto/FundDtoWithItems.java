@@ -10,6 +10,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class FundDtoWithItems extends FundDto {
     private List<ItemDto> items;
 }
