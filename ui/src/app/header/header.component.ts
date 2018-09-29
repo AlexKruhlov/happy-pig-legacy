@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   addFund( newFund: any ): void {
-    this.fundService.saveNew(newFund);
+    this.fundService.create(newFund);
   }
 
 }

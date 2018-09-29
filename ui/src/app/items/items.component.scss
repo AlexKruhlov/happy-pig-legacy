@@ -11,15 +11,13 @@
 }
 
 .mat-column-type {
-  width: 30%;
+  width: 15%;
 }
 
-.mat-column-amount {
+.mat-column-amount, .mat-column-date, .mat-column-product {
   width: 20%;
 }
-.mat-column-date {
-  width: 20%;
-}
+
 
 .mat-header-cell {
   &:last-child {

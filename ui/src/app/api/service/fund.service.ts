@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { URL } from '../requestPath';
 import { Fund } from '../../models/fund';
+import {Product} from '../../models/product';
+import {Item} from '../../models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -22,23 +24,31 @@ export class FundService {
     return this.http.get<Fund>(`${URL}/fund/${id}`);
   }
 
-  save(fund: Fund): Observable<Fund> {
-     return this.http.post<Fund>(`${URL}/fund/save`, fund);
+  findAllProducts(): Observable<Product[]>{
+    return this.http.get<Product[]>(`${URL}/product/all`);
+  }
+
+  update(fund: Fund): Observable<Fund> {
+     return this.http.post<Fund>(`${URL}/fund/update`, fund);
   }
 
   deleteItem(itemId: string, fundId: string): Observable<Fund> {
-    return this.http.post<Fund>(`${URL}/item/delete`, {itemId, fundId});
+    return this.http.post<Fund>(`${URL}/item/deleteAndFindFund`, {itemId, fundId});
   }
 
-  saveNew(fund: any): void {
-    this.http.post(`${URL}/fund/save`, fund)
+  create(fund: any): void {
+    this.http.post(`${URL}/fund/create`, fund)
       .subscribe(res => {
-        this.update(res);
+        this.saveFundsToSubject(res);
       });
   }
 
-  update(res): void {
+  saveFundsToSubject(res): void {
     this.subject.next({ fund: res });
+  }
+
+  saveAndFindFund(item: Item): Observable<Fund>  {
+    return this.http.post<Fund>(`${URL}/item/saveAndFindFund`, item);
   }
 
   getNew(): Observable<any> {

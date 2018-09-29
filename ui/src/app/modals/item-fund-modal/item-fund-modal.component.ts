@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Item } from '../../models/item';
+import { FundService } from '../../api/service/fund.service';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'item-fund-modal',
@@ -12,11 +14,15 @@ export class ItemFundModalComponent {
     {value: 'INCOME', viewValue: 'INCOME'},
     {value: 'EXPENSE', viewValue: 'EXPENSE'}
   ];
-  isEdit: boolean = true;
+  products: Product[];
 
   constructor(
     public dialogRef: MatDialogRef<ItemFundModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private fundService: FundService) {
+    this.fundService.findAllProducts().subscribe(allProducts => {
+      this.products = allProducts;
+    });
   }
 
   onNoClick(): void {
@@ -27,36 +33,20 @@ export class ItemFundModalComponent {
   removeItem(): void {
     this.data.item.amount = null;
     this.data.item.type = null;
-    this.isEdit = true;
   }
 
   changeFund(): any {
-    this.addItem();
-    return this.data.fund;
+    this.data.item.product = this.addProduct();
+    return this.data.item;
   }
 
-  addItem(): any {
-    if (this.isNewItem()) {
-      return this.data.fund.items.push(this.data.item);
-    }
-    this.updateExistedItem();
-  }
 
-  updateExistedItem(): void {
-    this.data.fund.items = this.mapItems();
-  }
-
-  mapItems(): Array<Item> {
-    return this.data.fund.items.map(item => item.id === this.data.item.id ? this.data.item : item);
-  }
-
-  isNewItem(): boolean {
-    return this.data.item.id === null;
+  addProduct(): any {
+    return this.products.find(product => product.name === this.data.item.product.name);
   }
 
   onConvertToPennies( value: any ): void {
     if (value) {
-      this.isEdit = false;
       this.data.item.amount = value * 100;
     }
   }
