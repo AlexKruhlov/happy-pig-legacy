@@ -45,7 +45,6 @@
             <column name="id">ITEM_0000001</column>
             <column name="type">INCOME</column>
             <column name="amount">100000</column>
-            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
             <column name="fund_id">GROCERY_FUND</column>
             <column name="product_id">POTATO</column>
         </insert>
@@ -53,7 +52,6 @@
             <column name="id">ITEM_0000002</column>
             <column name="type">EXPENSE</column>
             <column name="amount">50000</column>
-            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
             <column name="fund_id">GROCERY_FUND</column>
             <column name="product_id">BALL</column>
         </insert>
@@ -61,7 +59,6 @@
             <column name="id">ITEM_0000003</column>
             <column name="type">INCOME</column>
             <column name="amount">100000</column>
-            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
             <column name="fund_id">DRESS_FUND</column>
             <column name="product_id">SALT</column>
         </insert>
@@ -69,7 +66,6 @@
             <column name="id">ITEM_0000004</column>
             <column name="type">EXPENSE</column>
             <column name="amount">200000</column>
-            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
             <column name="fund_id">DRESS_FUND</column>
             <column name="product_id">POTATO</column>
         </insert>
@@ -77,7 +73,6 @@
             <column name="id">ITEM_0000005</column>
             <column name="type">INCOME</column>
             <column name="amount">100000</column>
-            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
             <column name="fund_id">DRESS_FUND</column>
             <column name="product_id">BALL</column>
         </insert>
@@ -85,7 +80,6 @@
             <column name="id">ITEM_0000006</column>
             <column name="type">EXPENSE</column>
             <column name="amount">80000</column>
-            <column name="date" valueDate="CURRENT_TIMESTAMP"/>
             <column name="fund_id">RENTAL_FUND</column>
             <column name="product_id">SALT</column>
         </insert>
