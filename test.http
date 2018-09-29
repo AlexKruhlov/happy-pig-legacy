@@ -68,7 +68,7 @@ Content-Type: application/json
   "id": null,
   "type": "INCOME",
   "amount": "836555",
-  "date": "2018-08-13T07:57:32.685",
+  "date": null,
   "fundId": "GROCERY_FUND",
   "product": {
     "id": "POTATO",
