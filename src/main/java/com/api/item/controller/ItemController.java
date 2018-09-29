@@ -17,7 +17,7 @@ public interface ItemController {
      * @return fund dto with the same id
      * @see FundDtoWithItems
      */
-    FundDtoWithItems deleteBy(Map<String, String> payload);
+    FundDtoWithItems deleteByIdAndFindFund(Map<String, String> payload);
 
     /**
      * Saves the item and finds current fund dto
