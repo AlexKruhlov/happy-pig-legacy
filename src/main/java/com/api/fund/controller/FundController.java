@@ -37,16 +37,16 @@ public interface FundController {
     FundDtoWithItems update(FundDtoWithItems fundDtoWithItems);
 
     /**
-     * Creates new fund
+     * Saves new fund and finds all funds
      *
-     * @param fundDto fund object to crate
+     * @param fundDto fund object to save
      * @return all funds
      * @see FundDto
      */
     List<FundDto> saveAndFindAll(FundDto fundDto);
 
     /**
-     * Deletes existed fund with particular id
+     * Deletes existed fund with particular id and find all funds
      *
      * @param id fund id to delete
      * @return all funds

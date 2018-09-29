@@ -4,6 +4,9 @@ import com.feature.product.model.Product;
 
 import java.util.List;
 
+/**
+ * Provides the repository methods to work on product object model
+ */
 public interface ProductRepository {
 
     List<Product> findAll();
