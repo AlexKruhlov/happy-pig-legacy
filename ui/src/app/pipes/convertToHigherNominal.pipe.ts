@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ConvertToHigherNominalPipe implements PipeTransform {
   transform(value: any, args?: any): number {
-    if (value === null) {
-      return 0;
+    if (value !== null) {
+      return value / 100;
     }
-    return value / 100;
+
   }
 }

@@ -28,6 +28,10 @@ export class FundService {
     return this.http.get<Product[]>(`${URL}/product/all`);
   }
 
+  deleteFund(fundId): Observable<Fund[]>{
+    return this.http.get<Fund[]>(`${URL}/fund/delete/${fundId}`);
+  }
+
   update(fund: Fund): Observable<Fund> {
      return this.http.post<Fund>(`${URL}/fund/update`, fund);
   }
