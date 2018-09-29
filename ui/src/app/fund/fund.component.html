@@ -1,4 +1,7 @@
-<mat-card class="content" routerLink="/item/{{fund.id}}">
+<mat-card class="content"
+          routerLink="/item/{{fund.id}}">
+  <mat-icon (click)="deleteFund($event)"
+            class="delete-fund">clear</mat-icon>
   <mat-card-title>
     <p class="text-center mt-3">{{fund.name}}</p>
   </mat-card-title>
