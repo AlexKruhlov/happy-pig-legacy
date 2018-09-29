@@ -15,7 +15,7 @@ import { Fund } from '../models/fund';
 export class ItemsComponent implements OnInit, OnDestroy {
   fund: Fund;
   sub: any;
-  displayedColumns: string[] = ['position', 'type', 'amount', 'date', 'action'];
+  displayedColumns: string[] = ['position', 'type', 'product', 'amount', 'date', 'action'];
   emptyItem: Item;
 
   constructor(
@@ -40,7 +40,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   openDialog( item: any, title: string ): void {
     const dialogRef = this.dialog.open(ItemFundModalComponent, {
       width: '650px',
-      data: {fund: {...this.fund}, item: {...item}, modalTitle: title}
+      data: {item: {...item}, modalTitle: title}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -50,8 +50,8 @@ export class ItemsComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateFund( newFund: any ): void {
-    this.fundService.update(newFund).subscribe(res => {
+  updateFund( item: any ): void {
+    this.fundService.saveAndFindFund(item).subscribe(res => {
       this.fund = {...res};
     });
   }

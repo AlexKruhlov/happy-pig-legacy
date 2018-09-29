@@ -2,46 +2,70 @@
   <h2 mat-dialog-title>{{data.modalTitle}}</h2>
 
   <mat-dialog-content>
-    <div fxLayout="row"
-         fxLayoutAlign="space-between center">
-      <mat-form-field class="w-100">
-        <input matInput
-               type="number"
-               [ngModel]="data.item.amount | convertToHigherNominal"
-               (input)="onConvertToPennies($event.target.value)"
-               placeholder="Amount">
-        <mat-icon matSuffix>attach_money</mat-icon>
-      </mat-form-field>
+    <form #itemForm="ngForm"
+          novalidate>
+      <div fxLayout="row"
+           fxLayoutAlign="space-between center">
 
-      <mat-form-field class="w-100 ml-2">
-        <mat-select [(ngModel)]="data.item.type"
-                    (selectionChange)="isEdit=false"
-                    placeholder="Type">
-          <mat-option *ngFor="let type of typeOption"
-                      [value]="type.value">
-            {{type.viewValue}}
+        <mat-form-field class="w-100">
+          <input matInput
+                 type="number"
+                 [ngModel]="data.item.amount | convertToHigherNominal"
+                 (input)="onConvertToPennies($event.target.value)"
+                 name="amount"
+                 #amount="ngModel"
+                 required
+                 pattern="[0-9]*"
+                 placeholder="Amount">
+          <mat-icon matSuffix>attach_money</mat-icon>
+          <mat-error *ngIf="amount.invalid">
+            Please enter a valid amount
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100 ml-2">
+          <mat-select [(ngModel)]="data.item.type"
+                      name="type"
+                      #type="ngModel"
+                      min="1"
+                      required
+                      placeholder="Type">
+            <mat-option *ngFor="let type of typeOption"
+                        [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="type.invalid">
+            Please enter a valid type
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="w-50">
+        <mat-select [(ngModel)]="data.item.product.name"
+                    name="product"
+                    #product="ngModel"
+                    required
+                    placeholder="Product">
+          <mat-option *ngFor="let product of products"
+                      [value]="product.name">
+            {{product.name}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="product.invalid">
+          Please enter a valid product
+        </mat-error>
       </mat-form-field>
-    </div>
+    </form>
 
-    <mat-form-field class="w-50">
-      <mat-select [(ngModel)]="data.item.product"
-                  (selectionChange)="isEdit=false"
-                  placeholder="Product">
-        <mat-option *ngFor="let product of products"
-                    [value]="product">
-          {{product.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
   </mat-dialog-content>
 
   <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">CANCEL</button>
     <button mat-button
-            [mat-dialog-close]="data.fund"
-            [disabled] = "data.item.amount <= 0 || data.item.type === null || data.item.product === null || isEdit"
-            (click)="changeFund()">SAVE</button>
+            (click)="onNoClick()">CANCEL</button>
+    <button mat-button
+            [mat-dialog-close]="data.item"
+            (click)="changeFund()"
+            [disabled] = "!itemForm.valid || data.item.amount <= 0 || itemForm.pristine">SAVE</button>
   </div>
 </div>

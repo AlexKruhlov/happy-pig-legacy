@@ -12,7 +12,7 @@ export class Item {
                amount: string = null,
                type: string = null,
                date: string = null,
-               product = null,
+               product = new Product(),
                id: string = null ) {
     this.id = id;
     this.type = type;

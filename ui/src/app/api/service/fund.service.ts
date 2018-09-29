@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { URL } from '../requestPath';
 import { Fund } from '../../models/fund';
-import {Product} from "../../models/product";
+import {Product} from '../../models/product';
+import {Item} from '../../models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class FundService {
   }
 
   deleteItem(itemId: string, fundId: string): Observable<Fund> {
-    return this.http.post<Fund>(`${URL}/item/delete`, {itemId, fundId});
+    return this.http.post<Fund>(`${URL}/item/deleteAndFindFund`, {itemId, fundId});
   }
 
   create(fund: any): void {
@@ -44,6 +45,10 @@ export class FundService {
 
   saveFundsToSubject(res): void {
     this.subject.next({ fund: res });
+  }
+
+  saveAndFindFund(item: Item): Observable<any>  {
+    return this.http.post<any>(`${URL}/item/saveAndFindFund`, item);
   }
 
   getNew(): Observable<any> {
