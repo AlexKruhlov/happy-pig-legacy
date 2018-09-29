@@ -59,7 +59,7 @@ GET http://localhost:8080/api/fund/delete/GROCERY_FUND
 ###========================================================================
 
 
-### Save item and find current fund
+### Save (update) item and find current fund (if id is null - save, if id is existed - update)
 
 POST http://localhost:8080/api/item/saveAndFindFund
 Content-Type: application/json

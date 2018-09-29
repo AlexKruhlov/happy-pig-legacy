@@ -29,7 +29,7 @@ public class ItemControllerImpl implements ItemController {
 
     @Override
     @PostMapping(value = "/deleteAndFindFund")
-    public FundDtoWithItems deleteBy(@RequestBody Map<String, String> payload) {
+    public FundDtoWithItems deleteByIdAndFindFund(@RequestBody Map<String, String> payload) {
         return itemService.deleteByIdAndFindCurrentFund(payload.get(Params.itemId.name()), payload.get(Params.fundId.name()));
     }
 
