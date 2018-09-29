@@ -47,8 +47,8 @@ export class FundService {
     this.subject.next({ fund: res });
   }
 
-  saveAndFindFund(item: Item): Observable<any>  {
-    return this.http.post<any>(`${URL}/item/saveAndFindFund`, item);
+  saveAndFindFund(item: Item): Observable<Fund>  {
+    return this.http.post<Fund>(`${URL}/item/saveAndFindFund`, item);
   }
 
   getNew(): Observable<any> {
