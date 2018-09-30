@@ -28,6 +28,7 @@ import { ConvertToHigherNominalPipe } from './pipes/convertToHigherNominal.pipe'
 import { HeaderComponent } from './header/header.component';
 import { NewFundComponent } from './modals/new-fund/new-fund.component';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.comp
     ConvertToHigherNominalPipe,
     HeaderComponent,
     NewFundComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,
