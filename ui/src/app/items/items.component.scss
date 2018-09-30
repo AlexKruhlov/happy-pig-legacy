@@ -1,13 +1,14 @@
+@import "../../assets/color";
 .title {
-  color: #888888;
+  color: $gray88;
 }
 
 .income {
-  color: green;
+  color: $successful;
 }
 
 .expense {
-  color: red;
+  color: $warning;
 }
 
 .mat-column-type {
@@ -17,7 +18,6 @@
 .mat-column-amount, .mat-column-date, .mat-column-product {
   width: 20%;
 }
-
 
 .mat-header-cell {
   &:last-child {

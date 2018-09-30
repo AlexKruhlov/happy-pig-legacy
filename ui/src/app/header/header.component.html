@@ -1,16 +1,20 @@
 <div fxLayout="row"
      fxLayoutAlign="space-between center"
      class="header">
-  <div routerLink="/dashboard" class="logo mx-2">
+  <div routerLink="/dashboard"
+       class="logo mx-2">
     HappyPig
   </div>
   <div class="button-row mx-2">
-    <button mat-mini-fab class="btn-statistic mx-2">
+    <button mat-mini-fab
+            routerLink="/statistic"
+            class="btn-statistic mx-2">
       <mat-icon aria-label="Add new fund">equalizer</mat-icon>
     </button>
 
     <button mat-mini-fab class="btn-add">
-      <mat-icon aria-label="Add new fund" (click)="openDialog()">add</mat-icon>
+      <mat-icon aria-label="Add new fund"
+                (click)="openDialog()">add</mat-icon>
     </button>
   </div>
 </div>

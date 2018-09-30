@@ -1,0 +1,69 @@
+<div *ngIf="statistic"
+     fxLayout="row"
+     fxLayoutAlign="start center"
+     class="mx-2">
+  <div fxLayout="row"
+       fxFlex="50">
+    <h1 class="title">Fund Statistic</h1>
+  </div>
+
+  <div fxLayout="row">
+    <h5 [ngClass]="{income: statistic.total > 0, expense: statistic.total <= 0}">
+      BALANCE: {{statistic.total | convertToHigherNominal | currency:'UAH':'symbol-narrow'}}
+    </h5>
+  </div>
+
+</div>
+<div *ngIf="statistic"
+     class="mx-2">
+  <table mat-table
+         [dataSource]="statistic.funds"
+         class="mat-elevation-z8 w-100">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element; let i = index;"
+          [ngClass]="hasBalanceProfitable(element) ? 'income' : 'expense'">
+        {{i+1}}.
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"
+          [ngClass]="hasBalanceProfitable(element) ? 'income' : 'expense'">
+        {{element.name}}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"
+          [ngClass]="hasBalanceProfitable(element) ? 'income' : 'expense'">
+        {{element.startDate | date}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="income">
+      <th mat-header-cell *matHeaderCellDef> Income </th>
+      <td mat-cell *matCellDef="let element"
+          [ngClass]="hasBalanceProfitable(element) ? 'income' : 'expense'">
+        {{element.income | convertToHigherNominal | currency:'UAH':'symbol-narrow'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expense">
+      <th mat-header-cell *matHeaderCellDef> Expense </th>
+      <td mat-cell *matCellDef="let element"
+          [ngClass]="hasBalanceProfitable(element) ? 'income' : 'expense'">
+        {{element.expense | convertToHigherNominal | currency:'UAH':'symbol-narrow'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"
+          [ngClass]="hasBalanceProfitable(element) ? 'income' : 'expense'">
+        {{element.amount | convertToHigherNominal | currency:'UAH':'symbol-narrow'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
