@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    private ProductRepository productRepository;
-    private ProductTransformer productTransformer;
+    private final ProductRepository productRepository;
+    private final ProductTransformer productTransformer;
 
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository, ProductTransformer productTransformer) {

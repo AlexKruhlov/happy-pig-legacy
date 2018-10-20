@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductControllerImpl implements ProductController {
-    private ProductService productService;
+    private final ProductService productService;
 
     @Autowired
     public ProductControllerImpl(ProductService productService) {

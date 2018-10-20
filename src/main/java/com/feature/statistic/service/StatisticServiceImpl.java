@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class StatisticServiceImpl implements StatisticService {
-    private FundService fundService;
+    private final FundService fundService;
 
     @Autowired
     public StatisticServiceImpl(FundService fundService) {

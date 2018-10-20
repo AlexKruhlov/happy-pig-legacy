@@ -22,9 +22,9 @@ import static org.junit.Assert.assertNull;
 @DataJpaTest
 @ComponentScan(basePackageClasses = App.class)
 public class FundServiceIntegrationTest {
-    public static final String FUND_ID = "GROCERY_FUND";
-    public static final String WRONG_FUND_ID = "WRONG_FUND_ID";
-    public static final int ALL_FUND_COUNT = 3;
+    private static final String FUND_ID = "GROCERY_FUND";
+    private static final String WRONG_FUND_ID = "WRONG_FUND_ID";
+    private static final int ALL_FUND_COUNT = 3;
 
     @Autowired
     private FundService fundService;
@@ -33,7 +33,7 @@ public class FundServiceIntegrationTest {
     public void shouldFindById() {
         FundDtoWithItems foundFund = fundService.findById(FUND_ID);
         assertNotNull(foundFund);
-        assertEquals(foundFund.getId(), FUND_ID);
+        assertEquals(FUND_ID, foundFund.getId());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class FundServiceIntegrationTest {
     public void shouldFindAll() {
         List<FundDto> fundDtos = fundService.findAll();
         assertNotNull(fundDtos);
-        assertEquals(fundDtos.size(), ALL_FUND_COUNT);
+        assertEquals(ALL_FUND_COUNT, fundDtos.size());
     }
 
     @Test
