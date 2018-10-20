@@ -1,6 +1,5 @@
 package com.feature.item.controller;
 
-import com.api.fund.service.FundService;
 import com.api.item.controller.ItemController;
 import com.api.item.service.ItemService;
 import com.feature.fund.dto.FundDtoWithItems;
@@ -13,24 +12,20 @@ import java.util.Map;
 @RestController
 @RequestMapping("/item")
 public class ItemControllerImpl implements ItemController {
-    public enum Params {
-        itemId,
-        fundId
-    }
+    private static final String ITEM_ID = "itemId";
+    private static final String FUND_ID = "fundId";
 
-    private ItemService itemService;
-    private FundService fundService;
+    private final ItemService itemService;
 
     @Autowired
-    public ItemControllerImpl(ItemService itemService, FundService fundService) {
+    public ItemControllerImpl(ItemService itemService) {
         this.itemService = itemService;
-        this.fundService = fundService;
     }
 
     @Override
     @PostMapping(value = "/deleteAndFindFund")
     public FundDtoWithItems deleteByIdAndFindFund(@RequestBody Map<String, String> payload) {
-        return itemService.deleteByIdAndFindCurrentFund(payload.get(Params.itemId.name()), payload.get(Params.fundId.name()));
+        return itemService.deleteByIdAndFindCurrentFund(payload.get(ITEM_ID), payload.get(FUND_ID));
     }
 
     @Override

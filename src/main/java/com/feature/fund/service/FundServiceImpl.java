@@ -22,9 +22,9 @@ import static java.util.Objects.isNull;
 public class FundServiceImpl implements FundService {
 
     private final class FundAmount {
-        public BigInteger currentAmount = BigInteger.ZERO;
-        public BigInteger income = BigInteger.ZERO;
-        public BigInteger expense = BigInteger.ZERO;
+        private BigInteger currentAmount = BigInteger.ZERO;
+        private BigInteger income = BigInteger.ZERO;
+        private BigInteger expense = BigInteger.ZERO;
     }
 
     private final FundRepository fundRepository;

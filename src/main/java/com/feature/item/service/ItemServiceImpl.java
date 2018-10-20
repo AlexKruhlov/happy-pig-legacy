@@ -14,9 +14,9 @@ import javax.transaction.Transactional;
 
 @Service
 public class ItemServiceImpl implements ItemService {
-    private ItemRepository itemRepository;
-    private FundService fundService;
-    private ItemTransformer itemTransformer;
+    private final ItemRepository itemRepository;
+    private final FundService fundService;
+    private final ItemTransformer itemTransformer;
 
     @Autowired
     public ItemServiceImpl(ItemRepository itemRepository, FundService fundService, ItemTransformer itemTransformer) {
