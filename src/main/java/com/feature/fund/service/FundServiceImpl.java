@@ -3,11 +3,13 @@ package com.feature.fund.service;
 import com.api.fund.repository.FundRepository;
 import com.api.fund.service.FundService;
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.item.model.Item;
 import com.feature.item.model.ItemTypeConst;
+import com.feature.transfer.model.TransferFund;
+import com.feature.transfer.model.TransferType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +19,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
+/**
+ * Implements possibility of working on fund business logic
+ */
 @Service
 public class FundServiceImpl implements FundService {
 
@@ -25,6 +31,8 @@ public class FundServiceImpl implements FundService {
         private BigInteger currentAmount = BigInteger.ZERO;
         private BigInteger income = BigInteger.ZERO;
         private BigInteger expense = BigInteger.ZERO;
+        private BigInteger transferIncome = BigInteger.ZERO;
+        private BigInteger transferOutcome = BigInteger.ZERO;
     }
 
     private final FundRepository fundRepository;
@@ -38,9 +46,9 @@ public class FundServiceImpl implements FundService {
 
     @Override
     @Transactional(readOnly = true)
-    public FundDtoWithItems findById(String id) {
+    public FundDtoWithItemsAndTransferFunds findById(String id) {
         Fund fund = addAmount(fundRepository.findById(id).orElse(null));
-        return fundTransformer.toDtoWithItems(fund);
+        return fundTransformer.toDtoWithItemsAndTransferFunds(fund);
     }
 
     @Override
@@ -54,10 +62,10 @@ public class FundServiceImpl implements FundService {
 
     @Override
     @Transactional
-    public FundDtoWithItems update(FundDtoWithItems fundDtoWithItems) {
-        Fund savedFund = fundRepository.save(fundTransformer.fromDtoWithItems(fundDtoWithItems));
+    public FundDtoWithItemsAndTransferFunds update(FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds) {
+        Fund savedFund = fundRepository.save(fundTransformer.fromDtoWithItemsAndTransferFunds(fundDtoWithItemsAndTransferFunds));
         Fund savedFundWithAmounts = addAmount(savedFund);
-        return fundTransformer.toDtoWithItems(savedFundWithAmounts);
+        return fundTransformer.toDtoWithItemsAndTransferFunds(savedFundWithAmounts);
     }
 
     @Override
@@ -76,7 +84,7 @@ public class FundServiceImpl implements FundService {
 
     @Override
     @Transactional
-    public List<FundDto> deleteByIdAndFindAll(String id){
+    public List<FundDto> deleteByIdAndFindAll(String id) {
         fundRepository.deleteById(id);
         return findAll();
     }
@@ -85,24 +93,28 @@ public class FundServiceImpl implements FundService {
         if (isNull(fund)) {
             return null;
         }
-        FundAmount fundAmount = calculateAmount(fund.getItems());
+        FundAmount fundAmount = calculateAmount(fund.getItems(), fund.getTransferFunds());
         fund.setAmount(fundAmount.currentAmount);
         fund.setExpense(fundAmount.expense);
         fund.setIncome(fundAmount.income);
         return fund;
     }
 
-    private FundAmount calculateAmount(List<Item> items) {
-        if (isNull(items)) {
-            return new FundAmount();
-        }
+    private FundAmount calculateAmount(List<Item> items, List<TransferFund> transferFunds) {
         final FundAmount fundAmount = new FundAmount();
-        items.forEach(item -> distributeBetweenExpenseAndIncome(item, fundAmount));
-        fundAmount.currentAmount = fundAmount.income.subtract(fundAmount.expense);
+        if (nonEmpty(items)) {
+            items.forEach(item -> distributeItemAmounts(item, fundAmount));
+            fundAmount.currentAmount = fundAmount.income.subtract(fundAmount.expense);
+        }
+        if (nonEmpty(transferFunds)) {
+            transferFunds.forEach(transferFund -> distributeTransferSums(transferFund, fundAmount));
+            fundAmount.currentAmount =
+                    fundAmount.currentAmount.add(fundAmount.transferIncome.subtract(fundAmount.transferOutcome));
+        }
         return fundAmount;
     }
 
-    private void distributeBetweenExpenseAndIncome(Item item, FundAmount fundAmount) {
+    private void distributeItemAmounts(Item item, FundAmount fundAmount) {
         if (isExpense(item)) {
             fundAmount.expense = fundAmount.expense.add(item.getAmount());
         } else {
@@ -110,7 +122,19 @@ public class FundServiceImpl implements FundService {
         }
     }
 
+    private void distributeTransferSums(TransferFund transferFund, FundAmount fundAmount) {
+        if (transferFund.getTransferType().equals(TransferType.INCOME)) {
+            fundAmount.transferIncome = fundAmount.transferIncome.add(transferFund.getId().getTransfer().getSum());
+        } else {
+            fundAmount.transferOutcome = fundAmount.transferOutcome.add(transferFund.getId().getTransfer().getSum());
+        }
+    }
+
     private boolean isExpense(Item item) {
         return item.getType().equals(ItemTypeConst.EXPENSE);
+    }
+
+    private boolean nonEmpty(List list) {
+        return nonNull(list) && !list.isEmpty();
     }
 }

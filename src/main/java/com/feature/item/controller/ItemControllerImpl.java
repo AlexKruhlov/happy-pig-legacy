@@ -2,7 +2,7 @@ package com.feature.item.controller;
 
 import com.api.item.controller.ItemController;
 import com.api.item.service.ItemService;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.item.dto.ItemDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +24,13 @@ public class ItemControllerImpl implements ItemController {
 
     @Override
     @PostMapping(value = "/deleteAndFindFund")
-    public FundDtoWithItems deleteByIdAndFindFund(@RequestBody Map<String, String> payload) {
+    public FundDtoWithItemsAndTransferFunds deleteByIdAndFindFund(@RequestBody Map<String, String> payload) {
         return itemService.deleteByIdAndFindCurrentFund(payload.get(ITEM_ID), payload.get(FUND_ID));
     }
 
     @Override
     @PostMapping(value = "/saveAndFindFund")
-    public FundDtoWithItems saveAndFindCurrentFund(@RequestBody ItemDto itemDto) {
+    public FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(@RequestBody ItemDto itemDto) {
         return itemService.saveAndFindCurrentFund(itemDto);
     }
 }

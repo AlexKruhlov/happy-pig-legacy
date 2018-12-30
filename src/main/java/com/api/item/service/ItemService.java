@@ -1,6 +1,6 @@
 package com.api.item.service;
 
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.item.dto.ItemDto;
 
 /**
@@ -22,9 +22,9 @@ public interface ItemService {
      *
      * @param itemDto item dto
      * @return fund dto with items
-     * @see FundDtoWithItems
+     * @see FundDtoWithItemsAndTransferFunds
      */
-    FundDtoWithItems saveAndFindCurrentFund(ItemDto itemDto);
+    FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(ItemDto itemDto);
 
     /**
      * Deletes item with particular id, finds current fund and transforms it into dto
@@ -32,7 +32,7 @@ public interface ItemService {
      * @param itemId item id
      * @param fundId fund id
      * @return fund dto with items
-     * @see FundDtoWithItems
+     * @see FundDtoWithItemsAndTransferFunds
      */
-    FundDtoWithItems deleteByIdAndFindCurrentFund(String itemId, String fundId);
+    FundDtoWithItemsAndTransferFunds deleteByIdAndFindCurrentFund(String itemId, String fundId);
 }

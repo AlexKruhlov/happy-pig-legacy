@@ -2,7 +2,7 @@ package com.feature.item.service;
 
 import com.App;
 import com.api.item.service.ItemService;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.item.dto.ItemDto;
 import com.feature.product.dto.ProductDto;
 import org.junit.Test;
@@ -30,8 +30,8 @@ public class ItemServiceIntegrationTest {
     @Test
     public void shouldDeleteItemByIdAndFindCurrentFund() {
         final int expectedItemListSize = 1;
-        FundDtoWithItems fundDtoWithItems = itemService.deleteByIdAndFindCurrentFund(FUND_GROCERY_ITEM_ID, GROCERY_FUND_ID);
-        assertEquals(expectedItemListSize, fundDtoWithItems.getItems().size());
+        FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds = itemService.deleteByIdAndFindCurrentFund(FUND_GROCERY_ITEM_ID, GROCERY_FUND_ID);
+        assertEquals(expectedItemListSize, fundDtoWithItemsAndTransferFunds.getItems().size());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ItemServiceIntegrationTest {
         final int expectedItemListSize = 3;
 
         ItemDto itemDto = new ItemDto(null, INCOME, "10", now(), GROCERY_FUND_ID, PRODUCT_DTO);
-        FundDtoWithItems fundDtoWithNewItem = itemService.saveAndFindCurrentFund(itemDto);
+        FundDtoWithItemsAndTransferFunds fundDtoWithNewItem = itemService.saveAndFindCurrentFund(itemDto);
 
         assertEquals(expectedItemListSize, fundDtoWithNewItem.getItems().size());
     }

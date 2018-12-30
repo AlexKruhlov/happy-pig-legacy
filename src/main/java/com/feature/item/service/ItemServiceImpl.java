@@ -3,7 +3,7 @@ package com.feature.item.service;
 import com.api.fund.service.FundService;
 import com.api.item.repository.ItemRepository;
 import com.api.item.service.ItemService;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.item.dto.ItemDto;
 import com.feature.item.model.Item;
 import com.feature.item.transformer.ItemTransformer;
@@ -34,7 +34,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     @Transactional
-    public FundDtoWithItems deleteByIdAndFindCurrentFund(String itemId, String fundId) {
+    public FundDtoWithItemsAndTransferFunds deleteByIdAndFindCurrentFund(String itemId, String fundId) {
         itemRepository.deleteById(itemId);
         itemRepository.flush();
         return fundService.findById(fundId);
@@ -42,7 +42,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     @Transactional
-    public FundDtoWithItems saveAndFindCurrentFund(ItemDto itemDto) {
+    public FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(ItemDto itemDto) {
         Item item = itemTransformer.fromDto(itemDto);
         itemRepository.save(item);
         itemRepository.flush();

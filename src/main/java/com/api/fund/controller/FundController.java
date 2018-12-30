@@ -1,7 +1,7 @@
 package com.api.fund.controller;
 
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 
 import java.util.List;
 
@@ -30,11 +30,11 @@ public interface FundController {
     /**
      * Updates existed fund if it is existed, otherwise saves the fund
      *
-     * @param fundDtoWithItems fund with items object
+     * @param fundDtoWithItemsAndTransferFunds fund with items object
      * @return all funds with items
-     * @see FundDtoWithItems
+     * @see FundDtoWithItemsAndTransferFunds
      */
-    FundDtoWithItems update(FundDtoWithItems fundDtoWithItems);
+    FundDtoWithItemsAndTransferFunds update(FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds);
 
     /**
      * Saves new fund and finds all funds

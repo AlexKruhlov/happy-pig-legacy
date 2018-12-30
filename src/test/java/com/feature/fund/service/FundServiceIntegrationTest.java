@@ -3,7 +3,7 @@ package com.feature.fund.service;
 import com.App;
 import com.api.fund.service.FundService;
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -31,7 +30,7 @@ public class FundServiceIntegrationTest {
 
     @Test
     public void shouldFindById() {
-        FundDtoWithItems foundFund = fundService.findById(FUND_ID);
+        FundDtoWithItemsAndTransferFunds foundFund = fundService.findById(FUND_ID);
         assertNotNull(foundFund);
         assertEquals(FUND_ID, foundFund.getId());
     }
@@ -55,15 +54,6 @@ public class FundServiceIntegrationTest {
         List<FundDto> storedFundDtos = fundService.saveAndFindAll(fundDto);
         int currentFundAmount = ALL_FUND_COUNT + 1;
         assertEquals(storedFundDtos.size(), currentFundAmount);
-    }
-
-    @Test
-    public void shouldUpdateFund() {
-        FundDtoWithItems fundDtoWithItems = fundService.findById(FUND_ID);
-        fundDtoWithItems.getItems().get(0).setDate(LocalDateTime.now());
-        fundService.update(fundDtoWithItems);
-        FundDtoWithItems updatedFundDtoWithItems = fundService.findById(FUND_ID);
-        assertEquals(fundDtoWithItems, updatedFundDtoWithItems);
     }
 
     @Test
