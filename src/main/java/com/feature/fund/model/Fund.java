@@ -1,6 +1,7 @@
 package com.feature.fund.model;
 
 import com.feature.item.model.Item;
+import com.feature.transfer.model.TransferFund;
 import lombok.*;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
@@ -13,7 +14,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.feature.fund.model.Fund.FIND_ALL;
+import static com.feature.transfer.model.TransferFund.FUND_ID_FIELD_NAME;
 
+/**
+ * Model of fund
+ */
 @Entity
 @Table(name = "funds")
 @NamedQueries({
@@ -41,6 +46,10 @@ public class Fund implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fundId", orphanRemoval = true)
     @Singular
     private List<Item> items;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = FUND_ID_FIELD_NAME, orphanRemoval = true)
+    @Singular
+    private List<TransferFund> transferFunds;
 
     @Transient
     private BigInteger amount;

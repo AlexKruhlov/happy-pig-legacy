@@ -6,4 +6,6 @@
 
     <include file="changelog/01-create-item-fund-tables.xml" relativeToChangelogFile="true"/>
     <include file="changelog/01-init-items-funds-tables.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/02-create-transfer-transferfund.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/02-init-transfer-transferfund.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

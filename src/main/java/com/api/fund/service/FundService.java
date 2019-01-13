@@ -1,7 +1,7 @@
 package com.api.fund.service;
 
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ public interface FundService {
      *
      * @param id fund id
      * @return fund with items
-     * @see FundDtoWithItems
+     * @see FundDtoWithItemsAndTransferFunds
      */
-    FundDtoWithItems findById(String id);
+    FundDtoWithItemsAndTransferFunds findById(String id);
 
     /**
      * Finds all funds and transforms them into dtos
@@ -31,11 +31,11 @@ public interface FundService {
      * Updates (saves) the fund that has been transformed from dto
      * and returns it with transformation into dto
      *
-     * @param fundDtoWithItems fund dto
+     * @param fundDtoWithItemsAndTransferFunds fund dto
      * @return fund dto
-     * @see FundDtoWithItems
+     * @see FundDtoWithItemsAndTransferFunds
      */
-    FundDtoWithItems update(FundDtoWithItems fundDtoWithItems);
+    FundDtoWithItemsAndTransferFunds update(FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds);
 
     /**
      * Updates (saves) the fund that has been transformed from dto

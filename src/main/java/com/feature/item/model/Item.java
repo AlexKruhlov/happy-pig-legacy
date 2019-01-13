@@ -37,7 +37,7 @@ public class Item implements Serializable {
     @Column(name = "fund_id")
     private String fundId;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 }

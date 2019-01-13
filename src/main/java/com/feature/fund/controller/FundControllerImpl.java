@@ -3,7 +3,7 @@ package com.feature.fund.controller;
 import com.api.fund.controller.FundController;
 import com.api.fund.service.FundService;
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +33,8 @@ public class FundControllerImpl implements FundController {
 
     @Override
     @PostMapping("/update")
-    public FundDtoWithItems update(@RequestBody FundDtoWithItems fundDtoWithItems) {
-        return fundService.update(fundDtoWithItems);
+    public FundDtoWithItemsAndTransferFunds update(@RequestBody FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds) {
+        return fundService.update(fundDtoWithItemsAndTransferFunds);
     }
 
     @Override

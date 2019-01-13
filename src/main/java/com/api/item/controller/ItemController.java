@@ -1,6 +1,6 @@
 package com.api.item.controller;
 
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.item.dto.ItemDto;
 
 import java.util.Map;
@@ -15,16 +15,16 @@ public interface ItemController {
      *
      * @param payload object with item id
      * @return fund dto with the same id
-     * @see FundDtoWithItems
+     * @see FundDtoWithItemsAndTransferFunds
      */
-    FundDtoWithItems deleteByIdAndFindFund(Map<String, String> payload);
+    FundDtoWithItemsAndTransferFunds deleteByIdAndFindFund(Map<String, String> payload);
 
     /**
      * Saves the item and finds current fund dto
      *
      * @param itemDto item dto
      * @return fund dto
-     * @see FundDtoWithItems
+     * @see FundDtoWithItemsAndTransferFunds
      */
-    FundDtoWithItems saveAndFindCurrentFund(ItemDto itemDto);
+    FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(ItemDto itemDto);
 }

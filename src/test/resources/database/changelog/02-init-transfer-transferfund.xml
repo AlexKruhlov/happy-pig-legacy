@@ -1,0 +1,40 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="006" author="alkruglov">
+        <insert tableName="transfers">
+            <column name="id">GROCERY_TO_RENTAL</column>
+            <column name="sum">25000</column>
+        </insert>
+        <insert tableName="transfers">
+            <column name="id">RENTAL_TO_GROCERY</column>
+            <column name="sum">5000</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="007" author="alkruglov">
+        <insert tableName="transfer_funds">
+            <column name="transfer_id">GROCERY_TO_RENTAL</column>
+            <column name="fund_id">GROCERY_FUND</column>
+            <column name="transfer_type">OUTCOME</column>
+        </insert>
+        <insert tableName="transfer_funds">
+            <column name="transfer_id">GROCERY_TO_RENTAL</column>
+            <column name="fund_id">RENTAL_FUND</column>
+            <column name="transfer_type">INCOME</column>
+        </insert>
+        <insert tableName="transfer_funds">
+            <column name="transfer_id">RENTAL_TO_GROCERY</column>
+            <column name="fund_id">RENTAL_FUND</column>
+            <column name="transfer_type">OUTCOME</column>
+        </insert>
+        <insert tableName="transfer_funds">
+            <column name="transfer_id">RENTAL_TO_GROCERY</column>
+            <column name="fund_id">GROCERY_FUND</column>
+            <column name="transfer_type">INCOME</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

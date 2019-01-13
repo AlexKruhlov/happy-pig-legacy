@@ -23,43 +23,6 @@ Content-Type: application/json
   "startDate": null
 }
 
-
-### Update fund with by adding new item
-
-POST http://localhost:8080/api/fund/update
-Content-Type: application/json
-
-{
-  "id": "GROCERY_FUND",
-  "name": "New Name",
-  "startDate": "2018-09-01T01:19:22.494384",
-  "items": [
-    {
-      "id": null,
-      "type": "INCOME",
-      "amount": "836555",
-      "date": "2018-08-13T07:57:32.685",
-      "fundId": "GROCERY_FUND",
-      "product": {
-        "id": "POTATO",
-        "name": "Potato"
-      }
-    },
-    {
-      "id": null,
-      "type": "INCOME",
-      "amount": "836555",
-      "date": "2018-08-13T07:57:32.685",
-      "fundId": "GROCERY_FUND",
-      "product": {
-        "id": "POTATO",
-        "name": "Potato"
-      }
-    }
-  ]
-}
-
-
 ### Delete fund
 
 GET http://localhost:8080/api/fund/delete/GROCERY_FUND
@@ -122,6 +85,7 @@ Content-Type: application/json
 
 
 ### Update product
+
 POST http://localhost:8080/api/product/create
 Content-Type: application/json
 
@@ -136,9 +100,34 @@ Content-Type: application/json
 ###============================   STATISTIC   =============================
 ###========================================================================
 
-
-### Craate statistic
+### Create statistic
 
 GET http://localhost:8080/api/statistic/create
+
+###
+
+
+
+###========================================================================
+###============================   TRANSFER   ==============================
+###========================================================================
+
+### Crate transfer
+
+POST http://localhost:8080/api/transfer/create
+Content-Type: application/json
+
+{
+  "id": null,
+  "fromFundId": "GROCERY_FUND",
+  "toFundId": "DRESS_FUND",
+
+  "sum": "10000"
+}
+
+
+### Find all transfers
+
+GET http://localhost:8080/api/transfer/all
 
 ###

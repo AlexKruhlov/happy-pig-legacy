@@ -1,7 +1,7 @@
 package com.feature.fund.transformer;
 
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.dto.FundDtoWithItems;
+import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.fund.model.Fund;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -19,12 +19,12 @@ public interface FundTransformer {
     })
     Fund fromDto(FundDto fundIdDto);
 
-    FundDtoWithItems toDtoWithItems(Fund fund);
+    FundDtoWithItemsAndTransferFunds toDtoWithItemsAndTransferFunds(Fund fund);
 
     @Mappings({
             @Mapping(target = "amount", ignore = true),
             @Mapping(target = "income", ignore = true),
             @Mapping(target = "expense", ignore = true)
     })
-    Fund fromDtoWithItems(FundDtoWithItems fundDtoWithItems);
+    Fund fromDtoWithItemsAndTransferFunds(FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds);
 }
