@@ -12,6 +12,8 @@ public class TestUtilMethods {
     public static String RENTAL_FUND = "RENTAL_FUND";
     public static String DRESS_FUND = "DRESS_FUND";
 
+    public static String GROCERY_TO_RENTAL_TRFUND_ID = "GROCERY_TO_RENTAL";
+
     public static String TRANSFER_ID = "TRANSFER_ID";
 
     public static TransferFund createTransferFund(String transferId, String fundId, TransferType transferType, long sum) {
@@ -24,5 +26,4 @@ public class TestUtilMethods {
                 .transferType(transferType)
                 .build();
     }
-
 }
