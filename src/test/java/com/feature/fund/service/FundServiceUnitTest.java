@@ -2,13 +2,13 @@ package com.feature.fund.service;
 
 import com.api.fund.repository.FundRepository;
 import com.feature.fund.dto.FundDto;
-import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.fund.transformer.FundTransformerImpl;
 import com.feature.item.model.Item;
 import com.feature.transfer.model.TransferFund;
 import com.feature.transfer.model.TransferType;
+import com.feature.transfer.transformer.TransferFundTransformerImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
@@ -24,7 +24,6 @@ import static com.feature.item.model.ItemTypeConst.INCOME;
 import static com.feature.utils.TestUtilMethods.TRANSFER_ID;
 import static com.feature.utils.TestUtilMethods.createTransferFund;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -41,33 +40,13 @@ public class FundServiceUnitTest {
     private FundRepository fundRepository;
 
     @Spy
-    private FundTransformer fundTransformer = new FundTransformerImpl();
+    private FundTransformer fundTransformer = new FundTransformerImpl(new TransferFundTransformerImpl());
 
     @InjectMocks
     private FundServiceImpl fundService;
 
     @Test
-    public void shouldTransformToFundDtoWithItemsAndTransferFunds() {
-        String expectedAmount = "300";
-        long inputedAmount = 150;
-
-        List<Item> items = new ArrayList<>();
-        items.add(createItem(ITEM_ID_1, INCOME, inputedAmount));
-
-        List<TransferFund> transferFunds = new ArrayList<>();
-        transferFunds.add(createTransferFund(TRANSFER_ID, FUND_ID_1, TransferType.INCOME, inputedAmount));
-
-        Fund fund = createFund(FUND_ID_1, items, transferFunds);
-
-        when(fundRepository.findById(FUND_ID_1)).thenReturn(Optional.of(fund));
-
-        FundDtoWithItemsAndTransferFunds foundFund = fundService.findById(FUND_ID_1);
-        assertEquals(expectedAmount, foundFund.getAmount());
-        assertNotNull(foundFund.getItems());
-    }
-
-    @Test
-    public void souldCalculateAmountWhenFindById() {
+    public void shouldCalculateAmountWhenFindById() {
         long incomeItem1 = 150;
         long expenseItem2 = 50;
         long incomeItem3 = 27;
