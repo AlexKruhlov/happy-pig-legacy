@@ -1,0 +1,16 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="009" author="alkruglov">
+        <addColumn tableName="products">
+            <column name="unit_id" type="varchar(20)" defaultValue="kg">
+                <constraints nullable="false" foreignKeyName="products_unit_id_units_id"
+                             referencedTableName="units" referencedColumnNames="id"/>
+            </column>
+            <column name="specification" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
