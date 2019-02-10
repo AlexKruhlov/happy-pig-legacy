@@ -6,7 +6,7 @@ import com.feature.transfer.model.Transfer;
 import java.util.List;
 
 /**
- * Provides service layer API to work with {@link Transfer} objects
+ * Provides UnitService layer API to work with {@link Transfer} objects
  */
 public interface TransferService {
 

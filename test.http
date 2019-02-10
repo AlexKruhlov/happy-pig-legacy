@@ -121,7 +121,6 @@ Content-Type: application/json
   "id": null,
   "fromFundId": "GROCERY_FUND",
   "toFundId": "DRESS_FUND",
-
   "sum": "10000"
 }
 
@@ -129,5 +128,31 @@ Content-Type: application/json
 ### Find all transfers
 
 GET http://localhost:8080/api/transfer/all
+
+
+
+###========================================================================
+###==============================   UNIT   ================================
+###========================================================================
+
+### Find all units
+
+GET http://localhost:8080/api/unit/all
+
+
+### Create new unit
+
+POST http://localhost:8080/api/unit/save
+Content-Type: application/json
+
+{
+  "id": "ml",
+  "name": "millimeter"
+}
+
+
+### Create new unit
+
+POST http://localhost:8080/api/unit/delete/ml
 
 ###
