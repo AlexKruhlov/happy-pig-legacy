@@ -46,7 +46,12 @@ Content-Type: application/json
   "fundId": "GROCERY_FUND",
   "product": {
     "id": "POTATO",
-    "name": "Potato"
+    "name": "Potato",
+    "specification": "potato specification",
+    "unit": {
+      "id": "kg",
+      "name": "kilogram"
+    }
   }
 }
 
@@ -80,7 +85,12 @@ Content-Type: application/json
 
 {
   "id": null,
-  "name": "Bicycle"
+  "name": "Bicycle",
+  "specification": "bicycle spec",
+  "unit":{
+    "id": "pc",
+    "name": "peaces"
+  }
 }
 
 
@@ -91,7 +101,12 @@ Content-Type: application/json
 
 {
   "id": "BALL",
-  "name": "Bicycle"
+  "name": "Bicycle",
+  "specification": "bicycle spec",
+  "unit":{
+    "id": "pc",
+    "name": "peaces"
+  }
 }
 
 

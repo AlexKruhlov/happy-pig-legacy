@@ -3,12 +3,13 @@ package com.feature.fund.transformer;
 import com.feature.fund.dto.FundDto;
 import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.fund.model.Fund;
+import com.feature.item.transformer.ItemTransformer;
 import com.feature.transfer.transformer.TransferFundTransformer;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(uses = TransferFundTransformer.class, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(uses = {TransferFundTransformer.class, ItemTransformer.class}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface FundTransformer {
 
     FundDto toDto(Fund fund);

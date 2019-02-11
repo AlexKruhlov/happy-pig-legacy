@@ -4,7 +4,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="002" author="alkruglov">
+    <changeSet id="0002" author="alkruglov" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="items"/>
+            </not>
+        </preConditions>
 
         <createTable tableName="items" remarks="A table to contain all fund items">
             <column name="id" type="varchar(32)">
@@ -26,6 +31,15 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="0003" author="alkruglov" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="funds"/>
+            </not>
+            <not/>
+        </preConditions>
 
         <createTable tableName="funds" remarks="A table to contain all funds">
             <column name="id" type="varchar(32)">
@@ -42,6 +56,15 @@
         <addForeignKeyConstraint baseTableName="items" baseColumnNames="fund_id" constraintName="items_funds_id_fund_id"
                                  referencedTableName="funds"
                                  referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="0004" author="alkruglov" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="products"/>
+            </not>
+            <not/>
+        </preConditions>
 
         <createTable tableName="products" remarks="A table to contain all products">
             <column name="id" type="varchar(32)">

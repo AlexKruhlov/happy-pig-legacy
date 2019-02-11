@@ -2,12 +2,12 @@ package com.feature.item.transformer;
 
 import com.feature.item.dto.ItemDto;
 import com.feature.item.model.Item;
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import com.feature.product.transformer.ProductTransformer;
+import org.mapstruct.*;
 
-@Mapper
+import static org.mapstruct.InjectionStrategy.CONSTRUCTOR;
+
+@Mapper(uses = ProductTransformer.class, injectionStrategy = CONSTRUCTOR)
 public interface ItemTransformer {
 
     @Mappings({
@@ -15,7 +15,8 @@ public interface ItemTransformer {
             @Mapping(source = "type", target = "type"),
             @Mapping(source = "amount", target = "amount"),
             @Mapping(source = "date", target = "date"),
-            @Mapping(source = "fundId", target = "fundId")
+            @Mapping(source = "fundId", target = "fundId"),
+            @Mapping(source = "product", target = "product")
     })
     ItemDto toDto(Item item);
 

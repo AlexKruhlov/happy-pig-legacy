@@ -1,5 +1,6 @@
 package com.feature.product.model;
 
+import com.feature.unit.model.Unit;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -22,4 +23,11 @@ public class Product implements Serializable {
 
     @Column
     private String name;
+
+    @Column(name = "specification", length = 20)
+    private String specification;
+
+    @ManyToOne
+    @JoinColumn(name = "unit_id")
+    private Unit unit;
 }

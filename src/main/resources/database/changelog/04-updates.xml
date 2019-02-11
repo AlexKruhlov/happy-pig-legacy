@@ -4,7 +4,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="009" author="alkruglov">
+    <changeSet id="0012" author="alkruglov" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="products"/>
+        </preConditions>
+
         <addColumn tableName="products">
             <column name="unit_id" type="varchar(20)" defaultValue="kg">
                 <constraints nullable="false" foreignKeyName="products_unit_id_units_id"

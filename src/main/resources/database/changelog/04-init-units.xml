@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="008" author="alkruglov" runAlways="true">
+    <changeSet id="0011" author="alkruglov" runAlways="true">
         <insert tableName="units">
             <column name="id">kg</column>
             <column name="name">kilogram</column>

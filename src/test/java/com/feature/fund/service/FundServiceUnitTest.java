@@ -6,6 +6,8 @@ import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
 import com.feature.fund.transformer.FundTransformerImpl;
 import com.feature.item.model.Item;
+import com.feature.item.transformer.ItemTransformerImpl;
+import com.feature.product.transformer.ProductTransformerImpl;
 import com.feature.transfer.model.TransferFund;
 import com.feature.transfer.model.TransferType;
 import com.feature.transfer.transformer.TransferFundTransformerImpl;
@@ -40,7 +42,9 @@ public class FundServiceUnitTest {
     private FundRepository fundRepository;
 
     @Spy
-    private FundTransformer fundTransformer = new FundTransformerImpl(new TransferFundTransformerImpl());
+    private FundTransformer fundTransformer = new FundTransformerImpl(
+            new TransferFundTransformerImpl(),
+            new ItemTransformerImpl(new ProductTransformerImpl()));
 
     @InjectMocks
     private FundServiceImpl fundService;

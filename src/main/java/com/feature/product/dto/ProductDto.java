@@ -1,5 +1,6 @@
 package com.feature.product.dto;
 
+import com.feature.unit.dto.UnitDto;
 import lombok.*;
 
 @Builder
@@ -12,4 +13,6 @@ import lombok.*;
 public class ProductDto {
     private String id;
     private String name;
+    private String specification;
+    private UnitDto unit;
 }

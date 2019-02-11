@@ -8,12 +8,14 @@ import com.feature.unit.transformer.UnitTransformer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 @Service
+@Transactional
 @RequiredArgsConstructor(onConstructor = @__({@Autowired}))
 public class UnitServiceImpl implements UnitService {
     private final UnitRepository unitRepository;
