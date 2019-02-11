@@ -39,7 +39,7 @@ public class ItemServiceIntegrationTest {
     public void shouldSaveItemAndFindCurrentFund() {
         final int expectedItemListSize = 3;
 
-        ItemDto itemDto = new ItemDto(null, INCOME, "10", now(), GROCERY_FUND_ID, PRODUCT_DTO);
+        ItemDto itemDto = new ItemDto(null, INCOME, "10", "5", now(), GROCERY_FUND_ID, PRODUCT_DTO);
         FundDtoWithItemsAndTransferFunds fundDtoWithNewItem = itemService.saveAndFindCurrentFund(itemDto);
 
         assertEquals(expectedItemListSize, fundDtoWithNewItem.getItems().size());

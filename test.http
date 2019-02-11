@@ -41,7 +41,8 @@ Content-Type: application/json
 {
   "id": null,
   "type": "INCOME",
-  "amount": "836555",
+  "cost": "836555",
+  "amount": "255",
   "date": null,
   "fundId": "GROCERY_FUND",
   "product": {

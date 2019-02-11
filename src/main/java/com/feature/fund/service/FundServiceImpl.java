@@ -116,9 +116,9 @@ public class FundServiceImpl implements FundService {
 
     private void distributeItemAmounts(Item item, FundAmount fundAmount) {
         if (isExpense(item)) {
-            fundAmount.expense = fundAmount.expense.add(item.getAmount());
+            fundAmount.expense = fundAmount.expense.add(item.getCost());
         } else {
-            fundAmount.income = fundAmount.income.add(item.getAmount());
+            fundAmount.income = fundAmount.income.add(item.getCost());
         }
     }
 

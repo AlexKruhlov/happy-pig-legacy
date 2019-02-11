@@ -24,7 +24,7 @@ public class Product implements Serializable {
     @Column
     private String name;
 
-    @Column(name = "specification", length = 20)
+    @Column(name = "specification", length = 100)
     private String specification;
 
     @ManyToOne

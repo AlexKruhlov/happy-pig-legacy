@@ -13,6 +13,7 @@ public interface ItemTransformer {
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "type", target = "type"),
+            @Mapping(source = "cost", target = "cost"),
             @Mapping(source = "amount", target = "amount"),
             @Mapping(source = "date", target = "date"),
             @Mapping(source = "fundId", target = "fundId"),

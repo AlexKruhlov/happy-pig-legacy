@@ -135,6 +135,6 @@ public class FundServiceUnitTest {
         return Item.builder()
                 .id(id)
                 .type(type)
-                .amount(BigInteger.valueOf(amount)).build();
+                .cost(BigInteger.valueOf(amount)).build();
     }
 }

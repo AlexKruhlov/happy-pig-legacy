@@ -10,7 +10,8 @@
                 <constraints nullable="false" foreignKeyName="products_unit_id_units_id"
                              referencedTableName="units" referencedColumnNames="id"/>
             </column>
-            <column name="specification" type="varchar(20)"/>
+
+            <column name="specification" type="varchar(100)"/>
         </addColumn>
     </changeSet>
 </databaseChangeLog>

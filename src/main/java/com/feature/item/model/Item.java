@@ -28,6 +28,9 @@ public class Item implements Serializable {
     private String type;
 
     @Column
+    private BigInteger cost;
+
+    @Column
     private BigInteger amount;
 
     @Column(insertable = false)
