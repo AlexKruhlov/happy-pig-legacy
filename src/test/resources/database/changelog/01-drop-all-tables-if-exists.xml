@@ -14,5 +14,4 @@
             drop table if exists units cascade;
         </sql>
     </changeSet>
-
 </databaseChangeLog>
