@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.feature.item.model.ItemTypeConst.INCOME;
+import static com.feature.utils.TestUtilMethods.KG_UNIT_DTO;
 import static java.time.LocalDateTime.now;
 import static org.junit.Assert.*;
 
@@ -20,9 +21,9 @@ import static org.junit.Assert.*;
 @DataJpaTest
 @ComponentScan(basePackageClasses = App.class)
 public class ItemServiceIntegrationTest {
-    public static final String GROCERY_FUND_ID = "GROCERY_FUND";
-    public static final ProductDto PRODUCT_DTO = new ProductDto("POTATO", "Potato");
-    public static final String FUND_GROCERY_ITEM_ID = "ITEM_0000001";
+    private static final String GROCERY_FUND_ID = "GROCERY_FUND";
+    private static final ProductDto PRODUCT_DTO = new ProductDto("POTATO", "Potato", "", KG_UNIT_DTO);
+    private static final String FUND_GROCERY_ITEM_ID = "ITEM_0000001";
 
     @Autowired
     private ItemService itemService;
@@ -38,7 +39,7 @@ public class ItemServiceIntegrationTest {
     public void shouldSaveItemAndFindCurrentFund() {
         final int expectedItemListSize = 3;
 
-        ItemDto itemDto = new ItemDto(null, INCOME, "10", now(), GROCERY_FUND_ID, PRODUCT_DTO);
+        ItemDto itemDto = new ItemDto(null, INCOME, "10", "5", now(), GROCERY_FUND_ID, PRODUCT_DTO);
         FundDtoWithItemsAndTransferFunds fundDtoWithNewItem = itemService.saveAndFindCurrentFund(itemDto);
 
         assertEquals(expectedItemListSize, fundDtoWithNewItem.getItems().size());

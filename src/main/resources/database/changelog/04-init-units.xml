@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="0011" author="alkruglov" runAlways="true">
+        <insert tableName="units">
+            <column name="id">kg</column>
+            <column name="name">kilogram</column>
+        </insert>
+        <insert tableName="units">
+            <column name="id">pc</column>
+            <column name="name">peaces</column>
+        </insert>
+        <insert tableName="units">
+            <column name="id">m</column>
+            <column name="name">meter</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

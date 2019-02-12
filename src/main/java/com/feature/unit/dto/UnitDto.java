@@ -1,6 +1,5 @@
-package com.feature.product.dto;
+package com.feature.unit.dto;
 
-import com.feature.unit.dto.UnitDto;
 import lombok.*;
 
 @Builder
@@ -10,9 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class ProductDto {
+public class UnitDto {
     private String id;
     private String name;
-    private String specification;
-    private UnitDto unit;
 }

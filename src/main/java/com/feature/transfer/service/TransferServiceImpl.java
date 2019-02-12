@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Implements service layer API to work with {@link Transfer} objects
+ * Implements UnitService layer API to work with {@link Transfer} objects
  */
 @Service
 @RequiredArgsConstructor(onConstructor = @__({@Autowired}))

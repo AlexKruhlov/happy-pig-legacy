@@ -38,42 +38,48 @@
         <insert tableName="items">
             <column name="id">ITEM_0000001</column>
             <column name="type">INCOME</column>
-            <column name="amount">100000</column>
+            <column name="cost">100000</column>
+            <column name="amount">50</column>
             <column name="fund_id">GROCERY_FUND</column>
             <column name="product_id">POTATO</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000002</column>
             <column name="type">EXPENSE</column>
-            <column name="amount">50000</column>
+            <column name="cost">50000</column>
+            <column name="amount">589</column>
             <column name="fund_id">GROCERY_FUND</column>
             <column name="product_id">BALL</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000003</column>
             <column name="type">INCOME</column>
-            <column name="amount">100000</column>
+            <column name="cost">100000</column>
+            <column name="amount">5923</column>
             <column name="fund_id">DRESS_FUND</column>
             <column name="product_id">SALT</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000004</column>
             <column name="type">EXPENSE</column>
-            <column name="amount">200000</column>
+            <column name="cost">200000</column>
+            <column name="amount">3332</column>
             <column name="fund_id">DRESS_FUND</column>
             <column name="product_id">POTATO</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000005</column>
             <column name="type">INCOME</column>
-            <column name="amount">100000</column>
+            <column name="cost">100000</column>
+            <column name="amount">40</column>
             <column name="fund_id">DRESS_FUND</column>
             <column name="product_id">BALL</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000006</column>
             <column name="type">EXPENSE</column>
-            <column name="amount">80000</column>
+            <column name="cost">80000</column>
+            <column name="amount">34</column>
             <column name="fund_id">RENTAL_FUND</column>
             <column name="product_id">SALT</column>
         </insert>

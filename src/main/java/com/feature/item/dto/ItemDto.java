@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class ItemDto {
     private String id;
     private String type;
+    private String cost;
     private String amount;
     private LocalDateTime date;
     private String fundId;

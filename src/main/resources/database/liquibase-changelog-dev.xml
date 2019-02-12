@@ -4,7 +4,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <include file="changelog/01-create-item-fund-tables.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/01-init-items-funds-tables.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/02-create-transfer-transferfund.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/01-drop-all-tables-if-exists.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/02-create-item-fund-product.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/02-init-items-funds-tables.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/03-create-transfer-transferfund.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/04-create-units.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/04-init-units.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/04-updates.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

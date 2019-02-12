@@ -41,12 +41,18 @@ Content-Type: application/json
 {
   "id": null,
   "type": "INCOME",
-  "amount": "836555",
+  "cost": "836555",
+  "amount": "255",
   "date": null,
   "fundId": "GROCERY_FUND",
   "product": {
     "id": "POTATO",
-    "name": "Potato"
+    "name": "Potato",
+    "specification": "potato specification",
+    "unit": {
+      "id": "kg",
+      "name": "kilogram"
+    }
   }
 }
 
@@ -80,7 +86,12 @@ Content-Type: application/json
 
 {
   "id": null,
-  "name": "Bicycle"
+  "name": "Bicycle",
+  "specification": "bicycle spec",
+  "unit":{
+    "id": "pc",
+    "name": "peaces"
+  }
 }
 
 
@@ -91,7 +102,12 @@ Content-Type: application/json
 
 {
   "id": "BALL",
-  "name": "Bicycle"
+  "name": "Bicycle",
+  "specification": "bicycle spec",
+  "unit":{
+    "id": "pc",
+    "name": "peaces"
+  }
 }
 
 
@@ -121,7 +137,6 @@ Content-Type: application/json
   "id": null,
   "fromFundId": "GROCERY_FUND",
   "toFundId": "DRESS_FUND",
-
   "sum": "10000"
 }
 
@@ -129,5 +144,31 @@ Content-Type: application/json
 ### Find all transfers
 
 GET http://localhost:8080/api/transfer/all
+
+
+
+###========================================================================
+###==============================   UNIT   ================================
+###========================================================================
+
+### Find all units
+
+GET http://localhost:8080/api/unit/all
+
+
+### Create new unit
+
+POST http://localhost:8080/api/unit/save
+Content-Type: application/json
+
+{
+  "id": "ml",
+  "name": "millimeter"
+}
+
+
+### Create new unit
+
+POST http://localhost:8080/api/unit/delete/ml
 
 ###
