@@ -1,9 +1,9 @@
+import { Unit } from './unit';
 export class Product {
-  id: string;
-  name: string;
 
-  constructor(id: string = null, name: string = null) {
-    this.id = id;
-    this.name = name;
-  }
+  constructor(readonly id: string = null,
+              readonly name: string = null,
+              readonly unit: Unit = new Unit(),
+              readonly specification: string = null,
+  ) {}
 }

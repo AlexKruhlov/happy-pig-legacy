@@ -8,6 +8,5 @@ export class ConvertToHigherNominalPipe implements PipeTransform {
     if (value !== null) {
       return value / 100;
     }
-
   }
 }
