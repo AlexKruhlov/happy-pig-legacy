@@ -1,9 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FundService } from '../../api/service/fund.service';
 import { Product } from '../../models/product';
 import { Unit } from '../../models/unit';
+import { ConvertToHigherNominalPipe } from '../../pipes/convertToHigherNominal.pipe';
 
 @Component({
   selector: 'item-fund-modal',
@@ -38,12 +39,12 @@ export class ItemFundModalComponent {
 
   initForm(): void {
     this.itemForm = new FormGroup({
-      product: new FormControl(this.data.item.product.name),
-      cost: new FormControl(this.data.item.cost / 100),
-      amount: new FormControl(this.data.item.amount),
-      unit: new FormControl(this.data.item.product.unit.name),
-      type: new FormControl(this.data.item.type),
-      specification: new FormControl(''),
+      product: new FormControl(this.data.item.product.name, Validators.required),
+      cost: new FormControl(new ConvertToHigherNominalPipe().transform(this.data.item.cost), Validators.required),
+      amount: new FormControl(this.data.item.amount, Validators.required),
+      unit: new FormControl(this.data.item.product.unit.name, Validators.required),
+      type: new FormControl(this.data.item.type, Validators.required),
+      specification: new FormControl( this.data.item.product.specification, Validators.required),
     });
   }
 

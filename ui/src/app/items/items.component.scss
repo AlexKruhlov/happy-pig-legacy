@@ -11,12 +11,12 @@
   color: $warning;
 }
 
-.mat-column-type {
-  width: 15%;
+.mat-column-type, .mat-column-unit {
+  width: 12%;
 }
 
-.mat-column-amount, .mat-column-date, .mat-column-product {
-  width: 20%;
+.mat-column-amount, .mat-column-cost, .mat-column-date, .mat-column-product {
+  width: 15%;
 }
 
 .mat-header-cell {
