@@ -1,300 +1,12 @@
-POST http://localhost:8080/api/unit/delete/ml
-
-###
-
 GET http://localhost:8080/api/unit/all
 
-<> 2019-02-11T070410.200.json
-
-###
-
-POST http://localhost:8080/api/unit/save
-Content-Type: application/json
-
-{
-  "id": "ml",
-  "name": "millimeter"
-}
-
-<> 2019-02-11T070408.200.json
-
-###
-
-GET http://localhost:8080/api/unit/all
-
-<> 2019-02-11T070354.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "specification": "potato specification",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-11T070309.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-11T065430.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-11T065056.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-11T064709.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-11T064543.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-10T103003.200.json
-
-###
-
-GET http://localhost:8080/api/fund/delete/GROCERY_FUND
-
-<> 2019-02-10T101533.200.json
-
-###
-
-GET http://localhost:8080/api/fund/all
-
-<> 2019-02-10T101526.200.json
-
-###
-
-GET http://localhost:8080/api/unit/all
-
-<> 2019-02-10T101133.200.json
-
-###
-
-POST http://localhost:8080/api/unit/save
-Content-Type: application/json
-
-{
-  "id": "ml",
-  "name": "millimeter"
-}
-
-<> 2019-02-10T101131.200.json
-
-###
-
-GET http://localhost:8080/api/unit/all
-
-<> 2019-02-10T101119.200.json
+<> 2019-02-18T103629.200.json
 
 ###
 
 POST http://localhost:8080/api/unit/delete/ml
 
-###
-
-POST http://localhost:8080/api/unit/save
-Content-Type: application/json
-
-{
-  "id": "ml",
-  "name": "millimeter"
-}
-
-<> 2019-02-10T101103.200.json
-
-###
-
-GET http://localhost:8080/api/unit/all
-
-<> 2019-02-10T101058.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-10T101025.200.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-10T094805.500.json
-
-###
-
-POST http://localhost:8080/api/item/saveAndFindFund
-Content-Type: application/json
-
-{
-  "id": null,
-  "type": "INCOME",
-  "amount": "836555",
-  "date": null,
-  "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
-}
-
-<> 2019-02-10T093422.200.json
-
-###
-
-GET http://localhost:8080/api/unit/all
-
-<> 2019-02-10T070647.200.json
+<> 2019-02-18T103623.500.json
 
 ###
 
@@ -304,7 +16,7 @@ POST http://localhost:8080/api/unit/delete/ml
 
 GET http://localhost:8080/api/unit/all
 
-<> 2019-02-10T070638.200.json
+<> 2019-02-18T103546.200.json
 
 ###
 
@@ -316,30 +28,19 @@ Content-Type: application/json
   "name": "millimeter"
 }
 
-<> 2019-02-10T070633.200.json
-
-###
-
-POST http://localhost:8080/api/unit/save
-
-{
-  "id": "ml",
-  "name": "millimeter"
-}
-
-<> 2019-02-10T070612.415.json
+<> 2019-02-18T103541.200.json
 
 ###
 
 GET http://localhost:8080/api/unit/all
 
-<> 2019-02-10T070556.200.json
+<> 2019-02-18T103536.200.json
 
 ###
 
 GET http://localhost:8080/api/transfer/all
 
-<> 2019-01-27T092914.200.json
+<> 2019-02-18T103532.200.json
 
 ###
 
@@ -350,17 +51,36 @@ Content-Type: application/json
   "id": null,
   "fromFundId": "GROCERY_FUND",
   "toFundId": "DRESS_FUND",
-
   "sum": "10000"
 }
 
-<> 2019-01-27T092909.200.json
+<> 2019-02-18T103530.200.json
+
+###
+
+GET http://localhost:8080/api/transfer/all
+
+<> 2019-02-18T103525.200.json
+
+###
+
+POST http://localhost:8080/api/transfer/create
+Content-Type: application/json
+
+{
+  "id": null,
+  "fromFundId": "GROCERY_FUND",
+  "toFundId": "DRESS_FUND",
+  "sum": "10000"
+}
+
+<> 2019-02-18T103518.200.json
 
 ###
 
 GET http://localhost:8080/api/statistic/create
 
-<> 2019-01-27T092900.200.json
+<> 2019-02-18T103503.200.json
 
 ###
 
@@ -369,10 +89,21 @@ Content-Type: application/json
 
 {
   "id": "BALL",
-  "name": "Bicycle"
+  "name": "Bicycle",
+  "specification": "bicycle spec",
+  "defaultUnit": {
+    "id": "pc",
+    "name": "peaces"
+  }
 }
 
-<> 2019-01-27T092855.200.json
+<> 2019-02-18T103434.200.json
+
+###
+
+GET http://localhost:8080/api/product/all
+
+<> 2019-02-18T103150.200.json
 
 ###
 
@@ -381,16 +112,38 @@ Content-Type: application/json
 
 {
   "id": null,
-  "name": "Bicycle"
+  "name": "Bicycle",
+  "specification": "bicycle spec",
+  "defaultUnit": {
+    "id": "pc",
+    "name": "peaces"
+  }
 }
 
-<> 2019-01-27T092848.200.json
+<> 2019-02-18T103137.200.json
+
+###
+
+POST http://localhost:8080/api/product/create
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "Bicycle",
+  "specification": "bicycle spec",
+  "unit": {
+    "id": "pc",
+    "name": "peaces"
+  }
+}
+
+<> 2019-02-18T102750.500.json
 
 ###
 
 GET http://localhost:8080/api/product/all
 
-<> 2019-01-27T092846.200.json
+<> 2019-02-18T102713.200.json
 
 ###
 
@@ -398,11 +151,11 @@ POST http://localhost:8080/api/item/deleteAndFindFund
 Content-Type: application/json
 
 {
-  "itemId": "4028b8816890a2f1016890a4976f0001",
+  "itemId": "4028b881690248e60169024a03320001",
   "fundId": "GROCERY_FUND"
 }
 
-<> 2019-01-27T092819.500.json
+<> 2019-02-18T102702.200.json
 
 ###
 
@@ -412,22 +165,22 @@ Content-Type: application/json
 {
   "id": null,
   "type": "INCOME",
-  "amount": "836555",
+  "cost": "836555",
+  "amount": "255",
   "date": null,
   "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato"
-  }
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
 }
 
-<> 2019-01-27T092809.200.json
+<> 2019-02-18T102638.200.json
 
 ###
 
-GET http://localhost:8080/api/fund/delete/4028b8816890a2f1016890a3df1e0000
+GET http://localhost:8080/api/fund/delete/4028b881690248e60169024960ef0000
 
-<> 2019-01-27T092755.500.json
+<> 2019-02-18T102620.200.json
 
 ###
 
@@ -440,112 +193,545 @@ Content-Type: application/json
   "startDate": null
 }
 
-<> 2019-01-27T092749.200.json
+<> 2019-02-18T102557.200.json
+
+###
+
+POST http://localhost:8080/api/fund/create
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "New Name1",
+  "startDate": null
+}
+
+<> 2019-02-18T102419.200.json
 
 ###
 
 GET http://localhost:8080/api/fund/all
 
-<> 2019-01-27T092746.200.json
+<> 2019-02-18T102406.200.json
 
 ###
 
 GET http://localhost:8080/api/fund/GROCERY_FUND
 
-<> 2019-01-27T092743.200.json
+<> 2019-02-18T102356.200.json
 
 ###
 
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T092704.200.json
-
-###
-
-POST http://localhost:8080/api/transfer/create
+POST http://localhost:8080/api/item/saveAndFindFund
 Content-Type: application/json
 
 {
   "id": null,
-  "fromFundId": "GROCERY_FUND",
-  "toFundId": "DRESS_FUND",
-
-  "sum": "10000"
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
 }
 
-<> 2019-01-27T092702.200.json
+<> 2019-02-17T111229.200.json
 
 ###
 
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T092641.200.json
-
-###
-
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T092603.200.json
-
-###
-
-POST http://localhost:8080/api/transfer/create
+POST http://localhost:8080/api/item/saveAndFindFund
 Content-Type: application/json
 
 {
   "id": null,
-  "fromFundId": "GROCERY_FUND",
-  "toFundId": "DRESS_FUND",
-
-  "sum": "10000"
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
 }
 
-<> 2019-01-27T092503.200.json
+<> 2019-02-17T094944.500.json
 
 ###
 
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T092438.200.json
-
-###
-
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T091203.500.json
-
-###
-
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T090906.500.json
-
-###
-
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T085501.500.json
-
-###
-
-GET http://localhost:8080/api/transfer/all
-
-<> 2019-01-27T085201.500.json
-
-###
-
-POST http://localhost:8080/api/transfer/create
+POST http://localhost:8080/api/item/saveAndFindFund
 Content-Type: application/json
 
 {
   "id": null,
-  "fromFundId": "GROCERY_FUND",
-  "toFundId": "DRESS_FUND",
-
-  "sum": "10000"
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
 }
 
-<> 2019-01-27T085153.200.json
+<> 2019-02-17T093944.500.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T092716.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T092545.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T092213.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T092052.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T075906.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T074213.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPosition": {
+    "id": "POTAT",
+    "product": {
+      "id": "POTATO",
+      "name": "Potato",
+      "defaultUnit": {
+        "id": "kg",
+        "name": "kilogram"
+      }
+    },
+    "specification": "POTATO spec"
+  },
+  "unit": {
+    "id": "kg",
+    "name": "kilogram"
+  },
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T072911.500.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPosition": {
+    "id": null,
+    "product": {
+      "id": "POTATO",
+      "name": "Potato",
+      "defaultUnit": {
+        "id": "kg",
+        "name": "kilogram"
+      }
+    },
+    "specification": "POTATO spec"
+  },
+  "unit": {
+    "id": "kg",
+    "name": "kilogram"
+  },
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T072732.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPosition": {
+    "id": "POTATO_SPEC",
+    "product": {
+      "id": "POTATO",
+      "name": "Potato",
+      "defaultUnit": {
+        "id": "kg",
+        "name": "kilogram"
+      }
+    },
+    "specification": "POTATO spec"
+  },
+  "unit": {
+    "id": "kg",
+    "name": "kilogram"
+  },
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T071241.500.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPosition": {
+    "id": "POTATO_SPEC",
+    "product": {
+      "id": "POTATO",
+      "name": "Potato",
+      "defaultUnit": {
+        "id": "kg",
+        "name": "kilogram"
+      }
+    },
+    "specification": "POTATO spec"
+  },
+  "unit": {
+    "id": "kg",
+    "name": "kilogram"
+  },
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T070234.500.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPosition": {
+    "id": "POTATO_SPEC",
+    "product": {
+      "id": "POTATO",
+      "name": "Potato",
+      "defaultUnit": {
+        "id": "kg",
+        "name": "kilogram"
+      }
+    },
+    "specification": "POTATO spec"
+  },
+  "unit": {
+    "id": "kg",
+    "name": "kilogram"
+  },
+  "comment": "Item comment"
+}
+
+<> 2019-02-17T070204.500.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPosition": {
+    "id": "POTATO_SPEC",
+    "product": {
+      "id": "POTATO",
+      "name": "Potato",
+      "defaultUnit": {
+        "id": "kg",
+        "name": "kilogram"
+      },
+      "specification": "POTATO spec"
+    },
+    "unit": {
+      "id": "kg",
+      "name": "kilogram"
+    },
+    "comment": "Item comment"
+  }
+}
+
+<> 2019-02-17T070140.500.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "productPosition": {
+    "id": "POTATO_SPEC",
+    "product": {
+      "id": "POTATO",
+      "name": "Potato",
+      "defaultUnit": {
+        "id": "kg",
+        "name": "kilogram"
+      },
+      "specification": "POTATO spec"
+    },
+    "unit": {
+      "id": "kg",
+      "name": "kilogram"
+    },
+    "comment": "Item comment"
+  }
+}
+
+<> 2019-02-17T065203.500.json
+
+###
+
+GET http://localhost:8080/api/fund/delete/8a7f618f68fc57280168fc581ca50000
+
+<> 2019-02-17T064443.200.json
+
+###
+
+POST http://localhost:8080/api/fund/create
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "New Name1",
+  "startDate": null
+}
+
+<> 2019-02-17T064419.200.json
+
+###
+
+GET http://localhost:8080/api/fund/all
+
+<> 2019-02-17T064410.200.json
+
+###
+
+GET http://localhost:8080/api/fund/GROCERY_FUND
+
+<> 2019-02-17T064326.200.json
+
+###
+
+GET http://localhost:8080/api/fund/GROCERY_FUND
+
+<> 2019-02-17T044322.500.json
+
+###
+
+GET http://localhost:8080/api/fund/GROCERY_FUND
+
+<> 2019-02-17T125828.200.json
+
+###
+
+GET http://localhost:8080/api/fund/GROCERY_FUND
+
+<> 2019-02-16T113342.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": "4028b88168f828a10168f8296afe0000",
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "product": {
+    "id": "POTATO",
+    "name": "Potato",
+    "specification": "pot",
+    "unit": {
+      "id": "m",
+      "name": "meter"
+    }
+  }
+}
+
+<> 2019-02-16T113331.200.json
+
+###
+
+GET http://localhost:8080/api/fund/GROCERY_FUND
+
+<> 2019-02-16T111520.200.json
+
+###
+
+POST http://localhost:8080/api/item/saveAndFindFund
+Content-Type: application/json
+
+{
+  "id": null,
+  "type": "INCOME",
+  "cost": "836555",
+  "amount": "255",
+  "date": null,
+  "fundId": "GROCERY_FUND",
+  "product": {
+    "id": "POTATO",
+    "name": "Potato",
+    "specification": "pot",
+    "unit": {
+      "id": "m",
+      "name": "meter"
+    }
+  }
+}
+
+<> 2019-02-16T111450.200.json
+
+###
+
+GET http://localhost:8080/api/fund/delete/GROCERY_FUND
+
+<> 2019-02-16T111328.200.json
 
 ###
 

@@ -2,12 +2,12 @@ package com.feature.item.transformer;
 
 import com.feature.item.dto.ItemDto;
 import com.feature.item.model.Item;
-import com.feature.product.transformer.ProductTransformer;
+import com.feature.prodposition.transformer.ProductPositionTransformer;
 import org.mapstruct.*;
 
 import static org.mapstruct.InjectionStrategy.CONSTRUCTOR;
 
-@Mapper(uses = ProductTransformer.class, injectionStrategy = CONSTRUCTOR)
+@Mapper(uses = {ProductPositionTransformer.class}, injectionStrategy = CONSTRUCTOR)
 public interface ItemTransformer {
 
     @Mappings({
@@ -17,7 +17,10 @@ public interface ItemTransformer {
             @Mapping(source = "amount", target = "amount"),
             @Mapping(source = "date", target = "date"),
             @Mapping(source = "fundId", target = "fundId"),
-            @Mapping(source = "product", target = "product")
+            @Mapping(source = "productPositionId", target = "productPositionId"),
+            @Mapping(source = "productPosition", target = "productPosition"),
+            @Mapping(source = "unitId", target = "unitId"),
+            @Mapping(source = "comment", target = "comment")
     })
     ItemDto toDto(Item item);
 

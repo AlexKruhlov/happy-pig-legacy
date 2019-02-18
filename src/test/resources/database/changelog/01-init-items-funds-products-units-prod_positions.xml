@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="0005" author="alkruglov" runAlways="true">
+    <changeSet id="0006" author="alkruglov" runAlways="true">
         <insert tableName="funds">
             <column name="id">GROCERY_FUND</column>
             <column name="name">Grocery</column>
@@ -19,29 +19,67 @@
         </insert>
     </changeSet>
 
-    <changeSet id="0006" author="alkruglov" runAlways="true">
+    <changeSet id="0007" author="alkruglov" runAlways="true">
+        <insert tableName="units">
+            <column name="id">kg</column>
+            <column name="name">kilogram</column>
+        </insert>
+        <insert tableName="units">
+            <column name="id">pc</column>
+            <column name="name">peaces</column>
+        </insert>
+        <insert tableName="units">
+            <column name="id">m</column>
+            <column name="name">meter</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="0008" author="alkruglov" runAlways="true">
         <insert tableName="products">
             <column name="id">POTATO</column>
             <column name="name">Potato</column>
+            <column name="default_unit_id">pc</column>
         </insert>
         <insert tableName="products">
             <column name="id">SALT</column>
             <column name="name">Salt</column>
+            <column name="default_unit_id">kg</column>
         </insert>
         <insert tableName="products">
             <column name="id">BALL</column>
             <column name="name">Ball</column>
+            <column name="default_unit_id">pc</column>
         </insert>
     </changeSet>
 
-    <changeSet id="0007" author="alkruglov" runAlways="true">
+    <changeSet id="0009" author="alkruglov" runAlways="true">
+        <insert tableName="product_positions">
+            <column name="id">SALT_SPEC</column>
+            <column name="product_id">SALT</column>
+            <column name="specification">SALT Spec</column>
+        </insert>
+        <insert tableName="product_positions">
+            <column name="id">POTATO_SPEC</column>
+            <column name="product_id">POTATO</column>
+            <column name="specification">POTATO Spec</column>
+        </insert>
+        <insert tableName="product_positions">
+            <column name="id">BALL_SPEC</column>
+            <column name="product_id">BALL</column>
+            <column name="specification">BALL Spec</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="0010" author="alkruglov" runAlways="true">
         <insert tableName="items">
             <column name="id">ITEM_0000001</column>
             <column name="type">INCOME</column>
             <column name="cost">100000</column>
             <column name="amount">50</column>
             <column name="fund_id">GROCERY_FUND</column>
-            <column name="product_id">POTATO</column>
+            <column name="product_position_id">POTATO_SPEC</column>
+            <column name="comment">POTATO comments</column>
+            <column name="unit_id">kg</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000002</column>
@@ -49,7 +87,9 @@
             <column name="cost">50000</column>
             <column name="amount">589</column>
             <column name="fund_id">GROCERY_FUND</column>
-            <column name="product_id">BALL</column>
+            <column name="product_position_id">BALL_SPEC</column>
+            <column name="comment">BALL comments</column>
+            <column name="unit_id">pc</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000003</column>
@@ -57,7 +97,9 @@
             <column name="cost">100000</column>
             <column name="amount">5923</column>
             <column name="fund_id">DRESS_FUND</column>
-            <column name="product_id">SALT</column>
+            <column name="product_position_id">SALT_SPEC</column>
+            <column name="comment">SALT comments</column>
+            <column name="unit_id">kg</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000004</column>
@@ -65,7 +107,9 @@
             <column name="cost">200000</column>
             <column name="amount">3332</column>
             <column name="fund_id">DRESS_FUND</column>
-            <column name="product_id">POTATO</column>
+            <column name="product_position_id">POTATO_SPEC</column>
+            <column name="comment">POTATO comments</column>
+            <column name="unit_id">kg</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000005</column>
@@ -73,7 +117,9 @@
             <column name="cost">100000</column>
             <column name="amount">40</column>
             <column name="fund_id">DRESS_FUND</column>
-            <column name="product_id">BALL</column>
+            <column name="product_position_id">BALL_SPEC</column>
+            <column name="comment">BALL comments</column>
+            <column name="unit_id">pc</column>
         </insert>
         <insert tableName="items">
             <column name="id">ITEM_0000006</column>
@@ -81,7 +127,9 @@
             <column name="cost">80000</column>
             <column name="amount">34</column>
             <column name="fund_id">RENTAL_FUND</column>
-            <column name="product_id">SALT</column>
+            <column name="product_position_id">SALT_SPEC</column>
+            <column name="comment">SALT comments</column>
+            <column name="unit_id">kg</column>
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,96 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="0001" author="alkruglov" runAlways="true">
+        <createTable tableName="funds" remarks="A table to contain all funds">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="TIMESTAMP WITH TIME ZONE" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0002" author="alkruglov" runAlways="true">
+        <createTable tableName="units" remarks="A table to contain all units of measurement">
+            <column name="id" type="varchar(20)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0003" author="alkruglov" runAlways="true">
+        <createTable tableName="products" remarks="A table to contain all products">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_unit_id" type="varchar(32)">
+                <constraints nullable="false" foreignKeyName="products_default_unit_id_units_id"
+                             referencedTableName="units" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0004" author="alkruglov" runAlways="true">
+        <createTable tableName="product_positions" remarks="A table to contain specifications for products">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="specification" type="varchar(100)">
+                <constraints nullable="false" unique="false" primaryKey="true"/>
+            </column>
+            <column name="product_id" type="varchar(32)">
+                <constraints nullable="false" unique="false" primaryKey="true"
+                             foreignKeyName="product_positions_product_id_product_id" referencedTableName="products"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0005" author="alkruglov" runAlways="true">
+        <createTable tableName="items" remarks="A table to contain all fund items">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="type" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cost" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="bigint"/>
+            <column name="date" type="TIMESTAMP WITH TIME ZONE" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fund_id" type="varchar(32)">
+                <constraints nullable="false" foreignKeyName="items_fund_id_funds_id" referencedTableName="funds"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="product_position_id" type="varchar(32)">
+                <constraints nullable="false" foreignKeyName="items_product_position_id_product_positions_id"
+                             referencedTableName="product_positions" referencedColumnNames="id"/>
+            </column>
+            <column name="unit_id" type="varchar(32)">
+                <constraints nullable="false" foreignKeyName="items_unit_id_units_id" referencedTableName="units"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="comment" type="varchar(1000)"/>
+            <column name="deleted" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

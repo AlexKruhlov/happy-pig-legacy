@@ -45,15 +45,9 @@ Content-Type: application/json
   "amount": "255",
   "date": null,
   "fundId": "GROCERY_FUND",
-  "product": {
-    "id": "POTATO",
-    "name": "Potato",
-    "specification": "potato specification",
-    "unit": {
-      "id": "kg",
-      "name": "kilogram"
-    }
-  }
+  "productPositionId": "POTATO_SPEC",
+  "unitId": "kg",
+  "comment": "Item comment"
 }
 
 
@@ -88,7 +82,7 @@ Content-Type: application/json
   "id": null,
   "name": "Bicycle",
   "specification": "bicycle spec",
-  "unit":{
+  "defaultUnit": {
     "id": "pc",
     "name": "peaces"
   }
@@ -104,7 +98,7 @@ Content-Type: application/json
   "id": "BALL",
   "name": "Bicycle",
   "specification": "bicycle spec",
-  "unit":{
+  "defaultUnit": {
     "id": "pc",
     "name": "peaces"
   }
@@ -167,7 +161,7 @@ Content-Type: application/json
 }
 
 
-### Create new unit
+### Delete new unit
 
 POST http://localhost:8080/api/unit/delete/ml
 

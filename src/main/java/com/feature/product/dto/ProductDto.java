@@ -13,6 +13,5 @@ import lombok.*;
 public class ProductDto {
     private String id;
     private String name;
-    private String specification;
-    private UnitDto unit;
+    private UnitDto defaultUnit;
 }

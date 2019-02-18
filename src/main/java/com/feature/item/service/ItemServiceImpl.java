@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import static java.util.Objects.nonNull;
+
 @Service
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
@@ -34,18 +36,21 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     @Transactional
-    public FundDtoWithItemsAndTransferFunds deleteByIdAndFindCurrentFund(String itemId, String fundId) {
-        itemRepository.deleteById(itemId);
-        itemRepository.flush();
-        return fundService.findById(fundId);
+    public FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(ItemDto itemDto) {
+        Item item = itemTransformer.fromDto(itemDto);
+        itemRepository.saveAndFlush(item);
+        itemRepository.refresh(item);
+        return fundService.findById(item.getFundId());
     }
 
     @Override
     @Transactional
-    public FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(ItemDto itemDto) {
-        Item item = itemTransformer.fromDto(itemDto);
-        itemRepository.save(item);
-        itemRepository.flush();
-        return fundService.findById(item.getFundId());
+    public FundDtoWithItemsAndTransferFunds deleteByIdAndFindCurrentFund(String itemId, String fundId) {
+        Item item = itemRepository.findById(itemId).orElse(null);
+        if (nonNull(item)) {
+            item.setDeleted(true);
+            itemRepository.saveAndFlush(item);
+        }
+        return fundService.findById(fundId);
     }
 }

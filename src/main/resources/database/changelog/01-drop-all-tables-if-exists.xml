@@ -12,6 +12,7 @@
             drop table if exists transfers cascade;
             drop table if exists transfer_funds cascade;
             drop table if exists units cascade;
+            drop table if exists product_positions;
         </sql>
     </changeSet>
 </databaseChangeLog>
