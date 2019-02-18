@@ -5,10 +5,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="changelog/01-drop-all-tables-if-exists.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/02-create-item-fund-product.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/02-init-items-funds-tables.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/02-create-items-funds-products-prod_positions-units.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/02-init-items-funds-products-units-prod_positions.xml" relativeToChangelogFile="true"/>
     <include file="changelog/03-create-transfer-transferfund.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/04-create-units.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/04-init-units.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/04-updates.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

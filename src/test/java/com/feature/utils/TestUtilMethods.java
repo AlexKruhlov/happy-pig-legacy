@@ -1,5 +1,7 @@
 package com.feature.utils;
 
+import com.feature.prodposition.dto.ProductPositionDto;
+import com.feature.product.dto.ProductDto;
 import com.feature.transfer.model.Transfer;
 import com.feature.transfer.model.TransferFund;
 import com.feature.transfer.model.TransferFundId;
@@ -12,6 +14,23 @@ public class TestUtilMethods {
     public static String GROCERY_FUND = "GROCERY_FUND";
     public static String RENTAL_FUND = "RENTAL_FUND";
     public static String DRESS_FUND = "DRESS_FUND";
+
+    public static String PC_UNIT_ID = "pc";
+    public static UnitDto PC_UNIT_DTO = UnitDto.builder()
+            .id(PC_UNIT_ID)
+            .name("peaces").build();
+
+    public static String BALL_PRODUCT_ID = "BALL";
+    public static ProductDto BALL_PRODUCT_DTO = ProductDto.builder()
+            .id(BALL_PRODUCT_ID)
+            .name("Ball")
+            .defaultUnit(PC_UNIT_DTO).build();
+
+    public static String BALL_PRODUCT_POSITION_ID = "BALL_SPEC";
+    public static ProductPositionDto BALL_PRODUCT_POSITION_DTO = ProductPositionDto.builder()
+            .id(BALL_PRODUCT_POSITION_ID)
+            .specification("BALL spec")
+            .product(BALL_PRODUCT_DTO).build();
 
     public static UnitDto KG_UNIT_DTO = UnitDto.builder().id("kg").name("kilogram").build();
 

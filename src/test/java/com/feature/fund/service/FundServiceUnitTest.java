@@ -7,7 +7,7 @@ import com.feature.fund.transformer.FundTransformer;
 import com.feature.fund.transformer.FundTransformerImpl;
 import com.feature.item.model.Item;
 import com.feature.item.transformer.ItemTransformerImpl;
-import com.feature.product.transformer.ProductTransformerImpl;
+import com.feature.prodposition.transformer.ProductPositionTransformerImpl;
 import com.feature.transfer.model.TransferFund;
 import com.feature.transfer.model.TransferType;
 import com.feature.transfer.transformer.TransferFundTransformerImpl;
@@ -44,7 +44,7 @@ public class FundServiceUnitTest {
     @Spy
     private FundTransformer fundTransformer = new FundTransformerImpl(
             new TransferFundTransformerImpl(),
-            new ItemTransformerImpl(new ProductTransformerImpl()));
+            new ItemTransformerImpl(new ProductPositionTransformerImpl()));
 
     @InjectMocks
     private FundServiceImpl fundService;

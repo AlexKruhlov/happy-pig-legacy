@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="005" author="alkruglov">
+    <changeSet id="0011" author="alkruglov" runAlways="true">
         <createTable tableName="transfers" remarks="A table to contain all transfers">
             <column name="id" type="varchar(32)">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
@@ -16,6 +16,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="0012" author="alkruglov" runAlways="true">
         <createTable tableName="transfer_funds" remarks="A table to contain all transfer funds">
             <column name="transfer_id" type="varchar(32)">
                 <constraints nullable="false" primaryKey="true"/>
@@ -27,10 +30,12 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
         <addForeignKeyConstraint baseTableName="transfer_funds" baseColumnNames="transfer_id"
                                  constraintName="transfer_funds_transfer_id_transfer_id"
                                  referencedTableName="transfers"
                                  referencedColumnNames="id"/>
+
         <addForeignKeyConstraint baseTableName="transfer_funds" baseColumnNames="fund_id"
                                  constraintName="transfer_funds_fund_id_fund_id"
                                  referencedTableName="funds"

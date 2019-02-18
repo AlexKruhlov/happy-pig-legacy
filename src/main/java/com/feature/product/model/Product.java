@@ -24,10 +24,7 @@ public class Product implements Serializable {
     @Column
     private String name;
 
-    @Column(name = "specification", length = 100)
-    private String specification;
-
     @ManyToOne
-    @JoinColumn(name = "unit_id")
-    private Unit unit;
+    @JoinColumn(name = "default_unit_id")
+    private Unit defaultUnit;
 }
