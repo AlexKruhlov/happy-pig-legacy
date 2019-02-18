@@ -15,7 +15,7 @@ import { Fund } from '../models/fund';
 export class ItemsComponent implements OnInit, OnDestroy {
   fund: Fund;
   sub: any;
-  displayedColumns: string[] = ['position', 'type', 'product', 'amount', 'date', 'action'];
+  displayedColumns: string[] = ['position', 'type', 'product', 'cost', 'amount', 'unit', 'date', 'action'];
   emptyItem: Item;
 
   constructor(
@@ -25,9 +25,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.getFund(params['id']);
-    });
+    this.sub = this.route.params.subscribe(params => this.getFund(params['id']));
   }
 
   getFund( id: string ): void {
@@ -37,7 +35,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
     });
   }
 
-  openDialog( item: any, title: string ): void {
+  openDialog( item: Item, title: string ): void {
     const dialogRef = this.dialog.open(ItemFundModalComponent, {
       width: '650px',
       data: {item: {...item}, modalTitle: title}
@@ -50,33 +48,31 @@ export class ItemsComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateFund( item: any ): void {
-    this.fundService.saveAndFindFund(item).subscribe(res => {
-      this.fund = {...res};
-    });
+  updateFund( item: Item ): void {
+    this.fundService.saveAndFindFund(item).subscribe(res => this.fund = {...res});
   }
 
-  onDeleteItem( fund ) {
-    this.openConfirmationDialog(fund);
-  }
+  onDeleteItem = ( item: Item ) => this.openConfirmationDialog(item);
 
-  openConfirmationDialog( fund ) {
+  openConfirmationDialog( item ) {
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       width: '450px',
       data: {title: 'Item'}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.afterClosedConfirmDialog(dialogRef, item);
+  }
+
+  afterClosedConfirmDialog (modal, item: Item) {
+    modal.afterClosed().subscribe(result => {
       if (result) {
-        this.removeItem(fund);
+        this.removeItem(item);
       }
     });
   }
 
-  removeItem( fund ) {
-    this.fundService.deleteItem(fund.id, fund.fundId).subscribe(res => {
-      this.fund = {...res};
-    });
+  removeItem( item: Item ) {
+    this.fundService.deleteItem(item.id, item.fundId).subscribe(res => this.fund = {...res});
   }
 
   ngOnDestroy() {

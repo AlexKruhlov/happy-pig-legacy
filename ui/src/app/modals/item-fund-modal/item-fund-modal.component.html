@@ -2,60 +2,79 @@
   <h2 mat-dialog-title>{{data.modalTitle}}</h2>
 
   <mat-dialog-content>
-    <form #itemForm="ngForm"
-          novalidate>
+
+    <form [formGroup]="itemForm" novalidate>
+
       <div fxLayout="row"
            fxLayoutAlign="space-between center">
 
-        <mat-form-field class="w-100">
-          <input matInput
-                 type="number"
-                 [ngModel]="data.item.amount | convertToHigherNominal"
-                 (input)="onConvertToPennies($event.target.value)"
-                 name="amount"
-                 #amount="ngModel"
-                 required
-                 pattern="[0-9]*"
-                 placeholder="Amount">
-          <mat-icon matSuffix>attach_money</mat-icon>
-          <mat-error *ngIf="amount.invalid">
-            Please enter a valid amount
-          </mat-error>
+        <mat-form-field class="w-100 ml-2">
+          <mat-select formControlName="product"
+                      placeholder="Product">
+            <mat-option *ngFor="let product of products"
+                        [value]="product.name">
+              {{product.name}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field class="w-100 ml-2">
-          <mat-select [(ngModel)]="data.item.type"
-                      name="type"
-                      #type="ngModel"
-                      min="1"
-                      required
+          <input matInput
+                 type="number"
+                 formControlName="cost"
+                 onlyNumber="true"
+                 placeholder="Cost">
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="row"
+           fxLayoutAlign="space-between center">
+
+        <mat-form-field class="w-100 ml-2">
+          <input matInput
+                 type="number"
+                 formControlName="amount"
+                 onlyNumber="true"
+                 placeholder="Amount">
+        </mat-form-field>
+
+        <mat-form-field class="w-100 ml-2">
+          <mat-select formControlName="unit"
+                      name="unit"
+                      placeholder="Unit">
+            <mat-option *ngFor="let unit of units"
+                        [value]="unit.name">
+              {{unit.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+      <div fxLayout="row"
+           fxLayoutAlign="space-between center">
+
+        <mat-form-field class="w-100 ml-2">
+          <mat-select formControlName="type"
                       placeholder="Type">
             <mat-option *ngFor="let type of typeOption"
                         [value]="type.value">
               {{type.viewValue}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="type.invalid">
-            Please enter a valid type
-          </mat-error>
         </mat-form-field>
+
+        <mat-form-field class="w-100 ml-2">
+          <input matInput
+                 formControlName="specification"
+                 placeholder="Specification">
+        </mat-form-field>
+
       </div>
 
-      <mat-form-field class="w-50">
-        <mat-select [(ngModel)]="data.item.product.name"
-                    name="product"
-                    #product="ngModel"
-                    required
-                    placeholder="Product">
-          <mat-option *ngFor="let product of products"
-                      [value]="product.name">
-            {{product.name}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="product.invalid">
-          Please enter a valid product
-        </mat-error>
-      </mat-form-field>
     </form>
 
   </mat-dialog-content>
@@ -64,8 +83,8 @@
     <button mat-button
             (click)="onNoClick()">CANCEL</button>
     <button mat-button
+            [disabled] = "itemForm.invalid || itemForm.pristine"
             [mat-dialog-close]="data.item"
-            (click)="changeFund()"
-            [disabled] = "!itemForm.valid || data.item.amount <= 0 || itemForm.pristine">SAVE</button>
+            (click)="changeFund()">SAVE</button>
   </div>
 </div>

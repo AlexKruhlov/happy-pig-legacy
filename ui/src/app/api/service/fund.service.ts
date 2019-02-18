@@ -5,6 +5,7 @@ import { URL } from '../requestPath';
 import { Fund } from '../../models/fund';
 import {Product} from '../../models/product';
 import {Item} from '../../models/item';
+import {Unit} from '../../models/unit';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,15 @@ export class FundService {
     return this.http.get<Fund>(`${URL}/fund/${id}`);
   }
 
-  findAllProducts(): Observable<Product[]>{
+  findAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${URL}/product/all`);
   }
 
-  deleteFund(fundId): Observable<Fund[]>{
+  findAllUnits(): Observable<Unit[]> {
+    return this.http.get<Unit[]>(`${URL}/unit/all`);
+  }
+
+  deleteFund(fundId): Observable<Fund[]> {
     return this.http.get<Fund[]>(`${URL}/fund/delete/${fundId}`);
   }
 
