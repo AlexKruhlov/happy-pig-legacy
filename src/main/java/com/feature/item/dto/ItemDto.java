@@ -1,6 +1,7 @@
 package com.feature.item.dto;
 
 import com.feature.prodposition.dto.ProductPositionDto;
+import com.feature.unit.dto.UnitDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -21,6 +22,6 @@ public class ItemDto {
     private String fundId;
     private ProductPositionDto productPosition;
     private String productPositionId;
-    private String unitId;
+    private UnitDto unit;
     private String comment;
 }

@@ -46,7 +46,10 @@ Content-Type: application/json
   "date": null,
   "fundId": "GROCERY_FUND",
   "productPositionId": "POTATO_SPEC",
-  "unitId": "kg",
+  "unit": {
+    "id": "kg",
+    "name": "kilogram"
+  },
   "comment": "Item comment"
 }
 
