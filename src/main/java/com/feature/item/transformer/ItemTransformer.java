@@ -19,7 +19,7 @@ public interface ItemTransformer {
             @Mapping(source = "fundId", target = "fundId"),
             @Mapping(source = "productPositionId", target = "productPositionId"),
             @Mapping(source = "productPosition", target = "productPosition"),
-            @Mapping(source = "unitId", target = "unitId"),
+            @Mapping(source = "unit", target = "unit"),
             @Mapping(source = "comment", target = "comment")
     })
     ItemDto toDto(Item item);

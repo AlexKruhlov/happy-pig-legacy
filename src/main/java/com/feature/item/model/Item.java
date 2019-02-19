@@ -1,6 +1,7 @@
 package com.feature.item.model;
 
 import com.feature.prodposition.model.ProductPosition;
+import com.feature.unit.model.Unit;
 import lombok.*;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.GenericGenerator;
@@ -12,6 +13,7 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 import static com.api.util.AppConstants.IS_EXISTED;
+import static javax.persistence.CascadeType.MERGE;
 
 @Entity
 @Table(name = "items")
@@ -51,8 +53,9 @@ public class Item implements Serializable {
     @Column(name = "product_position_id")
     private String productPositionId;
 
+    @ManyToOne(cascade = MERGE)
     @JoinColumn(name = "unit_id")
-    private String unitId;
+    private Unit unit;
 
     @Column(length = 1000)
     private String comment;

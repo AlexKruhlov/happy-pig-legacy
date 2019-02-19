@@ -37,7 +37,7 @@ public class ItemServiceIntegrationTest {
                 .date(now())
                 .fundId(GROCERY_FUND_ID)
                 .productPositionId(BALL_PRODUCT_POSITION_ID)
-                .unitId(PC_UNIT_ID)
+                .unit(PC_UNIT_DTO)
                 .comment("some comment").build();
 
         FundDtoWithItemsAndTransferFunds fundDtoWithNewItem = itemService.saveAndFindCurrentFund(itemDto);

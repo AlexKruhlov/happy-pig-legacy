@@ -46,7 +46,10 @@ Content-Type: application/json
   "date": null,
   "fundId": "GROCERY_FUND",
   "productPositionId": "POTATO_SPEC",
-  "unitId": "kg",
+  "unit": {
+    "id": "kg",
+    "name": "kilogram"
+  },
   "comment": "Item comment"
 }
 
@@ -164,5 +167,15 @@ Content-Type: application/json
 ### Delete new unit
 
 POST http://localhost:8080/api/unit/delete/ml
+
+
+
+###========================================================================
+###========================   PRODUCT POSITION   ==========================
+###========================================================================
+
+### Find product positions by product id
+
+GET http://localhost:8080/api/prodposition/find/product/BALL
 
 ###

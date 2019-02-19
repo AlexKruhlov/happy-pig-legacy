@@ -20,13 +20,14 @@ public class TestUtilMethods {
             .id(PC_UNIT_ID)
             .name("peaces").build();
 
+    public static String PIPE_PRODUCT_ID = "PIPE";
     public static String BALL_PRODUCT_ID = "BALL";
     public static ProductDto BALL_PRODUCT_DTO = ProductDto.builder()
             .id(BALL_PRODUCT_ID)
             .name("Ball")
             .defaultUnit(PC_UNIT_DTO).build();
 
-    public static String BALL_PRODUCT_POSITION_ID = "BALL_SPEC";
+    public static String BALL_PRODUCT_POSITION_ID = "BALL_SPEC_1";
     public static ProductPositionDto BALL_PRODUCT_POSITION_DTO = ProductPositionDto.builder()
             .id(BALL_PRODUCT_POSITION_ID)
             .specification("BALL spec")
