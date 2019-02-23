@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.api.util.AppConstants.IS_EXISTED;
 import static com.feature.fund.model.Fund.FIND_ALL;
 import static com.feature.transfer.model.TransferFund.FUND_ID_FIELD_NAME;
 
@@ -23,6 +25,7 @@ import static com.feature.transfer.model.TransferFund.FUND_ID_FIELD_NAME;
 @Table(name = "funds")
 @NamedQueries({
         @NamedQuery(name = FIND_ALL, query = "select f from Fund f")})
+@Where(clause = IS_EXISTED)
 @Builder
 @Getter
 @Setter
@@ -59,4 +62,7 @@ public class Fund implements Serializable {
 
     @Transient
     private BigInteger expense;
+
+    @Column
+    private boolean deleted;
 }

@@ -2,6 +2,7 @@ package com.api.fund.service;
 
 import com.feature.fund.dto.FundDto;
 import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
+import com.feature.fund.model.Fund;
 
 import java.util.List;
 
@@ -58,11 +59,11 @@ public interface FundService {
     List<FundDto> saveAndFindAll(FundDto fundDto);
 
     /**
-     * Deletes fund with particular id and finds all funds
+     * Delete (logically) {@link Fund} with particular id, find all funds, transform
+     * into {@link FundDto} objects and return them
      *
      * @param id fund id
-     * @return list of fund dtos
-     * @see FundDto
+     * @return list of {@link FundDto} objects
      */
     List<FundDto> deleteByIdAndFindAll(String id);
 }
