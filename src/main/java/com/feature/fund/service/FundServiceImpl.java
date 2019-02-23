@@ -85,7 +85,11 @@ public class FundServiceImpl implements FundService {
     @Override
     @Transactional
     public List<FundDto> deleteByIdAndFindAll(String id) {
-        fundRepository.deleteById(id);
+        Fund fund = fundRepository.findById(id).orElse(null);
+        if (nonNull(fund)){
+            fund.setDeleted(true);
+            fundRepository.saveAndFlush(fund);
+        }
         return findAll();
     }
 

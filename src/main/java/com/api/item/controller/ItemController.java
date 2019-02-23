@@ -11,15 +11,6 @@ import java.util.Map;
 public interface ItemController {
 
     /**
-     * Deletes the item with the particular id and finds current fund dto
-     *
-     * @param payload object with item id
-     * @return fund dto with the same id
-     * @see FundDtoWithItemsAndTransferFunds
-     */
-    FundDtoWithItemsAndTransferFunds deleteByIdAndFindFund(Map<String, String> payload);
-
-    /**
      * Saves the item and finds current fund dto
      *
      * @param itemDto item dto
@@ -27,4 +18,13 @@ public interface ItemController {
      * @see FundDtoWithItemsAndTransferFunds
      */
     FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(ItemDto itemDto);
+
+    /**
+     * Delete (logically) the item with the particular id and finds current fund dto
+     *
+     * @param payload object with item id
+     * @return fund dto with the same id
+     * @see FundDtoWithItemsAndTransferFunds
+     */
+    FundDtoWithItemsAndTransferFunds deleteByIdAndFindFund(Map<String, String> payload);
 }
