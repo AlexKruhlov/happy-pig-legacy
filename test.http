@@ -206,3 +206,29 @@ Content-Type: application/json
 POST http://localhost:8080/api/prodposition/delete/SALT_SPEC
 
 ###
+
+
+
+###========================================================================
+###=======================   BANK INCOME SOURCE   =========================
+###========================================================================
+
+### Find all bank income sources
+GET http://localhost:8080/api/bankincome/source/all
+
+
+### Save or update all bank income sources
+POST http://localhost:8080/api/bankincome/source/save
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "New Source"
+}
+
+
+### Save or update all bank income sources
+POST http://localhost:8080/api/bankincome/source/delete/SALARY
+Content-Type: application/json
+
+###

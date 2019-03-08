@@ -38,6 +38,8 @@ public class TestUtilMethods {
 
     public static String TRANSFER_ID = "TRANSFER_ID";
 
+    public static String BANK_INCOME_SOURCE_ID = "SALARY";
+
     public static String ITEM_ID = "ITEM_0000001";
 
     public static TransferFund createTransferFund(String transferId, String fundId, TransferType transferType, long sum) {
