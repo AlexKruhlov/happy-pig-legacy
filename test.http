@@ -174,8 +174,35 @@ POST http://localhost:8080/api/unit/delete/ml
 ###========================   PRODUCT POSITION   ==========================
 ###========================================================================
 
+### Find all product positions
+
+GET http://localhost:8080/api/prodposition/find/all
+
+
 ### Find product positions by product id
 
 GET http://localhost:8080/api/prodposition/find/product/BALL
+
+
+### Save or update product positions
+POST http://localhost:8080/api/prodposition/save
+Content-Type: application/json
+
+{
+  "id": null,
+  "specification": "New SALT Spec",
+  "product": {
+    "id": "SALT",
+    "name": "Salt",
+    "defaultUnit": {
+      "id": "kg",
+      "name": "kilogram"
+    }
+  }
+}
+
+
+### Delete product position by its id
+POST http://localhost:8080/api/prodposition/delete/SALT_SPEC
 
 ###

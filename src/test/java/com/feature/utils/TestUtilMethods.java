@@ -33,10 +33,6 @@ public class TestUtilMethods {
 
     public static String POTATOE_PRODUCT_POSITION_ID = "POTATO_SPEC";
     public static String BALL_PRODUCT_POSITION_ID = "BALL_SPEC_1";
-    public static ProductPositionDto BALL_PRODUCT_POSITION_DTO = ProductPositionDto.builder()
-            .id(BALL_PRODUCT_POSITION_ID)
-            .specification("BALL spec")
-            .product(BALL_PRODUCT_DTO).build();
 
     public static String GROCERY_TO_RENTAL_TRFUND_ID = "GROCERY_TO_RENTAL";
 
@@ -55,7 +51,7 @@ public class TestUtilMethods {
                 .build();
     }
 
-    public static ItemDto createItemDto(){
+    public static ItemDto createItemDto() {
         return ItemDto.builder()
                 .id(ITEM_ID)
                 .amount("50")
@@ -66,5 +62,12 @@ public class TestUtilMethods {
                 .productPositionId(POTATOE_PRODUCT_POSITION_ID)
                 .unit(PC_UNIT_DTO)
                 .comment("POTATO comments").build();
+    }
+
+    public static ProductPositionDto createProductPositionDto() {
+        return ProductPositionDto.builder()
+                .id(BALL_PRODUCT_POSITION_ID)
+                .specification("BALL spec")
+                .product(BALL_PRODUCT_DTO).build();
     }
 }
