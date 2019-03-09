@@ -1,7 +1,6 @@
 package com.feature.item.repository;
 
 import com.api.item.repository.ItemRepositoryCustom;
-import com.feature.item.model.Item;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,7 +13,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     private EntityManager entityManager;
 
     @Override
-    public void refresh(Item item) {
-        entityManager.refresh(item);
+    public void clear() {
+        entityManager.clear();
     }
 }

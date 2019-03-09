@@ -39,7 +39,7 @@ public class ItemServiceImpl implements ItemService {
     public FundDtoWithItemsAndTransferFunds saveAndFindCurrentFund(ItemDto itemDto) {
         Item item = itemTransformer.fromDto(itemDto);
         itemRepository.saveAndFlush(item);
-        itemRepository.refresh(item);
+        itemRepository.clear();
         return fundService.findById(item.getFundId());
     }
 
