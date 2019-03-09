@@ -8,9 +8,7 @@ import com.feature.item.model.Item;
 public interface ItemRepositoryCustom {
 
     /**
-     * Use cash refreshing of {@link Item}
-     *
-     * @param item item to refresh
+     * Use cash clearing
      */
-    void refresh(Item item);
+    void clear();
 }

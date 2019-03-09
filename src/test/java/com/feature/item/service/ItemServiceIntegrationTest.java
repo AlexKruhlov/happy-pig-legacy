@@ -30,7 +30,35 @@ public class ItemServiceIntegrationTest {
     public void shouldSaveItemAndFindCurrentFund() {
         final int expectedItemListSize = 3;
 
-        ItemDto itemDto = ItemDto.builder()
+        ItemDto itemDto = createNewItemDto();
+
+        FundDtoWithItemsAndTransferFunds fundDtoWithNewItem = itemService.saveAndFindCurrentFund(itemDto);
+
+        assertEquals(expectedItemListSize, fundDtoWithNewItem.getItems().size());
+    }
+
+    @Test
+    public void shouldUpdateItem() {
+        final String cost = "300";
+        ItemDto itemDto = createItemDto();
+        itemDto.setCost(cost);
+
+        ItemDto expectedItemDto = itemService.saveAndFindCurrentFund(itemDto).getItems().stream()
+                .filter(currItemDto -> currItemDto.getId().equals(itemDto.getId()))
+                .findFirst().orElse(null);
+        assertNotNull(expectedItemDto);
+        assertEquals(cost, expectedItemDto.getCost());
+    }
+
+    @Test
+    public void shouldDeleteItemByIdAndFindCurrentFund() {
+        final int expectedItemListSize = 1;
+        FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds = itemService.deleteByIdAndFindCurrentFund(FUND_GROCERY_ITEM_ID, GROCERY_FUND_ID);
+        assertEquals(expectedItemListSize, fundDtoWithItemsAndTransferFunds.getItems().size());
+    }
+
+    private ItemDto createNewItemDto() {
+        return ItemDto.builder()
                 .amount("5")
                 .cost("10")
                 .type(INCOME)
@@ -39,16 +67,5 @@ public class ItemServiceIntegrationTest {
                 .productPositionId(BALL_PRODUCT_POSITION_ID)
                 .unit(PC_UNIT_DTO)
                 .comment("some comment").build();
-
-        FundDtoWithItemsAndTransferFunds fundDtoWithNewItem = itemService.saveAndFindCurrentFund(itemDto);
-
-        assertEquals(expectedItemListSize, fundDtoWithNewItem.getItems().size());
-    }
-
-    @Test
-    public void shouldDeleteItemByIdAndFindCurrentFund() {
-        final int expectedItemListSize = 1;
-        FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds = itemService.deleteByIdAndFindCurrentFund(FUND_GROCERY_ITEM_ID, GROCERY_FUND_ID);
-        assertEquals(expectedItemListSize, fundDtoWithItemsAndTransferFunds.getItems().size());
     }
 }
