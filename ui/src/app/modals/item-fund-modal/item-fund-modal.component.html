@@ -10,7 +10,8 @@
 
         <mat-form-field class="w-100 ml-2">
           <mat-select formControlName="product"
-                      placeholder="Product">
+                      placeholder="Product"
+                      (selectionChange)="changeProduct($event)">
             <mat-option *ngFor="let product of products"
                         [value]="product.name">
               {{product.name}}
@@ -23,7 +24,8 @@
                  type="number"
                  formControlName="cost"
                  onlyNumber="true"
-                 placeholder="Cost">
+                 placeholder="Cost"
+                 [readonly]="!itemForm.value.product">
           <mat-icon matSuffix>attach_money</mat-icon>
         </mat-form-field>
 
@@ -37,7 +39,8 @@
                  type="number"
                  formControlName="amount"
                  onlyNumber="true"
-                 placeholder="Amount">
+                 placeholder="Amount"
+                 [readonly]="!itemForm.value.product">
         </mat-form-field>
 
         <mat-form-field class="w-100 ml-2">
@@ -45,7 +48,8 @@
                       name="unit"
                       placeholder="Unit">
             <mat-option *ngFor="let unit of units"
-                        [value]="unit.name">
+                        [value]="unit.name"
+                        [disabled]="!itemForm.value.product">
               {{unit.name}}
             </mat-option>
           </mat-select>
@@ -61,7 +65,8 @@
           <mat-select formControlName="type"
                       placeholder="Type">
             <mat-option *ngFor="let type of typeOption"
-                        [value]="type.value">
+                        [value]="type.value"
+                        [disabled]="!itemForm.value.product">
               {{type.viewValue}}
             </mat-option>
           </mat-select>
@@ -70,10 +75,24 @@
         <mat-form-field class="w-100 ml-2">
           <input matInput
                  formControlName="specification"
-                 placeholder="Specification">
+                 placeholder="Specification"
+                 [readonly]="!itemForm.value.product"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of specifications"
+                        [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
 
       </div>
+
+      <mat-form-field class="w-100 ml-2">
+          <textarea matInput placeholder="Comment"
+                    formControlName="comment"
+                    [readonly]="!itemForm.value.product"></textarea>
+      </mat-form-field>
 
     </form>
 
@@ -87,4 +106,5 @@
             [mat-dialog-close]="data.item"
             (click)="changeFund()">SAVE</button>
   </div>
+
 </div>

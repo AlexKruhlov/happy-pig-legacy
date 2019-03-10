@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { URL } from '../requestPath';
 import { Fund } from '../../models/fund';
-import {Product} from '../../models/product';
-import {Item} from '../../models/item';
-import {Unit} from '../../models/unit';
+import { Product } from '../../models/product';
+import { Item } from '../../models/item';
+import { Unit } from '../../models/unit';
+import { ProductPosition } from '../../models/productPosition';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class FundService {
 
   findAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${URL}/product/all`);
+  }
+
+  findProductPositionBy( productId: string ): Observable<ProductPosition[]> {
+    return this.http.get<ProductPosition[]>(`${URL}/prodposition/find/product/${productId}`);
   }
 
   findAllUnits(): Observable<Unit[]> {
@@ -54,6 +59,10 @@ export class FundService {
 
   saveFundsToSubject(res): void {
     this.subject.next({ fund: res });
+  }
+
+  saveProductPosition( productPosition: ProductPosition ): Observable<ProductPosition> {
+    return this.http.post<ProductPosition>(`${URL}/prodposition/save`, productPosition);
   }
 
   saveAndFindFund(item: Item): Observable<Fund>  {

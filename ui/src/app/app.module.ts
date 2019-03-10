@@ -30,6 +30,7 @@ import { NewFundComponent } from './modals/new-fund/new-fund.component';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 import { StatisticComponent } from './statistic/statistic.component';
 import { OnlyNumberDirective } from './directives/only-number.directive';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { OnlyNumberDirective } from './directives/only-number.directive';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    MatAutocompleteModule,
     HttpClientModule,
     FlexLayoutModule,
     FormsModule,
