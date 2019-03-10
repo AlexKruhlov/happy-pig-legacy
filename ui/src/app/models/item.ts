@@ -1,4 +1,5 @@
-import { Product } from './product';
+import { ProductPosition } from './productPosition';
+import { Unit } from './unit';
 
 export class Item {
 
@@ -7,6 +8,9 @@ export class Item {
                readonly  cost: string = null,
                readonly  type: string = null,
                readonly  date: string = null,
-               readonly product: Product = new Product(),
-               readonly id: string = null ) {}
+               readonly  comment: string = null,
+               readonly  productPositionId: string = null,
+               readonly unit: Unit = new Unit(),
+               readonly  productPosition: ProductPosition = new ProductPosition(),
+               readonly  id: string = null ) {}
 }

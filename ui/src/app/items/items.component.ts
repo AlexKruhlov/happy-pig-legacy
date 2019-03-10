@@ -37,7 +37,8 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
   openDialog( item: Item, title: string ): void {
     const dialogRef = this.dialog.open(ItemFundModalComponent, {
-      width: '650px',
+      width: '700px',
+      maxWidth: '95%',
       data: {item: {...item}, modalTitle: title}
     });
 
@@ -65,9 +66,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
   afterClosedConfirmDialog (modal, item: Item) {
     modal.afterClosed().subscribe(result => {
-      if (result) {
-        this.removeItem(item);
-      }
+      if (result) { this.removeItem(item); }
     });
   }
 
