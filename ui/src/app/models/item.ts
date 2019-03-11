@@ -3,14 +3,14 @@ import { Unit } from './unit';
 
 export class Item {
 
-  constructor( readonly  fundId: string = null,
-               readonly  amount: string = null,
-               readonly  cost: string = null,
-               readonly  type: string = null,
-               readonly  date: string = null,
-               readonly  comment: string = null,
-               readonly  productPositionId: string = null,
-               readonly unit: Unit = new Unit(),
-               readonly  productPosition: ProductPosition = new ProductPosition(),
-               readonly  id: string = null ) {}
+  constructor( public  fundId: string = null,
+               public  amount: string = null,
+               public  cost: string = null,
+               public  type: string = null,
+               public  date: string = null,
+               public  comment: string = null,
+               public  productPositionId: string = null,
+               public  unit: Unit = new Unit(),
+               public  productPosition: ProductPosition = new ProductPosition(),
+               public  id: string = null ) {}
 }

@@ -105,6 +105,10 @@
             [disabled] = "itemForm.invalid || itemForm.pristine"
             [mat-dialog-close]="data.item"
             (click)="changeFund()">SAVE</button>
+    <button mat-icon-button>
+      <mat-icon aria-label="Add new product"
+                (click)="addProduct()">add_shopping_cart</mat-icon>
+    </button>
   </div>
 
 </div>

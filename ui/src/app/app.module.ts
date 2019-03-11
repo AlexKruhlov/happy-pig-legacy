@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FundService } from './api/service/fund.service';
+import { ItemService } from './api/service/item.service';
 
 import { AppRouting } from './app.routing';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -31,6 +32,7 @@ import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.comp
 import { StatisticComponent } from './statistic/statistic.component';
 import { OnlyNumberDirective } from './directives/only-number.directive';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ProductModalComponent } from './modals/product-modal/product-modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     NewFundComponent,
     ConfirmModalComponent,
     StatisticComponent,
-    OnlyNumberDirective
+    OnlyNumberDirective,
+    ProductModalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +71,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   entryComponents: [
     ItemFundModalComponent,
     NewFundComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    ProductModalComponent
   ],
-  providers: [FundService],
+  providers: [FundService, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

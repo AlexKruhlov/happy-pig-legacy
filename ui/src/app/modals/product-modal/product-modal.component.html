@@ -1,0 +1,45 @@
+<div>
+  <h2 mat-dialog-title>Add product</h2>
+
+  <mat-dialog-content>
+    <form [formGroup]="productForm" novalidate>
+
+      <div fxLayout="row"
+           fxLayoutAlign="space-between center">
+        <mat-form-field class="w-100 ml-2">
+          <input matInput
+                 formControlName="productName"
+                 placeholder="Product">
+        </mat-form-field>
+
+        <mat-form-field class="w-100 ml-2">
+          <mat-select formControlName="unit"
+                      name="unit"
+                      placeholder="Unit">
+            <mat-option *ngFor="let unit of units"
+                        [value]="unit.name">
+              {{unit.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="w-100 ml-2">
+        <input matInput
+               formControlName="specification"
+               placeholder="Specification">
+      </mat-form-field>
+
+    </form>
+  </mat-dialog-content>
+
+  <div mat-dialog-actions>
+    <button mat-button
+            (click)="onNoClick()">CANCEL</button>
+
+    <button mat-button
+            [disabled] = "productForm.invalid"
+            [mat-dialog-close]="productForm">SAVE</button>
+  </div>
+
+</div>
