@@ -1,4 +1,4 @@
-package com.feature.bank;
+package com.feature.bank.bankincome.model;
 
 import com.feature.bank.bankincomesource.model.BankIncomeSource;
 import lombok.*;
