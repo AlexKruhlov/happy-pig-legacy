@@ -29,7 +29,7 @@ public class BankIncome {
     @Column
     private BigInteger amount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "bank_income_source_id")
     private BankIncomeSource bankIncomeSource;
 
