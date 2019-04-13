@@ -1,7 +1,7 @@
-package com.feature.bankincomesource.transformer;
+package com.feature.bank.bankincomesource.transformer;
 
-import com.feature.bankincomesource.model.BankIncomeSource;
-import com.feature.bankincomesource.dto.BankIncomeSourceDto;
+import com.feature.bank.bankincomesource.model.BankIncomeSource;
+import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
 import org.mapstruct.Mapper;
 
 import java.util.List;

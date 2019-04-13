@@ -1,10 +1,10 @@
-package com.feature.bankincomesource.service;
+package com.feature.bank.bankincomesource.service;
 
-import com.api.bankincomesource.repository.BankIncomeSourceRepository;
-import com.api.bankincomesource.service.BankIncomeSourceService;
-import com.feature.bankincomesource.dto.BankIncomeSourceDto;
-import com.feature.bankincomesource.model.BankIncomeSource;
-import com.feature.bankincomesource.transformer.BankIncomeSourceTransformer;
+import com.api.bank.bankincomesource.repository.BankIncomeSourceRepository;
+import com.api.bank.bankincomesource.service.BankIncomeSourceService;
+import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
+import com.feature.bank.bankincomesource.model.BankIncomeSource;
+import com.feature.bank.bankincomesource.transformer.BankIncomeSourceTransformer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

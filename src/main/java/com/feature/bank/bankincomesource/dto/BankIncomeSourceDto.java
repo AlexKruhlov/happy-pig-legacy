@@ -1,4 +1,4 @@
-package com.feature.bankincomesource.dto;
+package com.feature.bank.bankincomesource.dto;
 
 import lombok.*;
 

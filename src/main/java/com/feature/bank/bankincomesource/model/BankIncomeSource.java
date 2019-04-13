@@ -1,4 +1,4 @@
-package com.feature.bankincomesource.model;
+package com.feature.bank.bankincomesource.model;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

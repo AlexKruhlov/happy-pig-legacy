@@ -1,8 +1,8 @@
-package com.feature.bankincomesource.controller;
+package com.feature.bank.bankincomesource.controller;
 
-import com.api.bankincomesource.controller.BankIncomeSourceController;
-import com.api.bankincomesource.service.BankIncomeSourceService;
-import com.feature.bankincomesource.dto.BankIncomeSourceDto;
+import com.api.bank.bankincomesource.controller.BankIncomeSourceController;
+import com.api.bank.bankincomesource.service.BankIncomeSourceService;
+import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

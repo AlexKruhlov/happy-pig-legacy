@@ -1,8 +1,8 @@
-package com.feature.bankincomesource;
+package com.feature.bank.bankincomesource;
 
 import com.App;
-import com.api.bankincomesource.service.BankIncomeSourceService;
-import com.feature.bankincomesource.dto.BankIncomeSourceDto;
+import com.api.bank.bankincomesource.service.BankIncomeSourceService;
+import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.api.bankincomesource.repository;
+package com.api.bank.bankincomesource.repository;
 
-import com.feature.bankincomesource.model.BankIncomeSource;
+import com.feature.bank.bankincomesource.model.BankIncomeSource;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

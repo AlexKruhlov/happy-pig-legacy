@@ -1,7 +1,7 @@
-package com.api.bankincomesource.controller;
+package com.api.bank.bankincomesource.controller;
 
-import com.feature.bankincomesource.dto.BankIncomeSourceDto;
-import com.feature.bankincomesource.model.BankIncomeSource;
+import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
+import com.feature.bank.bankincomesource.model.BankIncomeSource;
 import com.feature.prodposition.dto.ProductPositionDto;
 
 import java.util.List;
