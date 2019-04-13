@@ -3,10 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { URL } from '../requestPath';
 import { Fund } from '../../models/fund';
-import { Product } from '../../models/product';
 import { Item } from '../../models/item';
-import { Unit } from '../../models/unit';
-import { ProductPosition } from '../../models/productPosition';
 
 @Injectable({
   providedIn: 'root'
@@ -26,28 +23,12 @@ export class FundService {
     return this.http.get<Fund>(`${URL}/fund/${id}`);
   }
 
-  findAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${URL}/product/all`);
-  }
-
-  findProductPositionBy( productId: string ): Observable<ProductPosition[]> {
-    return this.http.get<ProductPosition[]>(`${URL}/prodposition/find/product/${productId}`);
-  }
-
-  findAllUnits(): Observable<Unit[]> {
-    return this.http.get<Unit[]>(`${URL}/unit/all`);
-  }
-
   deleteFund(fundId): Observable<Fund[]> {
     return this.http.get<Fund[]>(`${URL}/fund/delete/${fundId}`);
   }
 
   update(fund: Fund): Observable<Fund> {
      return this.http.post<Fund>(`${URL}/fund/update`, fund);
-  }
-
-  deleteItem(itemId: string, fundId: string): Observable<Fund> {
-    return this.http.post<Fund>(`${URL}/item/deleteAndFindFund`, {itemId, fundId});
   }
 
   create(fund: any): void {
@@ -59,10 +40,6 @@ export class FundService {
 
   saveFundsToSubject(res): void {
     this.subject.next({ fund: res });
-  }
-
-  saveProductPosition( productPosition: ProductPosition ): Observable<ProductPosition> {
-    return this.http.post<ProductPosition>(`${URL}/prodposition/save`, productPosition);
   }
 
   saveAndFindFund(item: Item): Observable<Fund>  {

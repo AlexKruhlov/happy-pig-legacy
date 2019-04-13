@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { FundService } from '../api/service/fund.service';
+import { ItemService } from '../api/service/item.service';
 import { ItemFundModalComponent } from '../modals/item-fund-modal/item-fund-modal.component';
 import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 import { Item } from '../models/item';
@@ -21,6 +22,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private fundService: FundService,
+    private itemService: ItemService,
     public dialog: MatDialog) {
   }
 
@@ -71,7 +73,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   removeItem( item: Item ) {
-    this.fundService.deleteItem(item.id, item.fundId).subscribe(res => this.fund = {...res});
+    this.itemService.delete(item.id, item.fundId).subscribe(res => this.fund = {...res});
   }
 
   ngOnDestroy() {

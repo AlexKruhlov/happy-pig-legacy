@@ -4,5 +4,5 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'convertToHigherNominal'
 })
 export class ConvertToHigherNominalPipe implements PipeTransform {
-  transform = (value: number): number => value ?  value / 100 : null;
+  transform = (value: number | string): number => value ?  Number(value) / 100 : null;
 }

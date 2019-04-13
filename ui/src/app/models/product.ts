@@ -1,8 +1,8 @@
 import { Unit } from './unit';
 export class Product {
 
-  constructor(readonly id: string = null,
-              readonly name: string = null,
-              readonly defaultUnit: Unit = null,
+  constructor(public id: string = null,
+              public name: string = null,
+              public defaultUnit: Unit = null,
   ) {}
 }

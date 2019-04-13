@@ -1,11 +1,13 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatSelectChange } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSelectChange, MatDialog } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FundService } from '../../api/service/fund.service';
+import { ItemService } from '../../api/service/item.service';
 import { Product } from '../../models/product';
 import { Unit } from '../../models/unit';
 import { ProductPosition } from '../../models/productPosition';
 import { ConvertToHigherNominalPipe } from '../../pipes/convertToHigherNominal.pipe';
+import { ProductModalComponent } from '../product-modal/product-modal.component';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'item-fund-modal',
@@ -26,7 +28,8 @@ export class ItemFundModalComponent {
   constructor(
     public dialogRef: MatDialogRef<ItemFundModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private fundService: FundService) {
+    private itemService: ItemService,
+    private dialog: MatDialog) {
     this.findProducts();
     this.findUnits();
     this.initForm(this.data.item);
@@ -36,14 +39,14 @@ export class ItemFundModalComponent {
   }
 
   findProducts(): void {
-    this.fundService.findAllProducts().subscribe(allProducts => this.products = allProducts);
+    this.itemService.findAllProducts().subscribe(allProducts => this.products = allProducts);
   }
 
   findUnits(): void {
-    this.fundService.findAllUnits().subscribe(unitList => this.units = unitList);
+    this.itemService.findAllUnits().subscribe(unitList => this.units = unitList);
   }
 
-  initForm(item): void {
+  initForm(item: Item): void {
     this.itemForm = new FormGroup({
       product: new FormControl(item.productPosition.product.name, Validators.required),
       cost: new FormControl(new ConvertToHigherNominalPipe().transform(item.cost), Validators.required),
@@ -77,7 +80,8 @@ export class ItemFundModalComponent {
 
   setProductPositionToData(): void {
     this.data.item.productPosition = null;
-    this.isSpecificationExist() ? this.updateProdPosition(this.itemForm.value.specification) : this.createProdPosition();
+    this.isSpecificationExist() ? this.updateProdPosition(this.itemForm.value.specification) :
+      this.createProdPosition(this.itemForm.value.specification, this.findProduct(this.itemForm.value.product));
   }
 
   setInitFormValueToData(): void {
@@ -98,12 +102,12 @@ export class ItemFundModalComponent {
     return this.specifications.some(specification => specification === this.itemForm.value.specification);
   }
 
-  findUnit = (unitName: string): any => this.units.find(unit => unit.name === unitName);
+  findUnit = (unitName: string): Unit => this.units.find(unit => unit.name === unitName);
 
   changeProduct = (event: MatSelectChange): void => this.findProductPositionBy(this.findProduct(event.value).id);
 
   findProductPositionBy(id: string): void {
-    this.fundService.findProductPositionBy(id).subscribe(productPositionList => this.setValueFromProductPositionList(productPositionList));
+    this.itemService.findProductPositionBy(id).subscribe(productPositionList => this.setValueFromProductPositionList(productPositionList));
   }
 
   setValueFromProductPositionList(productPositionList: Array<ProductPosition>): void {
@@ -129,10 +133,34 @@ export class ItemFundModalComponent {
     return productPositionList.map(value => value.specification ? value.specification : null);
   }
 
-  createProdPosition() {
-    const newProductPosition = new ProductPosition(null, this.itemForm.value.specification, this.findProduct(this.itemForm.value.product));
-    this.fundService.saveProductPosition(newProductPosition).subscribe(productPosition => {
+  createProdPosition(specification: string, product: Product): void {
+    const newProductPosition = new ProductPosition(null, specification, product);
+    this.itemService.saveProductPosition(newProductPosition).subscribe(productPosition => {
       this.data.item.productPositionId = productPosition.id;
     });
+  }
+
+  addProduct(): void {
+    const dialogRef = this.dialog.open(ProductModalComponent, {
+      width: '600px',
+      maxWidth: '95%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { this.createProduct(result); }
+    });
+  }
+
+  createProduct(newProduct: FormGroup): void {
+    const product = new Product(null, newProduct.value.productName, this.findUnit(newProduct.value.unit));
+    this.itemService.saveProduct(product).subscribe(prod => this.addNewProduct(prod, newProduct.value.specification));
+  }
+
+  addNewProduct(product: Product, specification: string): void {
+    this.findProducts();
+    this.createProdPosition(specification, product);
+    this.itemForm.controls['product'].setValue(product.name);
+    this.itemForm.controls['specification'].setValue(specification);
+    this.itemForm.controls['unit'].setValue(product.defaultUnit.name);
   }
 }
