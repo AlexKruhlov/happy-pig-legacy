@@ -1,4 +1,4 @@
-package com.api.bank.bankincome.service;
+package com.api.bank.bankincome.controller;
 
 import com.feature.bank.bankincome.dto.BankIncomeDto;
 import com.feature.bank.bankincome.model.BankIncome;
@@ -7,20 +7,19 @@ import com.feature.prodposition.dto.ProductPositionDto;
 import java.util.List;
 
 /**
- * Interface that provides service layer API to work on {@link BankIncome} objects
+ * Interface that provides API for UI to work on {@link BankIncome} objects
  */
-public interface BankIncomeService {
+public interface BankIncomeController {
 
     /**
-     * Find all existed {@link BankIncome} objects, transform them into {@link BankIncomeDto} objects and return
+     * Find all existed {@link BankIncomeDto} objects
      *
      * @return list of {@link ProductPositionDto} objects or empty list
      */
     List<BankIncomeDto> findAll();
 
     /**
-     * Find {@link BankIncome} object, which has appropriate id, transform it into {@link BankIncomeDto} object
-     * and return
+     * Find {@link BankIncomeDto} object, which has appropriate id and return it
      *
      * @param bankIncomeId id of appropriate {@link BankIncome}
      * @return appropriate {@link BankIncomeDto} object or null
@@ -28,8 +27,7 @@ public interface BankIncomeService {
     BankIncomeDto findById(String bankIncomeId);
 
     /**
-     * Save or update appropriate {@link BankIncome} object, which has been transformed from {@link BankIncomeDto},
-     * and return it transforming into {@link BankIncomeDto}
+     * Save or update appropriate {@link BankIncomeDto} object and return it
      *
      * @param bankIncomeDto appropriate {@link BankIncomeDto} object
      * @return saved {@link BankIncomeDto} object
@@ -37,7 +35,7 @@ public interface BankIncomeService {
     BankIncomeDto save(BankIncomeDto bankIncomeDto);
 
     /**
-     * Delete {@link BankIncome} logically by its id
+     * Delete {@link BankIncomeDto} logically by its id
      *
      * @param bankIncomeId id  object {@link BankIncomeDto} object
      */
