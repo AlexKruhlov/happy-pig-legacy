@@ -1,5 +1,8 @@
 package com.feature.utils;
 
+import com.feature.bank.bankincome.dto.BankIncomeDto;
+import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
+import com.feature.bank.bankincomesource.model.BankIncomeSource;
 import com.feature.item.dto.ItemDto;
 import com.feature.prodposition.dto.ProductPositionDto;
 import com.feature.product.dto.ProductDto;
@@ -15,6 +18,8 @@ import static com.feature.item.model.ItemTypeConst.INCOME;
 import static java.time.LocalDateTime.now;
 
 public class TestUtilMethods {
+    public static String INCORRECT_ID = "INCORRECT_ID";
+
     public static String GROCERY_FUND = "GROCERY_FUND";
     public static String RENTAL_FUND = "RENTAL_FUND";
     public static String DRESS_FUND = "DRESS_FUND";
@@ -37,6 +42,8 @@ public class TestUtilMethods {
     public static String GROCERY_TO_RENTAL_TRFUND_ID = "GROCERY_TO_RENTAL";
 
     public static String TRANSFER_ID = "TRANSFER_ID";
+
+    public static String BANK_INCOME_SOURCE_ID = "SALARY";
 
     public static String ITEM_ID = "ITEM_0000001";
 
@@ -69,5 +76,21 @@ public class TestUtilMethods {
                 .id(BALL_PRODUCT_POSITION_ID)
                 .specification("BALL spec")
                 .product(BALL_PRODUCT_DTO).build();
+    }
+
+
+    public static final BankIncomeSourceDto BANK_INCOME_SOURCE_SALARY = BankIncomeSourceDto.builder()
+            .id("SALARY")
+            .name("Salary").build();
+    public static final String BANK_INCOME_SALARY_ID = "BANK_INCOME_SALARY";
+    public static final String BANK_INCOME_SALARY_AMOUNT = "500000";
+    public static final int ALL_BANK_INCOMES_COUNT = 3;
+
+
+    public static BankIncomeDto createBankIncomeDto(String id, String amount, BankIncomeSourceDto bankIncomeSourceDto) {
+        return BankIncomeDto.builder()
+                .id(id)
+                .amount(amount)
+                .bankIncomeSource(bankIncomeSourceDto).build();
     }
 }

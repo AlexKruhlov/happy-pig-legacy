@@ -205,4 +205,59 @@ Content-Type: application/json
 ### Delete product position by its id
 POST http://localhost:8080/api/prodposition/delete/SALT_SPEC
 
+
+
+###========================================================================
+###=======================   BANK INCOME SOURCE   =========================
+###========================================================================
+
+### Find all bank income sources
+GET http://localhost:8080/api/bankincome/source/all
+
+
+### Save or update all bank income sources
+POST http://localhost:8080/api/bankincome/source/save
+Content-Type: application/json
+
+{
+  "id": null,
+  "name": "New Source"
+}
+
+
+### Save or update all bank income sources
+POST http://localhost:8080/api/bankincome/source/delete/SALARY
+Content-Type: application/json
+
+
+
+###========================================================================
+###==========================   BANK INCOME   =============================
+###========================================================================
+
+### Find all bank incomes
+GET http://localhost:8080/api/bankincome/all
+
+
+### Find by bank income by id
+GET http://localhost:8080/api/bankincome/find/BANK_INCOME_GIFT
+
+
+### Save or update bank income
+POST http://localhost:8080/api/bankincome/save
+Content-Type: application/json
+
+{
+  "id": null,
+  "amount": "25698",
+  "bankIncomeSource": {
+    "id": "RENTAL",
+    "name": "Rental"
+  }
+}
+
+###
+### Delete bank income by its id
+POST http://localhost:8080/api/bankincome/delete/BANK_INCOME_GIFT
+
 ###

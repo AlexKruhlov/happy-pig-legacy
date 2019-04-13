@@ -99,4 +99,37 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="0006" author="alkruglov" runAlways="true">
+        <createTable tableName="bank_income_sources" remarks="A table to contain all bank income sources">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0007" author="alkruglov" runAlways="true">
+        <createTable tableName="bank_incomes" remarks="A table to contain all bank incomes">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="amount" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_income_source_id" type="varchar(32)">
+                <constraints nullable="false"
+                             foreignKeyName="bank_income_bank_income_source_id_bank_income_source_id_id"
+                             referencedTableName="bank_income_sources" referencedColumnNames="id"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
