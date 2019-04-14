@@ -33,14 +33,14 @@ public class BankTransaction {
     private BankTransactionType bankTransactionType;
 
     @Column
-    private LocalDateTime date;
-
-    @Column
     private BigInteger amount;
 
     @ManyToOne
     @JoinColumn(name = "fund_id")
     private Fund fund;
+
+    @Column
+    private LocalDateTime date;
 
     @Column
     private boolean deleted;
