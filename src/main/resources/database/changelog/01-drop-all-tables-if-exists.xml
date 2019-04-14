@@ -15,6 +15,7 @@
             drop table if exists product_positions cascade;
             drop table if exists bank_income_sources cascade;
             drop table if exists bank_incomes cascade;
+            drop table if exists bank_transactions cascade;
         </sql>
     </changeSet>
 </databaseChangeLog>
