@@ -291,4 +291,13 @@ Content-Type: application/json
 ### Delete bank transaction by its id
 POST http://localhost:8080/api/bank/transaction/delete/BANK_TRANSACTION_GROCERY_FUND
 
+
+
+###========================================================================
+###=============================   BANK   =================================
+###========================================================================
+
+### Get bank
+GET http://localhost:8080/api/bank
+
 ###
