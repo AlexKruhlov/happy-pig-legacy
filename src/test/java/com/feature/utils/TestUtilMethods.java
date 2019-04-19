@@ -106,4 +106,6 @@ public class TestUtilMethods {
                 .bankTransactionType(type)
                 .fund(FundDto.builder().id(fundId).build()).build();
     }
+
+    public static final BigInteger BANK_INCOMES_BANK_TRANSACTION_RESIDUAL = BigInteger.valueOf(589549L);
 }
