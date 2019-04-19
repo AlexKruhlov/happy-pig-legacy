@@ -2,7 +2,9 @@ package com.feature.utils;
 
 import com.feature.bank.bankincome.dto.BankIncomeDto;
 import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
-import com.feature.bank.bankincomesource.model.BankIncomeSource;
+import com.feature.bank.banktransaction.dto.BankTransactionDto;
+import com.feature.bank.banktransaction.model.BankTransactionType;
+import com.feature.fund.dto.FundDto;
 import com.feature.item.dto.ItemDto;
 import com.feature.prodposition.dto.ProductPositionDto;
 import com.feature.product.dto.ProductDto;
@@ -36,10 +38,10 @@ public class TestUtilMethods {
             .name("Ball")
             .defaultUnit(PC_UNIT_DTO).build();
 
-    public static String POTATOE_PRODUCT_POSITION_ID = "POTATO_SPEC";
+    public static String POTATO_PRODUCT_POSITION_ID = "POTATO_SPEC";
     public static String BALL_PRODUCT_POSITION_ID = "BALL_SPEC_1";
 
-    public static String GROCERY_TO_RENTAL_TRFUND_ID = "GROCERY_TO_RENTAL";
+    public static String GROCERY_TO_RENTAL_TR_FUND_ID = "GROCERY_TO_RENTAL";
 
     public static String TRANSFER_ID = "TRANSFER_ID";
 
@@ -66,7 +68,7 @@ public class TestUtilMethods {
                 .type(INCOME)
                 .date(now())
                 .fundId(GROCERY_FUND)
-                .productPositionId(POTATOE_PRODUCT_POSITION_ID)
+                .productPositionId(POTATO_PRODUCT_POSITION_ID)
                 .unit(PC_UNIT_DTO)
                 .comment("POTATO comments").build();
     }
@@ -92,5 +94,16 @@ public class TestUtilMethods {
                 .id(id)
                 .amount(amount)
                 .bankIncomeSource(bankIncomeSourceDto).build();
+    }
+
+    public static final int BANK_TRANSACTIONS_COUNT = 3;
+    public static final String BANK_TRANSACTION_GROCERY_FUND = "BANK_TRANSACTION_GROCERY_FUND";
+
+    public static BankTransactionDto createBankTransactionDto(String id, BankTransactionType type, String amount, String fundId) {
+        return BankTransactionDto.builder()
+                .id(id)
+                .amount(amount)
+                .bankTransactionType(type)
+                .fund(FundDto.builder().id(fundId).build()).build();
     }
 }

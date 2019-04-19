@@ -132,4 +132,29 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="0008" author="alkruglov" runAlways="true">
+        <createTable tableName="bank_transactions" remarks="A table to contain all bank transactions">
+            <column name="id" type="varchar(32)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="bank_transaction_type" type="varchar(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="timestamp with time zone" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fund_id" type="varchar(32)">
+                <constraints nullable="false"
+                             foreignKeyName="bank_transactions_fund_id_funds_id"
+                             referencedTableName="funds" referencedColumnNames="id"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
