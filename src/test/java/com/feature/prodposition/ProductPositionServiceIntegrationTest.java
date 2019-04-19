@@ -67,7 +67,7 @@ public class ProductPositionServiceIntegrationTest {
     @Test
     public void shouldDeleteProductPosition() {
         int expectedProductPositionAmount = DATABASE_PRODUCT_POSITION_AMOUNT - 1;
-        productPositionService.deleteById(TestUtilMethods.POTATOE_PRODUCT_POSITION_ID);
+        productPositionService.deleteById(TestUtilMethods.POTATO_PRODUCT_POSITION_ID);
         assertEquals(expectedProductPositionAmount, productPositionService.findAll().size());
     }
 }

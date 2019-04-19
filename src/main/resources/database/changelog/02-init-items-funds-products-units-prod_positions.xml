@@ -175,4 +175,25 @@
             <column name="bank_income_source_id">RENTAL</column>
         </insert>
     </changeSet>
+
+    <changeSet id="0017" author="alkruglov" runAlways="true">
+        <insert tableName="bank_transactions">
+            <column name="id">BANK_TRANSACTION_RENTAL_FUND</column>
+            <column name="bank_transaction_type">FROM_FUND</column>
+            <column name="amount">150000</column>
+            <column name="fund_id">RENTAL_FUND</column>
+        </insert>
+        <insert tableName="bank_transactions">
+            <column name="id">BANK_TRANSACTION_GROCERY_FUND</column>
+            <column name="bank_transaction_type">TO_FUND</column>
+            <column name="amount">32000</column>
+            <column name="fund_id">GROCERY_FUND</column>
+        </insert>
+        <insert tableName="bank_transactions">
+            <column name="id">BANK_TRANSACTION_DRESS_FUND</column>
+            <column name="bank_transaction_type">FROM_FUND</column>
+            <column name="amount">78451</column>
+            <column name="fund_id">DRESS_FUND</column>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

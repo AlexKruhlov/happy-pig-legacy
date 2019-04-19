@@ -8,10 +8,13 @@ import com.feature.transfer.transformer.TransferFundTransformer;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
+@Named("FundTransformer")
 @Mapper(uses = {TransferFundTransformer.class, ItemTransformer.class}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface FundTransformer {
 
+    @Named("ToDto")
     FundDto toDto(Fund fund);
 
     @Mapping(target = "amount", ignore = true)

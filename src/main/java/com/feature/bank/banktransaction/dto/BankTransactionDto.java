@@ -17,6 +17,6 @@ public class BankTransactionDto {
     private String id;
     private BankTransactionType bankTransactionType;
     private String amount;
-    private FundDto fundDto;
+    private FundDto fund;
     private LocalDateTime date;
 }

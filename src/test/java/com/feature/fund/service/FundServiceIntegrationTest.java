@@ -49,7 +49,7 @@ public class FundServiceIntegrationTest {
         assertNotNull(transferFunds);
         assertEquals(GROCERY_FUND, transferFunds.get(0).getFundId());
         assertEquals(OUTCOME, transferFunds.get(0).getTransferType());
-        assertEquals(GROCERY_TO_RENTAL_TRFUND_ID, transferFunds.get(0).getTransfer().getId());
+        assertEquals(GROCERY_TO_RENTAL_TR_FUND_ID, transferFunds.get(0).getTransfer().getId());
     }
 
     @Test

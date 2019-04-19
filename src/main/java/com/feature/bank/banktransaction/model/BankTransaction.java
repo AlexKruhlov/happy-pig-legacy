@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 
 import static com.api.util.AppConstants.IS_EXISTED;
 import static javax.persistence.EnumType.STRING;
+import static org.hibernate.annotations.GenerationTime.INSERT;
 
 @Entity
 @Table(name="bank_transactions")
@@ -39,7 +40,8 @@ public class BankTransaction {
     @JoinColumn(name = "fund_id")
     private Fund fund;
 
-    @Column
+    @Column(name = "date", insertable = false)
+    @org.hibernate.annotations.Generated(value = INSERT)
     private LocalDateTime date;
 
     @Column
