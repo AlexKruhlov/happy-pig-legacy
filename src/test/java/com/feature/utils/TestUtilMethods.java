@@ -1,10 +1,14 @@
 package com.feature.utils;
 
 import com.feature.bank.bankincome.dto.BankIncomeDto;
+import com.feature.bank.bankincome.model.BankIncome;
 import com.feature.bank.bankincomesource.dto.BankIncomeSourceDto;
+import com.feature.bank.bankincomesource.model.BankIncomeSource;
 import com.feature.bank.banktransaction.dto.BankTransactionDto;
+import com.feature.bank.banktransaction.model.BankTransaction;
 import com.feature.bank.banktransaction.model.BankTransactionType;
 import com.feature.fund.dto.FundDto;
+import com.feature.fund.model.Fund;
 import com.feature.item.dto.ItemDto;
 import com.feature.prodposition.dto.ProductPositionDto;
 import com.feature.product.dto.ProductDto;
@@ -84,6 +88,13 @@ public class TestUtilMethods {
     public static final BankIncomeSourceDto BANK_INCOME_SOURCE_SALARY = BankIncomeSourceDto.builder()
             .id("SALARY")
             .name("Salary").build();
+
+    public static BankIncomeSource createBankIncomeSource(String id, String name) {
+        return BankIncomeSource.builder()
+                .id(id)
+                .name(name).build();
+    }
+
     public static final String BANK_INCOME_SALARY_ID = "BANK_INCOME_SALARY";
     public static final String BANK_INCOME_SALARY_AMOUNT = "500000";
     public static final int ALL_BANK_INCOMES_COUNT = 3;
@@ -96,8 +107,18 @@ public class TestUtilMethods {
                 .bankIncomeSource(bankIncomeSourceDto).build();
     }
 
+    public static BankIncome createBankIncome(String id, BigInteger amount, BankIncomeSource bankIncomeSource) {
+        return BankIncome.builder()
+                .id(id)
+                .amount(amount)
+                .bankIncomeSource(bankIncomeSource).build();
+    }
+
     public static final int BANK_TRANSACTIONS_COUNT = 3;
     public static final String BANK_TRANSACTION_GROCERY_FUND = "BANK_TRANSACTION_GROCERY_FUND";
+    public static final BigInteger ALL_BANK_INCOMES_SUM = BigInteger.valueOf(850_000L);
+    public static final BigInteger ALL_TO_FUND_BANK_TRANSACTIONS_SUM = BigInteger.valueOf(32_000L);
+    public static final BigInteger ALL_FROM_FUND_BANK_TRANSACTIONS_SUM = BigInteger.valueOf(228_451L);
 
     public static BankTransactionDto createBankTransactionDto(String id, BankTransactionType type, String amount, String fundId) {
         return BankTransactionDto.builder()
@@ -107,5 +128,11 @@ public class TestUtilMethods {
                 .fund(FundDto.builder().id(fundId).build()).build();
     }
 
-    public static final BigInteger BANK_INCOMES_BANK_TRANSACTION_RESIDUAL = BigInteger.valueOf(589549L);
+    public static BankTransaction createBankTransaction(String id, BankTransactionType type, BigInteger amount, String fundId) {
+        return BankTransaction.builder()
+                .id(id)
+                .amount(amount)
+                .bankTransactionType(type)
+                .fund(Fund.builder().id(fundId).build()).build();
+    }
 }
