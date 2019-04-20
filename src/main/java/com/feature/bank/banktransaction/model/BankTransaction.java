@@ -7,6 +7,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
@@ -22,7 +23,7 @@ import static org.hibernate.annotations.GenerationTime.INSERT;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BankTransaction {
+public class BankTransaction implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
