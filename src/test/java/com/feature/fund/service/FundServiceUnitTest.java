@@ -1,6 +1,7 @@
 package com.feature.fund.service;
 
 import com.api.fund.repository.FundRepository;
+import com.feature.bank.banktransaction.transformer.BankTransactionTransformerImpl;
 import com.feature.fund.dto.FundDto;
 import com.feature.fund.model.Fund;
 import com.feature.fund.transformer.FundTransformer;
@@ -44,7 +45,7 @@ public class FundServiceUnitTest {
     @Spy
     private FundTransformer fundTransformer = new FundTransformerImpl(
             new TransferFundTransformerImpl(),
-            new ItemTransformerImpl(new ProductPositionTransformerImpl()));
+            new ItemTransformerImpl(new ProductPositionTransformerImpl()), new BankTransactionTransformerImpl());
 
     @InjectMocks
     private FundServiceImpl fundService;
