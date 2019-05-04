@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @ComponentScan(basePackageClasses = App.class)
-public class BankTransactionIntegrationTest {
+public class BankTransactionServiceIntegrationTest {
 
     @Autowired
     private BankTransactionService bankTransactionService;

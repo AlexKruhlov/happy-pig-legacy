@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigInteger;
 import java.util.List;
 
+import static com.feature.bank.banktransaction.model.BankTransactionType.TO_FUND;
+import static java.math.BigInteger.ZERO;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -32,18 +35,24 @@ public class BankServiceImpl implements BankService {
     }
 
     private BigInteger calculateBalance(List<BankIncome> bankIncomes, List<BankTransaction> bankTransactions) {
-        return sumBankIncomes(bankIncomes).subtract(sumBankTransactions(bankTransactions));
+        return sumBankIncomes(bankIncomes).add(getBankTransactionsBalance(bankTransactions));
     }
 
     private BigInteger sumBankIncomes(List<BankIncome> bankIncomes) {
         return bankIncomes.stream()
                 .map(BankIncome::getAmount)
-                .reduce(BigInteger.ZERO, BigInteger::add);
+                .reduce(ZERO, BigInteger::add);
     }
 
-    private BigInteger sumBankTransactions(List<BankTransaction> bankTransactions) {
+    private BigInteger getBankTransactionsBalance(List<BankTransaction> bankTransactions) {
         return bankTransactions.stream()
-                .map(BankTransaction::getAmount)
-                .reduce(BigInteger.ZERO, BigInteger::add);
+                .map(this::toPositiveOrNegative)
+                .reduce(ZERO, BigInteger::add);
+    }
+
+    private BigInteger toPositiveOrNegative(BankTransaction bankTransaction) {
+        return bankTransaction.getBankTransactionType().equals(TO_FUND)
+                ? bankTransaction.getAmount().negate()
+                : bankTransaction.getAmount();
     }
 }
