@@ -20,16 +20,10 @@ public interface FundTransformer {
     @Named("ToDto")
     FundDto toDto(Fund fund);
 
-    @Mapping(target = "amount", ignore = true)
-    @Mapping(target = "income", ignore = true)
-    @Mapping(target = "expense", ignore = true)
     Fund fromDto(FundDto fundIdDto);
 
     FundDtoWithItemsAndTransferFunds toDtoWithItemsAndTransferFunds(Fund fund);
 
-    @Mapping(target = "amount", ignore = true)
-    @Mapping(target = "income", ignore = true)
-    @Mapping(target = "expense", ignore = true)
     Fund fromDtoWithItemsAndTransferFunds(FundDtoWithItemsAndTransferFunds fundDtoWithItemsAndTransferFunds);
 
     @SuppressWarnings("unused")

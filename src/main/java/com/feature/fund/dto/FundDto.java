@@ -17,5 +17,7 @@ public class FundDto {
     private LocalDateTime startDate;
     private String amount;
     private String income;
+    private String bankTransactionAmount;
+    private String transferFundAmount;
     private String expense;
 }
