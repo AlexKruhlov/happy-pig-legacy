@@ -67,6 +67,12 @@ public class Fund implements Serializable {
     private BigInteger income;
 
     @Transient
+    private BigInteger bankTransactionAmount;
+
+    @Transient
+    private BigInteger transferFundAmount;
+
+    @Transient
     private BigInteger expense;
 
     @Column

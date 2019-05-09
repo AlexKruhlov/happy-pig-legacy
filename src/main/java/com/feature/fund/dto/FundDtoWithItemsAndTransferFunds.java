@@ -21,10 +21,10 @@ public class FundDtoWithItemsAndTransferFunds extends FundDto {
 
     @Builder(builderMethodName = "fundDtoWithAddition")
     public FundDtoWithItemsAndTransferFunds(String id, String name, LocalDateTime startDate, String amount,
-                                            String income, String expense, List<ItemDto> items,
-                                            List<TransferFundDto> transferFunds,
+                                            String income, String bankTransactionAmount, String transferFundAmount,
+                                            String expense, List<ItemDto> items, List<TransferFundDto> transferFunds,
                                             List<BankTransactionDto> bankTransactions) {
-        super(id, name, startDate, amount, income, expense);
+        super(id, name, startDate, amount, income, bankTransactionAmount, transferFundAmount, expense);
         this.items = items;
         this.transferFunds = transferFunds;
         this.bankTransactions = bankTransactions;

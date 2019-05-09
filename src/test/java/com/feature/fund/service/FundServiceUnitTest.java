@@ -1,6 +1,7 @@
 package com.feature.fund.service;
 
 import com.api.fund.repository.FundRepository;
+import com.feature.bank.banktransaction.model.BankTransaction;
 import com.feature.bank.banktransaction.transformer.BankTransactionTransformerImpl;
 import com.feature.fund.dto.FundDto;
 import com.feature.fund.model.Fund;
@@ -22,10 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.feature.bank.banktransaction.model.BankTransactionType.FROM_FUND;
+import static com.feature.bank.banktransaction.model.BankTransactionType.TO_FUND;
 import static com.feature.item.model.ItemTypeConst.EXPENSE;
 import static com.feature.item.model.ItemTypeConst.INCOME;
-import static com.feature.utils.TestUtilMethods.TRANSFER_ID;
-import static com.feature.utils.TestUtilMethods.createTransferFund;
+import static com.feature.utils.TestUtilMethods.*;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -58,7 +60,7 @@ public class FundServiceUnitTest {
         long expenseItem4 = 32;
         long incomeTransferFund1 = 10;
         long outcomeTransferFund1 = 25;
-        String expectedResult = "80";
+        String expectedResult = "41";
 
         List<Item> items = new ArrayList<>();
         items.add(createItem(ITEM_ID_1, INCOME, incomeItem1));
@@ -69,7 +71,12 @@ public class FundServiceUnitTest {
         List<TransferFund> transferFunds = new ArrayList<>();
         transferFunds.add(createTransferFund(TRANSFER_ID, FUND_ID_1, TransferType.INCOME, incomeTransferFund1));
         transferFunds.add(createTransferFund(TRANSFER_ID, FUND_ID_1, TransferType.OUTCOME, outcomeTransferFund1));
-        Fund fund = createFund(FUND_ID_1, items, transferFunds);
+
+        List<BankTransaction> bankTransactions = new ArrayList<>();
+        bankTransactions.add(createBankTransaction("id_1", TO_FUND, BigInteger.TEN, "FUND_ID"));
+        bankTransactions.add(createBankTransaction("id_2", FROM_FUND, BigInteger.valueOf(49), "FUND_ID"));
+
+        Fund fund = createFund(FUND_ID_1, items, transferFunds, bankTransactions);
 
         when(fundRepository.findById(FUND_ID_1)).thenReturn(Optional.of(fund));
 
@@ -82,26 +89,30 @@ public class FundServiceUnitTest {
         long incomeItem1 = 150;
         long expenseItem2 = 50;
         long incomeTransferFund1 = 37;
-        String expectedResult1 = "137";
+        String expectedResult1 = "114";
         List<Item> items1 = new ArrayList<>();
         items1.add(createItem(ITEM_ID_1, INCOME, incomeItem1));
         items1.add(createItem(ITEM_ID_2, EXPENSE, expenseItem2));
         List<TransferFund> transferFunds1 = new ArrayList<>();
         transferFunds1.add(createTransferFund(TRANSFER_ID, FUND_ID_1, TransferType.INCOME, incomeTransferFund1));
+        List<BankTransaction> bankTransactions1 = new ArrayList<>();
+        bankTransactions1.add(createBankTransaction("id1", FROM_FUND, BigInteger.valueOf(23), FUND_ID_1));
 
         long incomeItem3 = 27;
         long expenseItem4 = 32;
         long outcomeTransferFund2 = 27;
-        String expectedResult2 = "-32";
+        String expectedResult2 = "1";
         List<Item> items2 = new ArrayList<>();
         items2.add(createItem(ITEM_ID_3, INCOME, incomeItem3));
         items2.add(createItem(ITEM_ID_4, EXPENSE, expenseItem4));
         List<TransferFund> transferFunds2 = new ArrayList<>();
         transferFunds2.add(createTransferFund(TRANSFER_ID, FUND_ID_2, TransferType.OUTCOME, outcomeTransferFund2));
+        List<BankTransaction> bankTransactions2 = new ArrayList<>();
+        bankTransactions2.add(createBankTransaction("id2", TO_FUND, BigInteger.valueOf(33), FUND_ID_2));
 
         List<Fund> funds = new ArrayList<>();
-        funds.add(createFund(FUND_ID_1, items1, transferFunds1));
-        funds.add(createFund(FUND_ID_2, items2, transferFunds2));
+        funds.add(createFund(FUND_ID_1, items1, transferFunds1,bankTransactions1));
+        funds.add(createFund(FUND_ID_2, items2, transferFunds2,bankTransactions2));
 
         when(fundRepository.findAll()).thenReturn(funds);
 
@@ -124,11 +135,13 @@ public class FundServiceUnitTest {
         assertEquals(fundDto.getId(), actualFundDto.getId());
     }
 
-    private Fund createFund(String id, List<Item> items, List<TransferFund> transferFunds) {
+    private Fund createFund(String id, List<Item> items, List<TransferFund> transferFunds,
+                            List<BankTransaction> bankTransactions) {
         return Fund.builder()
                 .id(id)
                 .items(items)
                 .transferFunds(transferFunds)
+                .bankTransactions(bankTransactions)
                 .build();
     }
 
