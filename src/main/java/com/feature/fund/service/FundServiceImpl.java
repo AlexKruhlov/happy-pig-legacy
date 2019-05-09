@@ -2,6 +2,7 @@ package com.feature.fund.service;
 
 import com.api.fund.repository.FundRepository;
 import com.api.fund.service.FundService;
+import com.feature.bank.banktransaction.model.BankTransaction;
 import com.feature.fund.dto.FundDto;
 import com.feature.fund.dto.FundDtoWithItemsAndTransferFunds;
 import com.feature.fund.model.Fund;
@@ -18,8 +19,9 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
+import static com.feature.bank.banktransaction.model.BankTransactionType.TO_FUND;
+import static java.math.BigInteger.ZERO;
+import static java.util.Objects.*;
 
 /**
  * Implements possibility of working on fund business logic
@@ -28,11 +30,12 @@ import static java.util.Objects.nonNull;
 public class FundServiceImpl implements FundService {
 
     private final class FundAmount {
-        private BigInteger currentAmount = BigInteger.ZERO;
-        private BigInteger income = BigInteger.ZERO;
-        private BigInteger expense = BigInteger.ZERO;
-        private BigInteger transferIncome = BigInteger.ZERO;
-        private BigInteger transferOutcome = BigInteger.ZERO;
+        private BigInteger currentAmount = ZERO;
+        private BigInteger income = ZERO;
+        private BigInteger expense = ZERO;
+        private BigInteger bankTransactionAmount = ZERO;
+        private BigInteger transferIncome = ZERO;
+        private BigInteger transferOutcome = ZERO;
     }
 
     private final FundRepository fundRepository;
@@ -86,7 +89,7 @@ public class FundServiceImpl implements FundService {
     @Transactional
     public List<FundDto> deleteByIdAndFindAll(String id) {
         Fund fund = fundRepository.findById(id).orElse(null);
-        if (nonNull(fund)){
+        if (nonNull(fund)) {
             fund.setDeleted(true);
             fundRepository.saveAndFlush(fund);
         }
@@ -97,14 +100,17 @@ public class FundServiceImpl implements FundService {
         if (isNull(fund)) {
             return null;
         }
-        FundAmount fundAmount = calculateAmount(fund.getItems(), fund.getTransferFunds());
+        FundAmount fundAmount =
+                calculateAmount(fund.getItems(), fund.getTransferFunds(), fund.getBankTransactions());
         fund.setAmount(fundAmount.currentAmount);
+        fund.setBankTransactionAmount(fundAmount.bankTransactionAmount);
         fund.setExpense(fundAmount.expense);
         fund.setIncome(fundAmount.income);
         return fund;
     }
 
-    private FundAmount calculateAmount(List<Item> items, List<TransferFund> transferFunds) {
+    private FundAmount calculateAmount(List<Item> items, List<TransferFund> transferFunds,
+                                       List<BankTransaction> bankTransactions) {
         final FundAmount fundAmount = new FundAmount();
         if (nonEmpty(items)) {
             items.forEach(item -> distributeItemAmounts(item, fundAmount));
@@ -115,7 +121,16 @@ public class FundServiceImpl implements FundService {
             fundAmount.currentAmount =
                     fundAmount.currentAmount.add(fundAmount.transferIncome.subtract(fundAmount.transferOutcome));
         }
+        if (nonEmpty(bankTransactions)) {
+            fundAmount.currentAmount = fundAmount.currentAmount.add(calculateBankTransactionBalance(bankTransactions));
+        }
         return fundAmount;
+    }
+
+    private BigInteger calculateBankTransactionBalance(List<BankTransaction> bankTransactions) {
+        return bankTransactions.stream()
+                .map(this::defineBankTransactionAmount)
+                .reduce(ZERO, BigInteger::add);
     }
 
     private void distributeItemAmounts(Item item, FundAmount fundAmount) {
@@ -136,6 +151,11 @@ public class FundServiceImpl implements FundService {
 
     private boolean isExpense(Item item) {
         return item.getType().equals(ItemTypeConst.EXPENSE);
+    }
+
+    private BigInteger defineBankTransactionAmount(BankTransaction bankTransaction) {
+        return bankTransaction.getBankTransactionType().equals(TO_FUND)
+                ? bankTransaction.getAmount() : bankTransaction.getAmount().negate();
     }
 
     private boolean nonEmpty(List list) {
